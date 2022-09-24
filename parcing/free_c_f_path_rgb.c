@@ -6,7 +6,7 @@
 /*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 16:29:45 by mhanda            #+#    #+#             */
-/*   Updated: 2022/09/15 06:03:51 by mhanda           ###   ########.fr       */
+/*   Updated: 2022/09/24 21:26:58 by mhanda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	check_map_conditions(t_map *node, t_parce *paths_rgb)
 				&& node->line[i] != '0'
 				&& node->line[i] != 'N' && node->line[i] != 'S'
 				&& node->line[i] != 'W' 
-				&& node->line[i] != 'E')
+				&& node->line[i] != 'E' && node->line[i] != '\t')
 				verify ++;
 			i ++;
 		}
