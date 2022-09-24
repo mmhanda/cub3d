@@ -6,7 +6,7 @@
 /*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 15:34:44 by mhanda            #+#    #+#             */
-/*   Updated: 2022/09/24 05:46:19 by mhanda           ###   ########.fr       */
+/*   Updated: 2022/09/25 00:29:23 by mhanda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	continu_paint_mini_map(t_mlx *mlx_srct, t_parce *game_map)
 			if (game_map->parced_map[i][j] == '1')
 				paint_walls(mlx_srct, game_map, j, i);
 			if (game_map->parced_map[i][j] == '0')
-				paint_garound(mlx_srct, game_map, j, i);
+				paint_ground(mlx_srct, game_map, j, i);
 			j ++;
 		}
 		i ++;

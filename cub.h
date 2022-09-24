@@ -6,7 +6,7 @@
 /*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 15:43:45 by mhanda            #+#    #+#             */
-/*   Updated: 2022/09/24 05:31:56 by mhanda           ###   ########.fr       */
+/*   Updated: 2022/09/25 00:30:26 by mhanda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ typedef struct s_rbg
 	int b;
 	int g;
 } t_rgb;
- 
+
 typedef struct s_parce
 {
 	char    *no_path;
@@ -119,7 +119,7 @@ void	paint_p_line(t_mlx *mlx_srct, double x, double y);
 void	paint_player(t_mlx *mlx_srct, double x, double y);
 void    make_texturs(t_parce *game_map);
 void	paint_mini_map(t_mlx *mlx_srct, t_parce *game_map);
-void	paint_garound(t_mlx *mlx_srct, t_parce *game_map, double x, double y);
+void	paint_ground(t_mlx *mlx_srct, t_parce *game_map, double x, double y);
 void	paint_walls(t_mlx *mlx_srct, t_parce *game_map, double x, double y);
 void	handl_player(t_parce *game_map, t_mlx *mlx_srct);
 void	graphics_handle(t_parce *game_map);
