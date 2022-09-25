@@ -6,7 +6,7 @@
 /*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 15:33:21 by mhanda            #+#    #+#             */
-/*   Updated: 2022/09/23 23:08:39 by mhanda           ###   ########.fr       */
+/*   Updated: 2022/09/25 00:31:58 by mhanda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	paint_player(t_mlx *mlx_srct, double x, double y)
 	}
 }
 
-void	paint_garound(t_mlx *mlx_srct, t_parce *game_map, double x, double y)
+void	paint_ground(t_mlx *mlx_srct, t_parce *game_map, double x, double y)
 {
 	int	j;
 	int	i;
