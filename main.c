@@ -3,19 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ywadday <ywadday@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 15:42:28 by mhanda            #+#    #+#             */
-/*   Updated: 2022/09/22 22:38:16 by mhanda           ###   ########.fr       */
+/*   Updated: 2022/09/24 23:03:22 by ywadday          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
+
 int	check_arg(int ac,char **av)
 {
-	int	fd;
+	int		fd;
 	char	*ret;
+	char	*path;
 
 	if (ac != 2)
 		exit(0);
@@ -25,7 +27,9 @@ int	check_arg(int ac,char **av)
 	else
 		if (ft_strcmp(ret, ".cub") != 0)
 			ft_put_error(".cub not match\n");
-	fd = open(av[1], O_RDONLY);
+	path = ft_strjoin(ft_strdup("maps/"), av[1]);
+	fd = open(path, O_RDONLY);
+	free(path);
 	if (fd < 0)
 		ft_put_error("file not found\n");
 	return(fd);
