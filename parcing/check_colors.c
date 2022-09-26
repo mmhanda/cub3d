@@ -6,7 +6,7 @@
 /*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 14:06:35 by mhanda            #+#    #+#             */
-/*   Updated: 2022/09/15 21:53:17 by mhanda           ###   ########.fr       */
+/*   Updated: 2022/09/26 09:57:49 by mhanda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,12 @@ void	get_correct_number_c(t_parce *paths_rgb)
 	int	no;
 	int t;
 	t = 0;
+    if (paths_rgb->c_color[1] != ' ' && !paths_rgb->c_color[-1])
+    {
+        printf("c%cc\n", paths_rgb->c_color[1]);
+        write(2, "error\n", 6);
+        exit(0);
+    }
 	no = ft_strlen(paths_rgb->c_color);
 	while(paths_rgb->c_color[no] == ' ' || paths_rgb->c_color[no] == '\t'
 		|| paths_rgb->c_color[no] == '\0')
@@ -92,6 +98,12 @@ void	get_correct_number_f(t_parce *paths_rgb)
 	int	no;
 	int t;
 	t = 0;
+    if (paths_rgb->f_color[1] != ' ' && !paths_rgb->f_color[-1])
+    {
+        printf("f%cf\n", paths_rgb->f_color[1]);
+        write(2, "error c\n", 6);
+        exit(0);
+    }
 	no = ft_strlen(paths_rgb->f_color);
 	while(paths_rgb->f_color[no] == ' ' || paths_rgb->f_color[no] == '\t'
 		|| paths_rgb->f_color[no] == '\0')
