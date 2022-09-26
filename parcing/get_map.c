@@ -6,7 +6,7 @@
 /*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 15:41:48 by mhanda            #+#    #+#             */
-/*   Updated: 2022/09/21 22:35:18 by mhanda           ###   ########.fr       */
+/*   Updated: 2022/09/26 10:05:37 by mhanda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,22 +72,22 @@ void	handle_textur_path(char **parced_map, t_parce *paths_rgb)
 	init_map_struct(paths_rgb);
 	while (parced_map[i])
 	{
-		if (ft_strstr(parced_map[i], "NO"))
+		if (ft_strstr(parced_map[i], "NO "))
 		{
 			paths_rgb->compas_count.no_index = i;
 			paths_rgb->compas_count.no_count++;
 		}
-		if (ft_strstr(parced_map[i], "SO"))
+		if (ft_strstr(parced_map[i], "SO "))
 		{
 			paths_rgb->compas_count.so_index = i;
 			paths_rgb->compas_count.so_count++;
 		}
-		if (ft_strstr(parced_map[i], "EA"))
+		if (ft_strstr(parced_map[i], "EA "))
 		{
 			paths_rgb->compas_count.ea_index = i;
 			paths_rgb->compas_count.ea_count++;
 		}
-		if (ft_strstr(parced_map[i], "WE"))
+		if (ft_strstr(parced_map[i], "WE "))
 		{
 			paths_rgb->compas_count.we_index = i;
 			paths_rgb->compas_count.we_count++;

@@ -6,7 +6,7 @@
 /*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/11 19:56:52 by mhanda            #+#    #+#             */
-/*   Updated: 2022/09/16 04:49:37 by mhanda           ###   ########.fr       */
+/*   Updated: 2022/09/26 10:05:08 by mhanda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,16 +124,6 @@ void	get_colors(t_parce *paths_rgb)
 		i = 0;
 		write(2, "arg color problem !\n", 20);
 		exit(0);
-		// while (c[i] && f[i])
-		// {
-		// 	free (c[i]);
-		// 	free (f[i]);
-		// 	i ++;
-		// }
-		// free (c);
-		// free (f);
-		// free_textur_paths(paths_rgb);
-		// ft_free_parced_map(paths_rgb->parced_map);
 	}
 	free (paths_rgb->c_color);
 	free (paths_rgb->f_color);
