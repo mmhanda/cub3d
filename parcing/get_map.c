@@ -6,7 +6,7 @@
 /*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 15:41:48 by mhanda            #+#    #+#             */
-/*   Updated: 2022/09/26 10:05:37 by mhanda           ###   ########.fr       */
+/*   Updated: 2022/10/16 19:22:06 by mhanda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ char	*read_map(int fd)
 
 	checker = 1;
 	map_line = ft_strdup("");
-	buffer = malloc(2);
+	if (!(buffer = malloc(2)))
+		return (NULL);
 	while (checker)
 	{
 		checker = read(fd, buffer, 1);

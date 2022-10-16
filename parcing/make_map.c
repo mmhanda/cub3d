@@ -6,7 +6,7 @@
 /*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 22:41:04 by mhanda            #+#    #+#             */
-/*   Updated: 2022/09/17 02:45:14 by mhanda           ###   ########.fr       */
+/*   Updated: 2022/10/16 19:21:18 by mhanda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ t_map	*tab_to_list(char **parced_map)
 	int		j;
 
 	j = 0;
-	node = malloc(sizeof(t_map));
+	if(!(node = malloc(sizeof(t_map))))
+		return (NULL);
 	ptr = node;
 	while (parced_map[j])
 	{

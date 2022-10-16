@@ -6,7 +6,7 @@
 /*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 22:44:51 by mhanda            #+#    #+#             */
-/*   Updated: 2022/09/14 20:56:27 by mhanda           ###   ########.fr       */
+/*   Updated: 2022/10/16 19:19:54 by mhanda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ char	**list_to_tab(t_map *node)
 	i = 0;
 	tmp = node;
 	len = count_list_len(node);
-	tab = malloc(sizeof(char *) * len + 1);
+	if (!(tab = malloc(sizeof(char *) * len + 1)))
+		return (NULL);
 	while (node)
 	{
 		tab[i] = node->line;

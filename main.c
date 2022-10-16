@@ -6,18 +6,16 @@
 /*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 15:42:28 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/16 08:26:40 by mhanda           ###   ########.fr       */
+/*   Updated: 2022/10/16 08:38:11 by mhanda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-
 int	check_arg(int ac,char **av)
 {
 	int		fd;
 	char	*ret;
-	// char	*path;
 
 	if (ac != 2)
 		exit(0);

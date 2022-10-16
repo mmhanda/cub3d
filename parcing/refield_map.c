@@ -6,7 +6,7 @@
 /*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 17:25:47 by mhanda            #+#    #+#             */
-/*   Updated: 2022/09/14 20:00:21 by mhanda           ###   ########.fr       */
+/*   Updated: 2022/10/16 19:17:25 by mhanda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,8 @@ char	**make_square_map(int x, int y)
 	xx = x;
 	i = 0;
 	j = 0;
-	new_tab = malloc(sizeof(char *) * x + 1);
+	if (!(new_tab = malloc(sizeof(char *) * x + 1)))
+		return(NULL);
 	while (x)
 	{
 		new_tab[i] = malloc(sizeof(char) * y + 1);

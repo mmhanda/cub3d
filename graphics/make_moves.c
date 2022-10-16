@@ -6,7 +6,7 @@
 /*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 15:40:25 by mhanda            #+#    #+#             */
-/*   Updated: 2022/09/25 00:31:36 by mhanda           ###   ########.fr       */
+/*   Updated: 2022/10/16 20:34:23 by mhanda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ int	check_wall(t_parce *game, double new_x, double new_y)
 	map_index_x = floor(new_x );
 	map_index_y = floor(new_y );
 	if (map_index_x * TILE_SIZE > WIDTH || map_index_y * TILE_SIZE > HEIGHT 
-		|| new_x < 0 || new_y < 0)
+		|| new_x < 0 || new_y < 0 || new_x > WIDTH || new_y > WIDTH
+		|| new_x > WIDTH || new_y > WIDTH)
 		return (0);
 	if (game->parced_map[map_index_y][map_index_x] == '0')
 		return (1);
