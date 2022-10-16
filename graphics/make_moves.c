@@ -6,7 +6,7 @@
 /*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 15:40:25 by mhanda            #+#    #+#             */
-/*   Updated: 2022/09/24 05:47:19 by mhanda           ###   ########.fr       */
+/*   Updated: 2022/09/25 00:31:36 by mhanda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	compas(t_parce *game, double value, int set_compas)
 		game->mlx_srct.plyr.x -= value;
 	}
 }
-
 int	check_wall(t_parce *game, double new_x, double new_y)
 {
 	int	map_index_x;

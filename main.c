@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ywadday <ywadday@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 15:42:28 by mhanda            #+#    #+#             */
-/*   Updated: 2022/09/24 23:03:22 by ywadday          ###   ########.fr       */
+/*   Updated: 2022/10/16 08:26:40 by mhanda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	check_arg(int ac,char **av)
 {
 	int		fd;
 	char	*ret;
-	char	*path;
+	// char	*path;
 
 	if (ac != 2)
 		exit(0);
@@ -27,9 +27,7 @@ int	check_arg(int ac,char **av)
 	else
 		if (ft_strcmp(ret, ".cub") != 0)
 			ft_put_error(".cub not match\n");
-	path = ft_strjoin(ft_strdup("maps/"), av[1]);
-	fd = open(path, O_RDONLY);
-	free(path);
+	fd = open(av[1], O_RDONLY);
 	if (fd < 0)
 		ft_put_error("file not found\n");
 	return(fd);

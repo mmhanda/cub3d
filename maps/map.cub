@@ -1,8 +1,8 @@
  NO ./main.c
    SO ./main.c
 
-        WE ./main.c
-        EA ./main.c
+		WE ./main.c          
+EA     ./main.c
 
 F 255,255,255
 C 225,255,0

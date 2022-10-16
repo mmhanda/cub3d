@@ -6,7 +6,7 @@
 /*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 15:39:16 by mhanda            #+#    #+#             */
-/*   Updated: 2022/09/24 05:37:17 by mhanda           ###   ########.fr       */
+/*   Updated: 2022/09/24 23:52:34 by mhanda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	set_direction(char p, t_mlx *mlx_srct)
 {
 	if (p == 'N')
 	{
-		mlx_srct->plyr.rotate =(3 * M_PI) / 2;
+		mlx_srct->plyr.rotate = (3 * M_PI) / 2;
 		return (1);
 	}
 	if (p == 'S')
