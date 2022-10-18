@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 15:43:45 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/18 14:41:46 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/18 15:14:58 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,7 @@ typedef struct s_parce
 	t_mlx 		mlx_srct;
 	int		check_min_max;
 } t_parce;
+void  check_horizontal_intersections(t_mlx *mlx_srct);
 void	put_rays(t_mlx *mlx_srct, double x, double y, t_parce *game);
 void	paint_rays(t_mlx *mlx_srct, t_parce *game);
 void	img_pix_put(t_img *img, int x, int y, int color);
