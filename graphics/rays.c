@@ -6,7 +6,7 @@
 /*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 00:56:48 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/16 20:43:55 by mhanda           ###   ########.fr       */
+/*   Updated: 2022/10/18 03:48:30 by mhanda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@ int	make_stop_point(int x_y, t_mlx *mlx_srct, t_parce *game)
 	x = 0;
 	y = 0;
 	wid = WIDTH;
+	mlx_srct = NULL;
+	game = NULL;
+	x_y = 0;
 	// if (x_y == 1)
 	// {
 		while (wid < 510)
@@ -48,7 +51,7 @@ int	make_stop_point(int x_y, t_mlx *mlx_srct, t_parce *game)
 
 void	put_rays(t_mlx *mlx_srct, double x, double y, t_parce *game)
 {
-	make_stop_point(1, mlx_srct, game);
+	// make_stop_point(1, mlx_srct, game);
 	x *= TILE_SIZE;
 	y *= TILE_SIZE;
 	double x2 = 0, y2 = 0, dx = 0, dy = 0, step = 0, xin = 0, yin = 0, xx = 0, yy = 0, k = 0;
@@ -56,6 +59,7 @@ void	put_rays(t_mlx *mlx_srct, double x, double y, t_parce *game)
 	y2 = y + sin(mlx_srct->rays.ray_angle) * WIDTH;
 	// x2 = x + cos(mlx_srct->rays.ray_angle)  * make_stop_point(1, mlx_srct, game);
 	// y2 = y + sin(mlx_srct->rays.ray_angle) * make_stop_point(2, mlx_srct, game);
+	game = NULL;
 	dx = x2 - x;
 	dy = y2 - y;
 	if (dx >= dy)

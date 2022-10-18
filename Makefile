@@ -6,7 +6,7 @@
 #    By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/10 18:04:53 by mhanda            #+#    #+#              #
-#    Updated: 2022/09/23 01:00:27 by mhanda           ###   ########.fr        #
+#    Updated: 2022/10/18 03:58:05 by mhanda           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,15 +25,15 @@ INC = cub.h
 
 LINKS = -lmlx -framework OpenGL -framework AppKit -lmlx
 
-all : $(NAME)
-
 $(NAME) : $(INC) $(OFILES)
 	$(CC) $(CFLAGS) $(OFILES) $(LINKS) -o cub3D
 
-clean : 
-		$(RM) $(OFILES)
+all :
+	$(NAME)
 
-fclean : clean
-		$(RM) $(NAME)
+clean :
+	$(RM) $(OFILES)
+fclean :
+	$(RM) $(NAME)
 
 re : fclean all
