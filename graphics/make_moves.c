@@ -6,7 +6,7 @@
 /*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 15:40:25 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/16 20:34:23 by mhanda           ###   ########.fr       */
+/*   Updated: 2022/10/18 05:15:58 by mhanda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	compas(t_parce *game, double value, int set_compas)
 		game->mlx_srct.plyr.x -= value;
 	}
 }
+
 int	check_wall(t_parce *game, double new_x, double new_y)
 {
 	int	map_index_x;
@@ -65,3 +66,4 @@ int	mlx_key_press(int preced_key, t_parce *game)
 	paint_mini_map(&game->mlx_srct, game);
 	return (0);
 }
+
