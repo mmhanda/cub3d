@@ -3,81 +3,81 @@
 /*                                                        :::      ::::::::   */
 /*   rays.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 00:56:48 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/18 06:27:40 by mhanda           ###   ########.fr       */
+/*   Updated: 2022/10/18 14:41:14 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub.h"
 
-int	make_stop_point(int x_y, t_mlx *mlx_srct, t_parce *game)
-{
-	int	y;
-	int	x;
-	int	wid;
+// int	make_stop_point(int x_y, t_mlx *mlx_srct, t_parce *game)
+// {
+// 	int	y;
+// 	int	x;
+// 	int	wid;
 
-	x = 0;
-	y = 0;
-	wid = WIDTH;
-	mlx_srct = NULL;
-	game = NULL;
-	x_y = 0;
-	// if (x_y == 1)
-	// {
-		while (wid < 510)
-		{
-			// if (check_wall(game, mlx_srct->plyr.x + x, mlx_srct->plyr.y + y) == 0)
-			// 	return(y);
-		printf ("%f\n", mlx_srct->plyr.y);
-			check_wall(game, mlx_srct->plyr.x, mlx_srct->plyr.y);
-			x ++;
-			y ++;
-			wid ++;
-		}
-	// }
-	// if (x_y == 2)
-	// {
-	// 	while (i < 30)
-	// 	{
-	// 		if (check_wall(game, mlx_srct->plyr.x, mlx_srct->plyr.y + i) == 0)
-	// 			return(i);
-	// 		i ++;
-	// 	}
-	// }
-	return (0);
-}
+// 	x = 0;
+// 	y = 0;
+// 	wid = WIDTH;
+// 	mlx_srct = NULL;
+// 	game = NULL;
+// 	x_y = 0;
+// 	// if (x_y == 1)
+// 	// {
+// 		while (wid < 510)
+// 		{
+// 			// if (check_wall(game, mlx_srct->plyr.x + x, mlx_srct->plyr.y + y) == 0)
+// 			// 	return(y);
+// 		printf ("%f\n", mlx_srct->plyr.y);
+// 			check_wall(game, mlx_srct->plyr.x, mlx_srct->plyr.y);
+// 			x ++;
+// 			y ++;
+// 			wid ++;
+// 		}
+// 	// }
+// 	// if (x_y == 2)
+// 	// {
+// 	// 	while (i < 30)
+// 	// 	{
+// 	// 		if (check_wall(game, mlx_srct->plyr.x, mlx_srct->plyr.y + i) == 0)
+// 	// 			return(i);
+// 	// 		i ++;
+// 	// 	}
+// 	// }
+// 	return (0);
+// }
 
-void	put_rays(t_mlx *mlx_srct, double x, double y, t_parce *game)
-{
-	// make_stop_point(1, mlx_srct, game);
-	x *= TILE_SIZE;
-	y *= TILE_SIZE;
-	double x2 = 0, y2 = 0, dx = 0, dy = 0, step = 0, xin = 0, yin = 0, xx = 0, yy = 0, k = 0;
-	x2 = x + cos(mlx_srct->rays.ray_angle)  * WIDTH;
-	y2 = y + sin(mlx_srct->rays.ray_angle) * WIDTH;
-	// x2 = x + cos(mlx_srct->rays.ray_angle)  * make_stop_point(1, mlx_srct, game);
-	// y2 = y + sin(mlx_srct->rays.ray_angle) * make_stop_point(2, mlx_srct, game);
-	game = NULL;
-	dx = x2 - x;
-	dy = y2 - y;
-	if (dx >= dy)
-		step = fabs(dx);
-	else
-		step = fabs(dy);
-	xin = dx / step;
-	yin = dy / step;
-	xx = x + 0.5;
-	yy = y + 0.5;
-	while (k <= step)
-	{
-		xx += xin;
-		yy += yin;
-		img_pix_put(&mlx_srct->mlx_m, round(xx), round(yy), 0xF02B79);
-		k ++;
-	}
-}
+// void	put_rays(t_mlx *mlx_srct, double x, double y, t_parce *game)
+// {
+// 	// make_stop_point(1, mlx_srct, game);
+// 	x *= TILE_SIZE;
+// 	y *= TILE_SIZE;
+// 	double x2 = 0, y2 = 0, dx = 0, dy = 0, step = 0, xin = 0, yin = 0, xx = 0, yy = 0, k = 0;
+// 	x2 = x + cos(mlx_srct->rays.ray_angle)  * WIDTH;
+// 	y2 = y + sin(mlx_srct->rays.ray_angle) * WIDTH;
+// 	// x2 = x + cos(mlx_srct->rays.ray_angle)  * make_stop_point(1, mlx_srct, game);
+// 	// y2 = y + sin(mlx_srct->rays.ray_angle) * make_stop_point(2, mlx_srct, game);
+// 	game = NULL;
+// 	dx = x2 - x;
+// 	dy = y2 - y;
+// 	if (dx >= dy)
+// 		step = fabs(dx);
+// 	else
+// 		step = fabs(dy);
+// 	xin = dx / step;
+// 	yin = dy / step;
+// 	xx = x + 0.5;
+// 	yy = y + 0.5;
+// 	while (k <= step)
+// 	{
+// 		xx += xin;
+// 		yy += yin;
+// 		img_pix_put(&mlx_srct->mlx_m, round(xx), round(yy), 0xF02B79);
+// 		k ++;
+// 	}
+// }
 
 void	paint_rays(t_mlx *mlx_srct, t_parce *game)
 {
