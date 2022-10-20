@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 15:43:45 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/18 15:14:58 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/20 11:11:48 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,31 @@
 # define FOV_ANGLE 60 * (M_PI / 180)
 # define WALL_STRIP_THIKNES 1
 # define NUM_RAYS (WIDTH / WALL_STRIP_THIKNES)
+
+typedef struct s_hit
+{
+	 double yintercept ;
+	 double xintercept;
+ 	double ystep;
+ 	double xstep;
+	 double y_map_grid ;
+	 double x_map_grid;
+	 int hit;
+	 double wallhitx;
+	 double wallhity;
+	 double x_to_check;
+	 double y_to_check;
+	 double nextHorzTouchX;
+	 double nextHorzTouchY;
+	 
+	 double horx;
+	 double hory;
+	 double verx;
+	 double very;
+	 
+	 
+}t_hit;
+
 
 typedef struct s_ray
 {
@@ -63,6 +88,8 @@ typedef struct s_mlx
 	t_ray		rays;
 	t_player	plyr;
 	t_img		mlx_m;
+		t_hit hited;
+
 } t_mlx;
 
 typedef struct s_map
@@ -112,7 +139,13 @@ typedef struct s_parce
 	t_mlx 		mlx_srct;
 	int		check_min_max;
 } t_parce;
-void  check_horizontal_intersections(t_mlx *mlx_srct);
+/*---------------------------*/
+void	check_vertical_intersections(t_mlx *mlx_srct, double x, double y,
+		t_parce *game);
+	void	check_horizontal_intersections(t_mlx *mlx_srct, double x, double y,		t_parce *game);
+		
+/* ----------------------*/
+
 void	put_rays(t_mlx *mlx_srct, double x, double y, t_parce *game);
 void	paint_rays(t_mlx *mlx_srct, t_parce *game);
 void	img_pix_put(t_img *img, int x, int y, int color);

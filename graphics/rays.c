@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 00:56:48 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/18 15:29:33 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/20 11:16:33 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,16 +82,16 @@
 void	paint_rays(t_mlx *mlx_srct, t_parce *game)
 {
 	double	column_id;
-	// double	ray_angle;
-	game = NULL;
 
 	column_id = 0;
 	mlx_srct->rays.ray_angle = mlx_srct->plyr.rotate - (FOV_ANGLE / 2);
 	while (column_id < NUM_RAYS)
 	{
+		mlx_srct->rays.ray_angle = fmod(mlx_srct->rays.ray_angle, 2 * M_PI);
+	if (mlx_srct->rays.ray_angle < 0)
+		mlx_srct->rays.ray_angle += (2 * M_PI);
 		put_rays(mlx_srct, mlx_srct->plyr.x, mlx_srct->plyr.y, game);
 		mlx_srct->rays.ray_angle += FOV_ANGLE / NUM_RAYS;
 		column_id ++;
 	}
-	// printf("%f\n", column_id);
 }

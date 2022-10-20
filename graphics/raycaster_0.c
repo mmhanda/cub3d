@@ -6,107 +6,207 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 13:23:43 by atabiti           #+#    #+#             */
-/*   Updated: 2022/10/18 15:33:49 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/20 11:09:23 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub.h"
-// check horizontal and vertical
-
-
-
-void  check_horizontal_intersections(t_mlx *mlx_srct)
+#include <stdbool.h>
+float	distanceBetweenPoints(float x1, float y1, float x2, float y2)
 {
-	/* First intersection A */
-	//get Ay coordinate  =  player y / 32 * 32
-	// get Ax coordinate	 = player x  + ((Player y  - Ay) / tan())
-	//addjecent  = (Py - Ay) / tan()
-	/* Next intersection B : i should know  (dist_x_step) and (dist_y_step)*/
-	//dist_x_step = dist_y_step / tan()
-	/* dist_y_step = 32 because we are moving with the size of the tile up*/
-	// convert  intersections Ax and Ay into map index
-	//then check
-	// if(intersections hits a wall)
-	/* 
-	//store horizontal distance 
-	
-	*/
-//else check next horizontal intersection loop 
-//increment dist_x_step horizontally and dist_y_step vertically until map[x][y] == 1
-
-	double dist_y_step = TILE_SIZE;
-	double dist_x_step = dist_y_step/tan(mlx_srct->rays.ray_angle);
-	long ax;
-	long ay;
-
-	(void) ax;(void)ay;(void) dist_y_step;(void) dist_x_step;
-	
+	return (sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1)));
 }
 
-void  check_vertical_intersections(t_mlx *mlx_srct)
+static int	hit = 0;
+
+int	check_wall_2(t_parce *game, double new_x, double new_y)
 {
+	int	map_index_x;
+	int	map_index_y;
 
-	//1 find first 	vertical intersections A
-	//2 find  dist_x_step and dist_y_step
-	// dist_x_step = 32 
-	//dist_y_step  = tan() * dist_x_step
-		// 3 convert  intersections Ax and Ay into map index
-		//then check
-	// if(intersections hits a wall)
-	/* 
-	//store vertical distance 
-	
-	*/
-//else check next vertical intersection 
+	map_index_x = floor(new_x);
+	map_index_y = floor(new_y);
+	if (map_index_x * TILE_SIZE > WIDTH || map_index_y * TILE_SIZE > HEIGHT
+		|| new_x < 0 || new_y < 0 || new_x > WIDTH || new_y > WIDTH
+		|| new_x > WIDTH || new_y > WIDTH)
+		return (0);
+	if (game->parced_map[map_index_y][map_index_x] == '1')
+		return (1);
+	return (0);
+}
 
-	double dist_x_step = TILE_SIZE;
-	double dist_y_step =  TILE_SIZE * tan(mlx_srct->rays.ray_angle);
-	long ax;
-	long ay;
+void	dda(int a, int b, int c, int d, t_mlx *mlx_srct)
+{
+	int		dx;
+	int		dy;
+	int		steps;
+	float	Xinc;
+	float	Yinc;
+	float	X;
+	float	Y;
 
-	(void) ax;(void)ay;(void) dist_y_step;(void) dist_x_step;
+	dx = c - a;
+	dy = d - b;
+	steps = abs(dx) > abs(dy) ? abs(dx) : abs(dy);
+	Xinc = dx / (float)steps;
+	Yinc = dy / (float)steps;
+	X = a;
+	Y = b;
+	for (int i = 0; i <= steps; i++)
+	{
+		img_pix_put(&mlx_srct->mlx_m, round(X), round(Y), 0xF02B79);
+		X += Xinc;
+		Y += Yinc;
+	}
+}
+
+bool	is_right(double angle_in_radian)
+{
+	if (angle_in_radian < (M_PI / 2) || angle_in_radian > (1.5 * M_PI))
+		return (true);
+	return (false);
+}
+bool	is_down(double angle_in_radian)
+{
+	if (angle_in_radian > 0 && angle_in_radian < M_PI)
+		return (true);
+	return (false);
+}
+
+void	check_horizontal_intersections(t_mlx *mlx_srct, double x, double y,
+		t_parce *game)
+{
+	double	tmpx;
+	double	tmpy;
+	int		mapindex_x;
+	int		mapindex_y;
+
+	mlx_srct->hited.yintercept = floor(y / TILE_SIZE) * TILE_SIZE;
+	if (is_down(mlx_srct->rays.ray_angle))
+	{
+		mlx_srct->hited.yintercept += TILE_SIZE;
+	}
+	mlx_srct->hited.xintercept = x + ((mlx_srct->hited.yintercept - y)
+			/ tan(mlx_srct->rays.ray_angle));
+	mlx_srct->hited.ystep = TILE_SIZE;
+	if (!is_down(mlx_srct->rays.ray_angle))
+	{
+		mlx_srct->hited.ystep = -TILE_SIZE;
+	}
+	mlx_srct->hited.xstep = TILE_SIZE / tan(mlx_srct->rays.ray_angle);
+	if (is_right(mlx_srct->rays.ray_angle) && mlx_srct->hited.xstep < 0)
+	{
+		mlx_srct->hited.xstep = -TILE_SIZE;
+	}
+	else if (!is_right(mlx_srct->rays.ray_angle) && mlx_srct->hited.xstep > 0)
+	{
+		mlx_srct->hited.xstep = -TILE_SIZE;
+	}
+	tmpx = mlx_srct->hited.xintercept;
+	tmpy = mlx_srct->hited.yintercept;
+	if (!is_down(mlx_srct->rays.ray_angle))
+		tmpy -= 1;
+	printf(" tmpx %f = tmpy %f\n", tmpx / 32, tmpy / 32);
+	while (tmpx >= 0 && tmpx <= (15 * 32) && tmpy >= 0 && tmpy <= (11 * 32))
+	{
+		mapindex_x = tmpx / TILE_SIZE;
+		mapindex_y = tmpy / TILE_SIZE;
+		if (check_wall_2(game, mapindex_x, mapindex_y) == 1)
+		{
+			hit = 1;
+			mlx_srct->hited.wallhitx = tmpx;
+			mlx_srct->hited.wallhity = tmpy;
+			mlx_srct->hited.horx = tmpx;
+			mlx_srct->hited.hory = tmpy;
+			break ;
+		}
+		else
+		{
+			tmpx += mlx_srct->hited.xstep;
+			tmpy += mlx_srct->hited.ystep;
+		}
+	}
+}
+
+void	check_vertical_intersections(t_mlx *mlx_srct, double x, double y,
+		t_parce *game)
+{
+	double	tmpx;
+	double	tmpy;
+	int		mapindex_x;
+	int		mapindex_y;
+
+	mlx_srct->hited.xintercept = floor(x / TILE_SIZE) * TILE_SIZE;
+	if (is_right(mlx_srct->rays.ray_angle))
+		mlx_srct->hited.xintercept += TILE_SIZE;
+	mlx_srct->hited.yintercept = y + (mlx_srct->hited.xintercept - x)
+		* tan(mlx_srct->rays.ray_angle);
+	mlx_srct->hited.xstep = TILE_SIZE;
+	if (!is_right(mlx_srct->rays.ray_angle))
+	{
+		mlx_srct->hited.xstep *= -1;
+	}
+	mlx_srct->hited.ystep = TILE_SIZE * tan(mlx_srct->rays.ray_angle);
+	if (!is_down(mlx_srct->rays.ray_angle) && mlx_srct->hited.ystep > 0)
+	{
+		mlx_srct->hited.ystep *= -1;
+	}
+	else if (is_down(mlx_srct->rays.ray_angle) && mlx_srct->hited.ystep < 0)
+	{
+		mlx_srct->hited.ystep *= -1;
+	}
+	tmpx = mlx_srct->hited.xintercept;
+	tmpy = mlx_srct->hited.yintercept;
+	if (!is_right(mlx_srct->rays.ray_angle))
+	{
+		tmpx -= 1;
+	}
+	while (tmpx >= 0 && tmpx <= (15 * 32) && tmpy >= 0 && tmpy <= (11 * 32))
+	{
+		mapindex_x = tmpx / TILE_SIZE;
+		mapindex_y = tmpy / TILE_SIZE;
+		if (check_wall_2(game, mapindex_x, mapindex_y) == 1)
+		{
+			hit = 1;
+			mlx_srct->hited.wallhitx = tmpx;
+			mlx_srct->hited.wallhity = tmpy;
+			mlx_srct->hited.horx = tmpx;
+			mlx_srct->hited.hory = tmpy;
+			break ;
+		}
+		else
+		{
+			tmpx += mlx_srct->hited.xstep;
+			tmpy += mlx_srct->hited.ystep;
+		}
+	}
 }
 
 void	put_rays(t_mlx *mlx_srct, double x, double y, t_parce *game)
 {
+	int	bb;
+	int	bc;
 
-(void) x;(void)y;
-(void) game;
-	check_horizontal_intersections(mlx_srct);
-	check_vertical_intersections(mlx_srct);
-	////then calulate nearest wall after geting  horizontal_intersections and vertical_intersections
-
-
-
-
-
-
-	
-	// x *= TILE_SIZE;
-	// y *= TILE_SIZE;
-	// double x2 = 0, y2 = 0, dx = 0, dy = 0, step = 0, xin = 0, yin = 0, xx = 0, yy = 0, k = 0;
-	// x2 = x + cos(mlx_srct->rays.ray_angle)  * WIDTH;
-	// y2 = y + sin(mlx_srct->rays.ray_angle) * WIDTH;
-    // printf("x2 = %f   y2  = %f  \n", x / 32, y/32); // player x and y position 
-	
-	// // x2 = x + cos(mlx_srct->rays.ray_angle)  * make_stop_point(1, mlx_srct, game);
-	// // y2 = y + sin(mlx_srct->rays.ray_angle) * make_stop_point(2, mlx_srct, game);
-	// game = NULL;
-	// dx = x2 - x;
-	// dy = y2 - y;
-	// if (dx >= dy)
-	// 	step = fabs(dx);
-	// else
-	// 	step = fabs(dy);
-	// xin = dx / step;
-	// yin = dy / step;
-	// xx = x + 0.5;
-	// yy = y + 0.5;
-	// while (k <= step)
+	mlx_srct->hited.hit = 0;
+	mlx_srct->hited.horx = WIDTH - (x * 32);
+	mlx_srct->hited.hory = WIDTH - (y * 32);
+	mlx_srct->hited.verx = WIDTH - (x * 32);
+	mlx_srct->hited.very = WIDTH - (y * 32);
+	hit = 0;
+	check_horizontal_intersections(mlx_srct, x * 32, y * 32, game);
+	check_vertical_intersections(mlx_srct, x * 32, y * 32, game);
+	bb = distanceBetweenPoints(x * 32, y * 32, mlx_srct->hited.horx,
+			mlx_srct->hited.hory);
+	bc = distanceBetweenPoints(x * 32, y * 32, mlx_srct->hited.verx,
+			mlx_srct->hited.verx);
+	// if (bb < bc)
 	// {
-	// 	xx += xin;
-	// 	yy += yin;
-	// 	img_pix_put(&mlx_srct->mlx_m, round(xx), round(yy), 0xF02B79);
-	// 	k ++;
+		dda(x * 32, y * 32, mlx_srct->hited.horx, mlx_srct->hited.hory,
+				mlx_srct);
+	// }
+	// if (bc < bb)
+	// {
+		dda(x * 32, y * 32, mlx_srct->hited.verx, mlx_srct->hited.very,
+				mlx_srct);
 	// }
 }
