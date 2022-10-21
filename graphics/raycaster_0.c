@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycaster_0.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 13:23:43 by atabiti           #+#    #+#             */
-/*   Updated: 2022/10/21 11:26:30 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/21 12:30:33 by mhanda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,7 @@ void	dda(int a, int b, int c, int d, t_mlx *mlx_srct)
 	}
 }
 
-void	check_horizontal_intersections(t_mlx *mlx_srct, double x, double y,
-		t_parce *game)
+void	check_horizontal_intersections(t_mlx *mlx_srct, double x, double y, t_parce *game)
 {
 	y_x_horizontal(mlx_srct, x, y, game);
 	mlx_srct->hited.tmpx = mlx_srct->hited.xintercept;

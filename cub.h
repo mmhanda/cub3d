@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 15:43:45 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/21 11:24:10 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/21 12:46:52 by mhanda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ typedef struct s_mlx
 	t_ray		rays;
 	t_player	plyr;
 	t_img		mlx_m;
-		t_hit hited;
+	t_hit 		hited;
 
 } t_mlx;
 

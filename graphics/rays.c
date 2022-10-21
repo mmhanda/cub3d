@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   rays.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 00:56:48 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/21 11:24:49 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/21 12:27:19 by mhanda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub.h"
 
-#include "../cub.h"
 void	draw_floor(t_mlx *mlx_srct)
 {
 	int	y2;
