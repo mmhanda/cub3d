@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 00:56:48 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/21 18:37:17 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/21 18:40:48 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,8 +128,8 @@ mlx_srct->hited.distbtwplr_and_plane = (1080 / 2) / tan(FOV_ANGLE / 2);
 mlx_srct->hited.projectedWallHeight  = ( (TILE_SIZE / 	mlx_srct->hited.distance_to_wall)  *  mlx_srct->hited.distbtwplr_and_plane);
 //bottomOfWall  = plane center  + projected Wall Height
 //topOfWall  = plane center   - projected Wall Height
-mlx_srct->hited.bottomOfWall =  ((1080 / 2) +( mlx_srct->hited.projectedWallHeight ) );
-mlx_srct->hited.topOfWall =( (1080 / 2) - mlx_srct->hited.projectedWallHeight ) ;
+mlx_srct->hited.bottomOfWall =  ((1080 / 2) +( mlx_srct->hited.projectedWallHeight / 2 ) );
+mlx_srct->hited.topOfWall =( (1080 / 2) - mlx_srct->hited.projectedWallHeight /2 ) ;
 
 if(mlx_srct->hited.topOfWall < 0 || mlx_srct->hited.topOfWall > HEIGHT)
 mlx_srct->hited.topOfWall  = 0;
