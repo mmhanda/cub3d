@@ -6,16 +6,13 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 13:23:43 by atabiti           #+#    #+#             */
-/*   Updated: 2022/10/21 08:59:04 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/21 11:26:30 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
+
 #include "../cub.h"
-#include <stdbool.h>
-
-bool	horhit = false;
-bool	verhit = false;
-
 void	draw_it(int x, int y, int width, int height, int color, t_mlx *mlx_srct)
 {
 	int	ff;
@@ -76,7 +73,7 @@ void	check_horizontal_intersections(t_mlx *mlx_srct, double x, double y,
 			mlx_srct->hited.wallhity = mlx_srct->hited.tmpy;
 			mlx_srct->hited.horx = mlx_srct->hited.tmpx;
 			mlx_srct->hited.hory = mlx_srct->hited.tmpy;
-			horhit = true;
+			mlx_srct->hited.horhit = true;
 			break ;
 		}
 		else
@@ -87,8 +84,7 @@ void	check_horizontal_intersections(t_mlx *mlx_srct, double x, double y,
 	}
 }
 
-void	check_vertical_intersections(t_mlx *mlx_srct, double x, double y,
-		t_parce *game)
+void	check_vertical_intersections(t_mlx *mlx_srct, double x, double y,t_parce *game)
 {
 	y_x_vertical(mlx_srct, x, y, game);
 	while (mlx_srct->hited.tmpx >= 0 && mlx_srct->hited.tmpx <= WIDTH
@@ -105,7 +101,7 @@ void	check_vertical_intersections(t_mlx *mlx_srct, double x, double y,
 			mlx_srct->hited.wallhity = mlx_srct->hited.tmpy;
 			mlx_srct->hited.verx = mlx_srct->hited.tmpx;
 			mlx_srct->hited.very = mlx_srct->hited.tmpy;
-			verhit = true;
+			mlx_srct->hited.verhit = true;
 			break ;
 		}
 		else
@@ -120,63 +116,28 @@ void	put_rays(t_mlx *mlx_srct, double x, double y, t_parce *game)
 {
 	int		bb;
 	int		bc;
-	double	hordistance;
-	double	verdistance;
-	double	hiitx;
-	double	hiity;
-	double	distance;
 
-	horhit = false;
-	verhit = false;
+	mlx_srct->hited.horhit = false;
+	mlx_srct->hited.verhit = false;
 	check_horizontal_intersections(mlx_srct, x * 32, y * 32, game);
 	mlx_srct->rays.ray_angle = fmod(mlx_srct->rays.ray_angle, 2 * M_PI);
 	if (mlx_srct->rays.ray_angle < 0)
 		mlx_srct->rays.ray_angle += (2 * M_PI);
 	check_vertical_intersections(mlx_srct, x * 32, y * 32, game);
-	hordistance = 999999999;
-	verdistance = 999999999;
-	hiitx = 0;
-	hiity = 0;
-	distance = 0;
-	if (horhit == true)
-	{
-		hordistance = distancebetween2_points(x * 32, x * 32,
-				mlx_srct->hited.horx, mlx_srct->hited.hory);
-	}
-	if (verhit == true)
-	{
-		verdistance = distancebetween2_points(x * 32, x * 32,
-				mlx_srct->hited.verx, mlx_srct->hited.very);
-	}
-	if (hordistance < verdistance)
-	{
-		hiitx = mlx_srct->hited.horx;
-		hiity = mlx_srct->hited.hory;
-		distance = hordistance;
-		mlx_srct->hited.distance_to_wall = hordistance;
-	}
-	else
-	{
-		hiitx = mlx_srct->hited.verx;
-		hiity = mlx_srct->hited.very;
-		distance = verdistance;
-		mlx_srct->hited.distance_to_wall = verdistance;
-		mlx_srct->hited.wasverticallasttime = true;
-	}
-	dda(x * 32, y * 32, hiitx, hiity, mlx_srct);
+	nearest_point(mlx_srct, x, y, game);
+	mlx_srct->hited.hordistance = 999999999;
+	dda(x * 32, y * 32, mlx_srct->hited.hiitx, mlx_srct->hited.hiity, mlx_srct);
 	//init
-	mlx_srct->hited.projectedWallHeight = 0;
-	mlx_srct->hited.bottomOfWall = 0;
-	//project it  " cub3d"
-	// mlx_srct->hited.projectedWallHeight = (32 / distance) * 55;
-	mlx_srct->hited.projectedWallHeight = distance;
-	// printf("distance is  = %f   \n", distance);
-	mlx_srct->hited.bottomOfWall = (WIDTH / 2)
-		+ (mlx_srct->hited.projectedWallHeight * 0.5);
-	mlx_srct->hited.topOfWall = (WIDTH / 2)
-		- (mlx_srct->hited.projectedWallHeight * 0.5);
-	if (mlx_srct->hited.topOfWall < 0)
-		mlx_srct->hited.topOfWall = 0;
-	if (mlx_srct->hited.bottomOfWall >= HEIGHT)
-		mlx_srct->hited.bottomOfWall = HEIGHT - 1;
+	// mlx_srct->hited.projectedWallHeight = 0;
+	// mlx_srct->hited.bottomOfWall = 0;
+	// // distance = distance  * cos(mlx_srct->rays.ray_angle - mlx_srct->plyr.rotate) ; 
+	// //project it  " cub3d"
+	// float DistancetotheProjectionPlane =   935;
+	// mlx_srct->hited.projectedWallHeight = (32 * DistancetotheProjectionPlane / mlx_srct->hited.distance_to_wall );
+	// mlx_srct->hited.bottomOfWall = (1080 / 2)	+ (mlx_srct->hited.projectedWallHeight * 0.5);
+	// mlx_srct->hited.topOfWall = (1080 / 2)	- (mlx_srct->hited.projectedWallHeight * 0.5);
+	// if (mlx_srct->hited.topOfWall < 0)
+	// 	mlx_srct->hited.topOfWall = 0;
+	// if (mlx_srct->hited.bottomOfWall >= 720)
+	// 	mlx_srct->hited.bottomOfWall = 720 - 1;
 }

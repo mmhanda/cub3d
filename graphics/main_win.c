@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_win.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 15:34:44 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/21 10:51:34 by mhanda           ###   ########.fr       */
+/*   Updated: 2022/10/21 11:27:27 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,15 @@ void	graphics_handle(t_parce *game_map)
 	handl_player(game_map, &game_map->mlx_srct);
 	game_map->mlx_srct.mlx_ptr = mlx_init();
 	game_map->mlx_srct.win_ptr = mlx_new_window(game_map->mlx_srct.mlx_ptr, WIDTH, HEIGHT, "mhanda");
+	// game_map->mlx_srct.hited.mlx_ptr = mlx_init();
+	// game_map->mlx_srct.hited.mlx_win = mlx_new_window(game_map->mlx_srct.hited.mlx_ptr , 1080, 720, "atabiti");
 	if (++reload == 0)
+
+	// 	paint_mini_map(&game_map->mlx_srct, game_map);
+	// mlx_hook(game_map->mlx_srct.hited.mlx_win , 2, (1L << 0), mlx_key_press, game_map);
+	// mlx_hook(game_map->mlx_srct.hited.mlx_win , 3, (1L << 1), mlx_key_releas, game_map);
+	// mlx_hook(game_map->mlx_srct.hited.mlx_win , 17, 0, mlx_x_key_han, game_map);
+	// mlx_loop(game_map->mlx_srct.hited.mlx_ptr );
 		paint_mini_map(&game_map->mlx_srct, game_map);
 	mlx_hook(game_map->mlx_srct.win_ptr, 2, (1L << 0), mlx_key_press, game_map);
 	mlx_hook(game_map->mlx_srct.win_ptr, 3, (1L << 1), mlx_key_releas, game_map);

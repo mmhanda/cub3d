@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 15:43:45 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/21 08:59:54 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/21 11:24:10 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # define FOV_ANGLE 60 * (M_PI / 180)
 # define WALL_STRIP_THIKNES 1
 # define NUM_RAYS (WIDTH / WALL_STRIP_THIKNES)
+
 
 typedef struct s_hit
 {
@@ -63,9 +64,16 @@ typedef struct s_hit
 	int				projectedWallHeight;
 	int				castColumn;
 	bool			wasverticallasttime;
+	//
+	double	hordistance;
+	double	verdistance;
+	double	hiitx;
+	double	hiity;
+	bool	horhit ;
+bool	verhit ;
 
-}t_hit;
 
+}					t_hit;
 
 
 typedef struct s_ray
@@ -167,6 +175,7 @@ bool				is_down(double angle_in_radian);
 void	y_x_horizontal(t_mlx *mlx_srct, double x, double y,t_parce *game);
 void	y_x_vertical(t_mlx *mlx_srct, double x, double y, t_parce *game);
 int	check_wall_2(t_parce *game, double new_x, double new_y);
+void	nearest_point(t_mlx *mlx_srct, double x, double y, t_parce *game);
 /**********************************************/
 
 void	put_rays(t_mlx *mlx_srct, double x, double y, t_parce *game);

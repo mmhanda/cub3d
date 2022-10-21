@@ -6,92 +6,102 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 00:56:48 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/20 11:16:33 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/21 11:24:49 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub.h"
 
-// int	make_stop_point(int x_y, t_mlx *mlx_srct, t_parce *game)
-// {
-// 	int	y;
-// 	int	x;
-// 	int	wid;
+#include "../cub.h"
+void	draw_floor(t_mlx *mlx_srct)
+{
+	int	y2;
+	int	x2;
+	int	color;
 
-// 	x = 0;
-// 	y = 0;
-// 	wid = WIDTH;
-// 	mlx_srct = NULL;
-// 	game = NULL;
-// 	x_y = 0;
-// 	// if (x_y == 1)
-// 	// {
-// 		while (wid < 510)
-// 		{
-// 			// if (check_wall(game, mlx_srct->plyr.x + x, mlx_srct->plyr.y + y) == 0)
-// 			// 	return(y);
-// 		printf ("%f\n", mlx_srct->plyr.y);
-// 			check_wall(game, mlx_srct->plyr.x, mlx_srct->plyr.y);
-// 			x ++;
-// 			y ++;
-// 			wid ++;
-// 		}
-// 	// }
-// 	// if (x_y == 2)
-// 	// {
-// 	// 	while (i < 30)
-// 	// 	{
-// 	// 		if (check_wall(game, mlx_srct->plyr.x, mlx_srct->plyr.y + i) == 0)
-// 	// 			return(i);
-// 	// 		i ++;
-// 	// 	}
-// 	// }
-// 	return (0);
-// }
+	y2 = 0;
+	x2 = 0;
+	color = 0xFFFFFF;
+	while (y2 < 720 / 2)
+	{
+		x2 = 0;
+		while (x2 < 1280)
+		{
+			mlx_pixel_put(mlx_srct->hited.mlx_ptr, mlx_srct->hited.mlx_win, x2,
+					y2, color);
+			x2++;
+		}
+		y2++;
+	}
+}
+void	draw_ceilling(t_mlx *mlx_srct)
+{
+	int	y2;
+	int	x2;
+	int	color;
 
-// void	put_rays(t_mlx *mlx_srct, double x, double y, t_parce *game)
-// {
-// 	// make_stop_point(1, mlx_srct, game);
-// 	x *= TILE_SIZE;
-// 	y *= TILE_SIZE;
-// 	double x2 = 0, y2 = 0, dx = 0, dy = 0, step = 0, xin = 0, yin = 0, xx = 0, yy = 0, k = 0;
-// 	x2 = x + cos(mlx_srct->rays.ray_angle)  * WIDTH;
-// 	y2 = y + sin(mlx_srct->rays.ray_angle) * WIDTH;
-// 	// x2 = x + cos(mlx_srct->rays.ray_angle)  * make_stop_point(1, mlx_srct, game);
-// 	// y2 = y + sin(mlx_srct->rays.ray_angle) * make_stop_point(2, mlx_srct, game);
-// 	game = NULL;
-// 	dx = x2 - x;
-// 	dy = y2 - y;
-// 	if (dx >= dy)
-// 		step = fabs(dx);
-// 	else
-// 		step = fabs(dy);
-// 	xin = dx / step;
-// 	yin = dy / step;
-// 	xx = x + 0.5;
-// 	yy = y + 0.5;
-// 	while (k <= step)
-// 	{
-// 		xx += xin;
-// 		yy += yin;
-// 		img_pix_put(&mlx_srct->mlx_m, round(xx), round(yy), 0xF02B79);
-// 		k ++;
-// 	}
-// }
+	y2 = 0;
+	x2 = 0;
+	color = 0xFFFFFF;
+	color = 0x796554;
+	x2 = 0;
+	y2 = 720 / 2;
+	while (y2 < 720)
+	{
+		x2 = 0;
+		while (x2 < 1280)
+		{
+			mlx_pixel_put(mlx_srct->hited.mlx_ptr, mlx_srct->hited.mlx_win, x2,
+					y2, color);
+			x2++;
+		}
+		y2++;
+	}
+}
+void	init_them(t_mlx *mlx_srct)
+{
+	mlx_srct->hited.nextHorzTouchX = 0;
+	mlx_srct->hited.nextHorzTouchY = 0;
+	mlx_srct->hited.yintercept = 0;
+	mlx_srct->hited.xintercept = 0;
+	mlx_srct->hited.wallhitx = 0;
+	mlx_srct->hited.wallhity = 0;
+	mlx_srct->hited.x_map_grid = 0;
+	mlx_srct->hited.y_map_grid = 0;
+	mlx_srct->hited.horx = 0;
+	mlx_srct->hited.hory = 0;
+	mlx_srct->hited.verx = 0;
+	mlx_srct->hited.very = 0;
+	mlx_srct->hited.ystep = 0;
+	mlx_srct->hited.xstep = 0;
+}
 
 void	paint_rays(t_mlx *mlx_srct, t_parce *game)
 {
 	double	column_id;
+	int		color;
 
+	init_them(mlx_srct);
 	column_id = 0;
 	mlx_srct->rays.ray_angle = mlx_srct->plyr.rotate - (FOV_ANGLE / 2);
-	while (column_id < NUM_RAYS)
-	{
-		mlx_srct->rays.ray_angle = fmod(mlx_srct->rays.ray_angle, 2 * M_PI);
+	mlx_srct->rays.ray_angle = fmod(mlx_srct->rays.ray_angle, 2 * M_PI);
 	if (mlx_srct->rays.ray_angle < 0)
 		mlx_srct->rays.ray_angle += (2 * M_PI);
+	while (column_id < WIDTH)
+	{
+		color = 0xFFFFFF;
+		mlx_srct->hited.wasverticallasttime = false;
+		mlx_srct->rays.ray_angle += FOV_ANGLE / WIDTH;
+		mlx_srct->rays.ray_angle = fmod(mlx_srct->rays.ray_angle, 2 * M_PI);
+		if (mlx_srct->rays.ray_angle < 0)
+			mlx_srct->rays.ray_angle += (2 * M_PI);
 		put_rays(mlx_srct, mlx_srct->plyr.x, mlx_srct->plyr.y, game);
-		mlx_srct->rays.ray_angle += FOV_ANGLE / NUM_RAYS;
-		column_id ++;
+		if (mlx_srct->hited.wasverticallasttime == true)
+			color = 0xF5643F;
+		else
+			color = 0xF5871F;
+// draw_it(column_id, mlx_srct->hited.topOfWall, 1,(	mlx_srct->hited.bottomOfWall - mlx_srct->hited.topOfWall)+ 1,color,  mlx_srct);
+		column_id++;
 	}
 }
+

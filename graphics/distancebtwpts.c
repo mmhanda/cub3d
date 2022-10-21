@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 08:40:41 by atabiti           #+#    #+#             */
-/*   Updated: 2022/10/21 08:41:55 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/21 11:22:47 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,3 +16,42 @@ double	distancebetween2_points(float x1, float y1, float x2, float y2)
 {
 	return (sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1)));
 }
+
+void	ver_vs_hor(t_mlx *mlx_srct, double x, double y, t_parce *game)
+{
+	if (mlx_srct->hited.hordistance < mlx_srct->hited.verdistance)
+	{
+		mlx_srct->hited.hiitx = mlx_srct->hited.horx;
+		mlx_srct->hited.hiity = mlx_srct->hited.hory;
+		mlx_srct->hited.distance_to_wall = mlx_srct->hited.hordistance;
+		mlx_srct->hited.distance_to_wall = mlx_srct->hited.hordistance;
+	}
+	else
+	{
+		mlx_srct->hited.hiitx = mlx_srct->hited.verx;
+		mlx_srct->hited.hiity = mlx_srct->hited.very;
+		mlx_srct->hited.distance_to_wall = mlx_srct->hited.verdistance;
+		mlx_srct->hited.distance_to_wall = mlx_srct->hited.verdistance;
+		mlx_srct->hited.wasverticallasttime = true;
+	}
+}
+
+void	nearest_point(t_mlx *mlx_srct, double x, double y, t_parce *game)
+{
+	mlx_srct->hited.verdistance = 999999999;
+	mlx_srct->hited.hiitx = 0;
+	mlx_srct->hited.hiity = 0;
+	mlx_srct->hited.distance_to_wall = 0;
+	if (mlx_srct->hited.horhit == true)
+	{
+		mlx_srct->hited.hordistance = distancebetween2_points(x * 32, x * 32,
+				mlx_srct->hited.horx, mlx_srct->hited.hory);
+	}
+	if (mlx_srct->hited.verhit == true)
+	{
+		mlx_srct->hited.verdistance = distancebetween2_points(x * 32, x * 32,
+				mlx_srct->hited.verx, mlx_srct->hited.very);
+	}
+	ver_vs_hor(mlx_srct, x, y, game);
+}
+
