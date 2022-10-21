@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 15:34:44 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/21 11:27:27 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/21 13:47:27 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,21 +78,26 @@ void	continu_paint_mini_map(t_mlx *mlx_srct, t_parce *game_map)
 
 void	paint_mini_map(t_mlx *mlx_srct, t_parce *game_map)
 {
-	if (mlx_srct->des_remind == 1)
-	{
-		mlx_clear_window(game_map->mlx_srct.mlx_ptr, game_map->mlx_srct.win_ptr);
-		mlx_destroy_image(game_map->mlx_srct.mlx_ptr, game_map->mlx_srct.mlx_m.mlx_img);
-	}
+	// if (mlx_srct->des_remind == 1)
+	// {
+	// 	mlx_clear_window(game_map->mlx_srct.mlx_ptr, game_map->mlx_srct.win_ptr);
+	// 	mlx_destroy_image(game_map->mlx_srct.mlx_ptr, game_map->mlx_srct.mlx_m.mlx_img);
+	// }
+			mlx_clear_window(	game_map->mlx_srct.hited.mlx_ptr,game_map->mlx_srct.hited.mlx_win );
+
 	update_pos(mlx_srct, game_map);
-	mlx_srct->mlx_m.mlx_img = mlx_new_image(mlx_srct->mlx_ptr, WIDTH, HEIGHT);
-	mlx_srct->mlx_m.addr = mlx_get_data_addr(mlx_srct->mlx_m.mlx_img, &mlx_srct->mlx_m.bpp,
-	&mlx_srct->mlx_m.size_line, &mlx_srct->mlx_m.endian);
-	continu_paint_mini_map(mlx_srct, game_map);
+	// mlx_srct->mlx_m.mlx_img = mlx_new_image(mlx_srct->mlx_ptr, WIDTH, HEIGHT);
+	// mlx_srct->mlx_m.addr = mlx_get_data_addr(mlx_srct->mlx_m.mlx_img, &mlx_srct->mlx_m.bpp,
+	// &mlx_srct->mlx_m.size_line, &mlx_srct->mlx_m.endian);
+	// continu_paint_mini_map(mlx_srct, game_map);
 	// paint_player(mlx_srct, mlx_srct->plyr.x, mlx_srct->plyr.y);
 	// paint_p_line(mlx_srct, mlx_srct->plyr.x, mlx_srct->plyr.y);
 	paint_rays(mlx_srct, game_map);
-	mlx_srct->des_remind = 1;
-	mlx_put_image_to_window(mlx_srct->mlx_ptr, mlx_srct->win_ptr, mlx_srct->mlx_m.mlx_img, 0, 0);
+	// mlx_srct->des_remind = 1;
+	// mlx_put_image_to_window(mlx_srct->mlx_ptr, mlx_srct->win_ptr, mlx_srct->mlx_m.mlx_img, 0, 0);
+	
+
+	
 }
 
 void	graphics_handle(t_parce *game_map)
@@ -102,20 +107,21 @@ void	graphics_handle(t_parce *game_map)
 	reload = -1;
 	make_texturs(game_map);
 	handl_player(game_map, &game_map->mlx_srct);
-	game_map->mlx_srct.mlx_ptr = mlx_init();
-	game_map->mlx_srct.win_ptr = mlx_new_window(game_map->mlx_srct.mlx_ptr, WIDTH, HEIGHT, "mhanda");
-	// game_map->mlx_srct.hited.mlx_ptr = mlx_init();
-	// game_map->mlx_srct.hited.mlx_win = mlx_new_window(game_map->mlx_srct.hited.mlx_ptr , 1080, 720, "atabiti");
-	if (++reload == 0)
+	// game_map->mlx_srct.mlx_ptr = mlx_init();
+	// game_map->mlx_srct.win_ptr = mlx_new_window(game_map->mlx_srct.mlx_ptr, WIDTH, HEIGHT, "mhanda");
 
-	// 	paint_mini_map(&game_map->mlx_srct, game_map);
-	// mlx_hook(game_map->mlx_srct.hited.mlx_win , 2, (1L << 0), mlx_key_press, game_map);
-	// mlx_hook(game_map->mlx_srct.hited.mlx_win , 3, (1L << 1), mlx_key_releas, game_map);
-	// mlx_hook(game_map->mlx_srct.hited.mlx_win , 17, 0, mlx_x_key_han, game_map);
-	// mlx_loop(game_map->mlx_srct.hited.mlx_ptr );
+
+	game_map->mlx_srct.hited.mlx_ptr = mlx_init();
+	game_map->mlx_srct.hited.mlx_win = mlx_new_window(game_map->mlx_srct.hited.mlx_ptr , 1080, 720, "atabiti");
+	
+	// if (++reload == 0)
 		paint_mini_map(&game_map->mlx_srct, game_map);
-	mlx_hook(game_map->mlx_srct.win_ptr, 2, (1L << 0), mlx_key_press, game_map);
-	mlx_hook(game_map->mlx_srct.win_ptr, 3, (1L << 1), mlx_key_releas, game_map);
-	mlx_hook(game_map->mlx_srct.win_ptr, 17, 0, mlx_x_key_han, game_map);
-	mlx_loop(game_map->mlx_srct.mlx_ptr);
+	mlx_hook(game_map->mlx_srct.hited.mlx_win , 2, (1L << 0), mlx_key_press, game_map);
+	mlx_hook(game_map->mlx_srct.hited.mlx_win , 3, (1L << 1), mlx_key_releas, game_map);
+	mlx_hook(game_map->mlx_srct.hited.mlx_win , 17, 0, mlx_x_key_han, game_map);
+	mlx_loop(game_map->mlx_srct.hited.mlx_ptr );
+	// mlx_hook(game_map->mlx_srct.win_ptr, 2, (1L << 0), mlx_key_press, game_map);
+	// mlx_hook(game_map->mlx_srct.win_ptr, 3, (1L << 1), mlx_key_releas, game_map);
+	// mlx_hook(game_map->mlx_srct.win_ptr, 17, 0, mlx_x_key_han, game_map);
+	// mlx_loop(game_map->mlx_srct.mlx_ptr);
 }

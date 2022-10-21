@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rays.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 00:56:48 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/21 12:27:19 by mhanda           ###   ########.fr       */
+/*   Updated: 2022/10/21 13:47:38 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,9 @@ void	init_them(t_mlx *mlx_srct)
 	mlx_srct->hited.very = 0;
 	mlx_srct->hited.ystep = 0;
 	mlx_srct->hited.xstep = 0;
+	mlx_srct->hited.bottomOfWall  = 0;
+	mlx_srct->hited.topOfWall  = 0;
+	
 }
 
 void	paint_rays(t_mlx *mlx_srct, t_parce *game)
@@ -86,20 +89,42 @@ void	paint_rays(t_mlx *mlx_srct, t_parce *game)
 	mlx_srct->rays.ray_angle = fmod(mlx_srct->rays.ray_angle, 2 * M_PI);
 	if (mlx_srct->rays.ray_angle < 0)
 		mlx_srct->rays.ray_angle += (2 * M_PI);
-	while (column_id < WIDTH)
+	while (column_id < 1080)
 	{
 		color = 0xFFFFFF;
 		mlx_srct->hited.wasverticallasttime = false;
-		mlx_srct->rays.ray_angle += FOV_ANGLE / WIDTH;
+		mlx_srct->rays.ray_angle += FOV_ANGLE / 1080;
 		mlx_srct->rays.ray_angle = fmod(mlx_srct->rays.ray_angle, 2 * M_PI);
 		if (mlx_srct->rays.ray_angle < 0)
 			mlx_srct->rays.ray_angle += (2 * M_PI);
 		put_rays(mlx_srct, mlx_srct->plyr.x, mlx_srct->plyr.y, game);
 		if (mlx_srct->hited.wasverticallasttime == true)
 			color = 0xF5643F;
-		else
-			color = 0xF5871F;
-// draw_it(column_id, mlx_srct->hited.topOfWall, 1,(	mlx_srct->hited.bottomOfWall - mlx_srct->hited.topOfWall)+ 1,color,  mlx_srct);
+			mlx_srct->hited.distbtwplr_and_plane = 0;
+
+///////////////////
+/*
+                      
+					      Actual Slice Height
+Projected Slice Height= --------------------- * Distance to Projection Plane
+                        Distance to the Slice  
+
+*/
+
+double correct_distance  = mlx_srct->hited.distance_to_wall   * cos(mlx_srct->plyr.rotate - mlx_srct->rays.ray_angle);
+mlx_srct->hited.distance_to_wall   = correct_distance;
+mlx_srct->hited.distbtwplr_and_plane = (1080 / 2) / tan(FOV_ANGLE / 2);
+mlx_srct->hited.projectedWallHeight  =  (TILE_SIZE / 	mlx_srct->hited.distance_to_wall)  * mlx_srct->hited.distbtwplr_and_plane ;
+//bottomOfWall  = plane center  + projected Wall Height
+//topOfWall  = plane center   - projected Wall Height
+mlx_srct->hited.bottomOfWall = (1080 / 2) + mlx_srct->hited.projectedWallHeight ;
+mlx_srct->hited.topOfWall = (1080 / 2) - mlx_srct->hited.projectedWallHeight ;
+printf(" mlx_srct->hited.projectedWallHeight is %f\n", mlx_srct->hited.projectedWallHeight);
+printf(" mlx_srct->hited.distbtwplr_and_plane is %f\n", mlx_srct->hited.distbtwplr_and_plane );
+printf("mlx_srct->hited.bottomOfWall t is %d\n",mlx_srct->hited.bottomOfWall );
+printf(" mlx_srct->hited.topOfWall %d\n", mlx_srct->hited.topOfWall  );
+
+		draw_it(column_id, mlx_srct->hited.topOfWall, 1,(	mlx_srct->hited.bottomOfWall - mlx_srct->hited.topOfWall)+ 1,color,  mlx_srct);
 		column_id++;
 	}
 }

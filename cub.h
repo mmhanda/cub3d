@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 15:43:45 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/21 12:46:52 by mhanda           ###   ########.fr       */
+/*   Updated: 2022/10/21 13:46:54 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ typedef struct s_hit
 	double			xstep;
 	double			y_map_grid;
 	double			x_map_grid;
-	int				hit;
+	// int				hit;
 	double			wallhitx;
 	double			wallhity;
 	double			x_to_check;
@@ -57,12 +57,12 @@ typedef struct s_hit
 	//project cub3d
 	void			*mlx_ptr;
 	void			*mlx_win;
-	int				topOfWall;
-	int				bottomOfWall;
-	int				PlaneYCenter;
+	double				topOfWall;
+	double				bottomOfWall;
+	double				PlaneYCenter;
 	double			distance_to_wall;
-	int				projectedWallHeight;
-	int				castColumn;
+	double				projectedWallHeight;
+	// int				castColumn;
 	bool			wasverticallasttime;
 	//
 	double	hordistance;
@@ -70,6 +70,7 @@ typedef struct s_hit
 	double	hiitx;
 	double	hiity;
 	bool	horhit ;
+	double distbtwplr_and_plane;
 bool	verhit ;
 
 
