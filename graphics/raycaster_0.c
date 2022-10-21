@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycaster_0.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 13:23:43 by atabiti           #+#    #+#             */
-/*   Updated: 2022/10/21 15:08:33 by mhanda           ###   ########.fr       */
+/*   Updated: 2022/10/21 15:25:37 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void	check_horizontal_intersections(t_mlx *mlx_srct, double x, double y,
 	y_x_horizontal(mlx_srct, x, y, game);
 	mlx_srct->hited.tmpx = mlx_srct->hited.xintercept;
 	mlx_srct->hited.tmpy = mlx_srct->hited.yintercept;
+
 	while (mlx_srct->hited.tmpx >= 0 && mlx_srct->hited.tmpx <= (mlx_srct->longest_line * TILE_SIZE)
 		&& mlx_srct->hited.tmpy >= 0 && mlx_srct->hited.tmpy <= (mlx_srct->tab_len * TILE_SIZE))
 	{

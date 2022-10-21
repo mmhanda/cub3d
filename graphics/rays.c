@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rays.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 00:56:48 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/21 14:07:22 by mhanda           ###   ########.fr       */
+/*   Updated: 2022/10/21 15:41:55 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,18 +111,18 @@ Projected Slice Height= --------------------- * Distance to Projection Plane
 
 */
 
-double correct_distance  = mlx_srct->hited.distance_to_wall   * cos(mlx_srct->plyr.rotate - mlx_srct->rays.ray_angle);
+int correct_distance  = mlx_srct->hited.distance_to_wall   * cos(mlx_srct->rays.ray_angle - mlx_srct->plyr.rotate );
 mlx_srct->hited.distance_to_wall   = correct_distance;
 mlx_srct->hited.distbtwplr_and_plane = (1080 / 2) / tan(FOV_ANGLE / 2);
-mlx_srct->hited.projectedWallHeight  =  (TILE_SIZE / 	mlx_srct->hited.distance_to_wall)  * mlx_srct->hited.distbtwplr_and_plane ;
+mlx_srct->hited.projectedWallHeight  =  (TILE_SIZE / 	mlx_srct->hited.distance_to_wall)  *  600;
 //bottomOfWall  = plane center  + projected Wall Height
 //topOfWall  = plane center   - projected Wall Height
 mlx_srct->hited.bottomOfWall = (1080 / 2) + mlx_srct->hited.projectedWallHeight ;
 mlx_srct->hited.topOfWall = (1080 / 2) - mlx_srct->hited.projectedWallHeight ;
-printf(" mlx_srct->hited.projectedWallHeight is %f\n", mlx_srct->hited.projectedWallHeight);
-printf(" mlx_srct->hited.distbtwplr_and_plane is %f\n", mlx_srct->hited.distbtwplr_and_plane );
-printf("mlx_srct->hited.bottomOfWall t is %d\n",mlx_srct->hited.bottomOfWall );
-printf(" mlx_srct->hited.topOfWall %d\n", mlx_srct->hited.topOfWall  );
+// printf(" mlx_srct->hited.projectedWallHeight is %f\n", mlx_srct->hited.projectedWallHeight);
+// printf(" mlx_srct->hited.distbtwplr_and_plane is %f\n", mlx_srct->hited.distbtwplr_and_plane );
+// printf("mlx_srct->hited.bottomOfWall t is %d\n",mlx_srct->hited.bottomOfWall );
+// printf(" mlx_srct->hited.topOfWall %d\n", mlx_srct->hited.topOfWall  );
 
 		draw_it(column_id, mlx_srct->hited.topOfWall, 1,(	mlx_srct->hited.bottomOfWall - mlx_srct->hited.topOfWall)+ 1,color,  mlx_srct);
 		column_id++;
