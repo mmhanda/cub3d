@@ -6,7 +6,7 @@
 /*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 15:40:25 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/18 05:15:58 by mhanda           ###   ########.fr       */
+/*   Updated: 2022/10/21 10:50:00 by mhanda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,16 @@ void	compas(t_parce *game, double value, int set_compas)
 int	check_wall(t_parce *game, double new_x, double new_y)
 {
 	int	map_index_x;
-	int	map_index_y;
-	
-	
+	int	map_index_y;	
+	int	tmp_y = game->mlx_srct.plyr.y;
+	int	tmp_x = game->mlx_srct.plyr.x;
+
 	map_index_x = floor(new_x );
 	map_index_y = floor(new_y );
 	if (map_index_x * TILE_SIZE > WIDTH || map_index_y * TILE_SIZE > HEIGHT 
 		|| new_x < 0 || new_y < 0 || new_x > WIDTH || new_y > WIDTH
-		|| new_x > WIDTH || new_y > WIDTH)
+		|| game->parced_map[tmp_y][map_index_x] == '1'
+		|| game->parced_map[map_index_y][tmp_x] == '1')
 		return (0);
 	if (game->parced_map[map_index_y][map_index_x] == '0')
 		return (1);
