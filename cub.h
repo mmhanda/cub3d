@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 15:43:45 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/21 13:46:54 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/21 14:08:31 by mhanda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 # include <math.h>
 # include <stdbool.h>
 # define TILE_SIZE 32
-# define WIDTH 480
-# define HEIGHT 352
+# define WIDTH 1080
+# define HEIGHT 720
 # define MOVE_SPEED 0.1
 # define FOV_ANGLE 60 * (M_PI / 180)
 # define WALL_STRIP_THIKNES 1

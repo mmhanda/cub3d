@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycaster_0.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 13:23:43 by atabiti           #+#    #+#             */
-/*   Updated: 2022/10/21 13:47:53 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/21 14:19:04 by mhanda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,9 @@ void	draw_it(int x, int y, int width, int height, int color, t_mlx *mlx_srct)
 	{
 		// mlx_pixel_put(mlx_ptr, mlx_win, x, ff, color);
 		// img_pix_put(&mlx_srct->mlx_m, x, ff, 0xFFFFFF);
-		mlx_pixel_put(mlx_srct->hited.mlx_ptr, mlx_srct->hited.mlx_win, x, ff,
-				color);
+		// mlx_pixel_put(mlx_srct->hited.mlx_ptr, mlx_srct->hited.mlx_win, x, ff,
+		// 		color);
+		img_pix_put(&mlx_srct->mlx_m, x, ff, color);
 		ff++;
 	}
 }
