@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   make_moves.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: atabiti <atabiti@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 15:40:25 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/21 10:50:00 by mhanda           ###   ########.fr       */
+/*   Updated: 2022/10/21 18:30:00 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,32 @@ int	check_wall(t_parce *game, double new_x, double new_y)
 
 int	mlx_key_press(int preced_key, t_parce *game)
 {
+
+
+	/*linux */
+
+		// printf("preced_key %d \n !\n", preced_key);
+	// if (preced_key == 65307)
+	// {
+	// 	printf("Quit !\n");
+	// 	exit(0);
+	// }
+	// if (preced_key == 119)
+	// 	game->mlx_srct.plyr.walk_direction = 1;
+	// if (preced_key == 115)
+	// 	game->mlx_srct.plyr.walk_direction = -1;
+	// if (preced_key == 97)
+	// 	game->mlx_srct.plyr.right_or_left = -1;
+	// if (preced_key == 100)
+	// 	game->mlx_srct.plyr.right_or_left = 1;
+	// if(preced_key == 65363)
+	// 	game->mlx_srct.plyr.turn_direction = 1;
+	// if(preced_key == 65361)
+	// 	game->mlx_srct.plyr.turn_direction = -1;
+	// paint_mini_map(&game->mlx_srct, game);
+
+
+	
 	if (preced_key == 53)
 	{
 		printf("Quit !\n");

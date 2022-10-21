@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: atabiti <atabiti@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 15:43:45 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/21 15:06:32 by mhanda           ###   ########.fr       */
+/*   Updated: 2022/10/21 17:40:57 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,11 @@ typedef struct s_hit
 	//project cub3d
 	void			*mlx_ptr;
 	void			*mlx_win;
-	double				topOfWall;
-	double				bottomOfWall;
+	int				topOfWall;
+	int				bottomOfWall;
 	double				PlaneYCenter;
 	double			distance_to_wall;
-	double				projectedWallHeight;
+	int				projectedWallHeight;
 	// int				castColumn;
 	bool			wasverticallasttime;
 	//

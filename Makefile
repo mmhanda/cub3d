@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+         #
+#    By: atabiti <atabiti@student.1337.ma>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/10 18:04:53 by mhanda            #+#    #+#              #
-#    Updated: 2022/10/21 08:59:21 by atabiti          ###   ########.fr        #
+#    Updated: 2022/10/21 17:05:31 by atabiti          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,3 +35,7 @@ clean:
 fclean:
 	$(RM) $(NAME) $(OFILES)
 re : fclean all
+
+
+
+#linux  gcc  main.c  parcing/*.c   graphics/*.c utils/*.c  /usr/local/lib/libmlx.a -lXext -lX11 -lm

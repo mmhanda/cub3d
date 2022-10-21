@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycaster_0.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
+/*   By: atabiti <atabiti@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 13:23:43 by atabiti           #+#    #+#             */
-/*   Updated: 2022/10/21 15:25:37 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/21 18:22:18 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ void	check_horizontal_intersections(t_mlx *mlx_srct, double x, double y,
 	mlx_srct->hited.tmpx = mlx_srct->hited.xintercept;
 	mlx_srct->hited.tmpy = mlx_srct->hited.yintercept;
 
-	while (mlx_srct->hited.tmpx >= 0 && mlx_srct->hited.tmpx <= (mlx_srct->longest_line * TILE_SIZE)
-		&& mlx_srct->hited.tmpy >= 0 && mlx_srct->hited.tmpy <= (mlx_srct->tab_len * TILE_SIZE))
+	while (mlx_srct->hited.tmpx >= 0 && mlx_srct->hited.tmpx <= (15 * TILE_SIZE)
+		&& mlx_srct->hited.tmpy >= 0 && mlx_srct->hited.tmpy <= (11* TILE_SIZE))
 	{
 		mlx_srct->hited.mapindex_x = mlx_srct->hited.tmpx / TILE_SIZE;
 		mlx_srct->hited.mapindex_y = mlx_srct->hited.tmpy / TILE_SIZE;
@@ -89,8 +89,8 @@ void	check_horizontal_intersections(t_mlx *mlx_srct, double x, double y,
 void	check_vertical_intersections(t_mlx *mlx_srct, double x, double y,t_parce *game)
 {
 	y_x_vertical(mlx_srct, x, y, game);
-	while (mlx_srct->hited.tmpx >= 0 && mlx_srct->hited.tmpx <= (mlx_srct->longest_line * TILE_SIZE)
-		&& mlx_srct->hited.tmpy >= 0 && mlx_srct->hited.tmpy <= (mlx_srct->tab_len * TILE_SIZE))
+	while (mlx_srct->hited.tmpx >= 0 && mlx_srct->hited.tmpx <= (15 * TILE_SIZE)
+		&& mlx_srct->hited.tmpy >= 0 && mlx_srct->hited.tmpy <= (11 * TILE_SIZE))
 	{
 		mlx_srct->hited.mapindex_x = mlx_srct->hited.tmpx / TILE_SIZE;
 		mlx_srct->hited.mapindex_y = mlx_srct->hited.tmpy / TILE_SIZE;
@@ -119,8 +119,7 @@ void	put_rays(t_mlx *mlx_srct, double x, double y, t_parce *game)
 	int		bb;
 	int		bc;
 
-	mlx_srct->hited.horhit = false;
-	mlx_srct->hited.verhit = false;
+
 	mlx_srct->hited.verdistance = 999999999;
 	mlx_srct->hited.hordistance = 999999999;
 	mlx_srct->hited.hiitx = 0;
