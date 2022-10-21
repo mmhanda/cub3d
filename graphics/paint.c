@@ -6,7 +6,7 @@
 /*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 15:33:21 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/21 16:03:46 by mhanda           ###   ########.fr       */
+/*   Updated: 2022/10/21 18:28:49 by mhanda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void	img_pix_put(t_img *img, int x, int y, int color)
 
 void	paint_p_line(t_mlx *mlx_srct, double x, double y)
 {
-	x *= TILE_SIZE;
-	y *= TILE_SIZE;
+	x *= 15;
+	y *= 15;
 	double x2 = 0, y2 = 0, dx = 0, dy = 0, step = 0, xin = 0, yin = 0, xx = 0, yy = 0, k = 0;
 	x2 = x + cos(mlx_srct->plyr.rotate) * 30;
 	y2 = y + sin(mlx_srct->plyr.rotate) * 30;

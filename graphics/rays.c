@@ -6,7 +6,7 @@
 /*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 00:56:48 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/21 15:50:49 by mhanda           ###   ########.fr       */
+/*   Updated: 2022/10/21 18:27:11 by mhanda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ Projected Slice Height= --------------------- * Distance to Projection Plane
 double correct_distance  = mlx_srct->hited.distance_to_wall   * cos(mlx_srct->rays.ray_angle - mlx_srct->plyr.rotate );
 mlx_srct->hited.distance_to_wall   = correct_distance;
 mlx_srct->hited.distbtwplr_and_plane = (1080 / 2) / tan(FOV_ANGLE / 2);
-mlx_srct->hited.projectedWallHeight  =  (TILE_SIZE / 	mlx_srct->hited.distance_to_wall)  *  600;
+mlx_srct->hited.projectedWallHeight  =  (TILE_SIZE / 	mlx_srct->hited.distance_to_wall)  *  800;
 //bottomOfWall  = plane center  + projected Wall Height
 //topOfWall  = plane center   - projected Wall Height
 mlx_srct->hited.bottomOfWall = (1080 / 2) + mlx_srct->hited.projectedWallHeight ;
