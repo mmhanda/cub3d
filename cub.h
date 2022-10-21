@@ -6,7 +6,7 @@
 /*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 15:43:45 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/21 14:08:31 by mhanda           ###   ########.fr       */
+/*   Updated: 2022/10/21 15:06:32 by mhanda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,8 @@ typedef struct s_mlx
 	void		*mlx_ptr;
 	void		*win_ptr;
 	int			des_remind;
+	int			tab_len;
+	int			longest_line;
 	t_ray		rays;
 	t_player	plyr;
 	t_img		mlx_m;
@@ -212,7 +214,7 @@ void    ft_put_error(char *str);
 void	handl_player_case(char **tab, int x, int y, int len, t_parce *paths_rgb);
 void	handl_zero_case(char **tab, int x, int y, int len, t_parce *paths_rgb);
 char	**check_map_holes(t_map *node, t_parce *paths_rgb);
-char	**field_by_space(char **tab);
+char	**field_by_space(char **tab, t_parce *paths_rgb);
 char	**make_square_map(int x, int y);
 char	**list_to_tab(t_map *node);
 char	*ft_strndup(char *src, int n);

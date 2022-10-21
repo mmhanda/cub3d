@@ -6,7 +6,7 @@
 /*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 16:29:45 by mhanda            #+#    #+#             */
-/*   Updated: 2022/09/24 21:26:58 by mhanda           ###   ########.fr       */
+/*   Updated: 2022/10/21 15:03:00 by mhanda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	**check_map_holes(t_map *node, t_parce *paths_rgb)
 	int		len;
 
 	tab = list_to_tab(node);
-	tab = field_by_space(tab);
+	tab = field_by_space(tab, paths_rgb);
 	paths_rgb->parced_map = tab;
 	len	= count_tab_len(tab);
 	x = 0;

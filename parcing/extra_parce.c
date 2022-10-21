@@ -6,7 +6,7 @@
 /*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 00:02:52 by mhanda            #+#    #+#             */
-/*   Updated: 2022/09/22 04:00:42 by mhanda           ###   ########.fr       */
+/*   Updated: 2022/10/21 15:07:07 by mhanda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	check_map_conditions_two(t_map *node, t_parce *paths_rgb)
 	continue_check_map_condion(verify, h_node, paths_rgb);
 }
 
-char	**field_by_space(char **tab)
+char	**field_by_space(char **tab, t_parce *paths_rgb)
 {
 	char	**squar_tab;
 	int	tab_len;
@@ -76,6 +76,8 @@ char	**field_by_space(char **tab)
 	tab_len = 0;
 	tab_len = count_tab_len(tab);
 	bige_line = count_max_len(tab);
+	paths_rgb->mlx_srct.tab_len = tab_len;
+	paths_rgb->mlx_srct.longest_line = bige_line;
 	squar_tab = make_square_map(tab_len, bige_line);
 	tab_len = 0;
 	bige_line = 0;
