@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 13:23:43 by atabiti           #+#    #+#             */
-/*   Updated: 2022/10/21 18:22:18 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/21 19:37:42 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	draw_it(int x, int y, int width, int height, int color, t_mlx *mlx_srct)
 		img_pix_put(&mlx_srct->mlx_m, x, ff, color);
 		ff++;
 	}
+
 }
 
 void	dda(int a, int b, int c, int d, t_mlx *mlx_srct)

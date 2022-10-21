@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 15:34:44 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/21 18:36:34 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/21 19:48:43 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,40 @@ void	paint_mini_map(t_mlx *mlx_srct, t_parce *game_map)
 	mlx_srct->mlx_m.mlx_img = mlx_new_image(mlx_srct->mlx_ptr, WIDTH, HEIGHT);
 	mlx_srct->mlx_m.addr = mlx_get_data_addr(mlx_srct->mlx_m.mlx_img, &mlx_srct->mlx_m.bpp,
 	&mlx_srct->mlx_m.size_line, &mlx_srct->mlx_m.endian);
+
+	int	y2;
+	int	x2;
+
+	y2 = 0;
+	x2 = 0;
+	int color  = 0x16EEC7;
+	while (y2 < 720 / 2)
+	{
+		x2 = 0;
+		while (x2 < 1280)
+		{
+			img_pix_put(&mlx_srct->mlx_m, x2, y2, color);
+
+			x2++;
+		}
+		y2++;
+	}
+	
+	y2 =  HEIGHT / 2;
+	x2 = 0;
+	 color = 0xCD7D0E;
+	while (y2 < 720)
+	{
+		x2 = 0;
+		while (x2 < 1280)
+		{
+			img_pix_put(&mlx_srct->mlx_m, x2, y2, color);
+
+			x2++;
+		}
+		y2++;
+	}
+	
 	// paint_p_line(mlx_srct, mlx_srct->plyr.x, mlx_srct->plyr.y);
 	paint_rays(mlx_srct, game_map);
 	continu_paint_mini_map(mlx_srct, game_map);
