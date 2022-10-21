@@ -6,7 +6,7 @@
 /*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 15:33:21 by mhanda            #+#    #+#             */
-/*   Updated: 2022/09/26 04:45:53 by mhanda           ###   ########.fr       */
+/*   Updated: 2022/10/21 16:03:46 by mhanda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,10 @@ void	paint_player(t_mlx *mlx_srct, double x, double y)
 	int	high;
 
 	j = 0;
-	y *= TILE_SIZE;
-	x *= TILE_SIZE;
-	weigth = 10;
-	high = 10;
+	y *= 15;
+	x *= 15;
+	weigth = 5;
+	high = 5;
 	while (j < weigth)
 	{
 		i = 0;
@@ -80,10 +80,10 @@ void	paint_ground(t_mlx *mlx_srct, t_parce *game_map, double x, double y)
 	int	high;
 
 	j = 0;
-	y *= TILE_SIZE;
-	x *= TILE_SIZE;
-	weigth = TILE_SIZE;
-	high = TILE_SIZE;
+	y *= 15;
+	x *= 15;
+	weigth = 15;
+	high = 15;
 	while (j < weigth)
 	{
 		i = 0;
@@ -104,10 +104,10 @@ void	paint_walls(t_mlx *mlx_srct, t_parce *game_map, double x, double y)
 	int	high;
 
 	j = 0;
-	y *= TILE_SIZE;
-	x *= TILE_SIZE;
-	weigth = TILE_SIZE;
-	high = TILE_SIZE;
+	y *= 15;
+	x *= 15;
+	weigth = 15;
+	high = 15;
 	while (j < weigth)
 	{
 		i = 0;

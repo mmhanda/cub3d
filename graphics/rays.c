@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rays.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 00:56:48 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/21 15:41:55 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/21 15:50:49 by mhanda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ Projected Slice Height= --------------------- * Distance to Projection Plane
 
 */
 
-int correct_distance  = mlx_srct->hited.distance_to_wall   * cos(mlx_srct->rays.ray_angle - mlx_srct->plyr.rotate );
+double correct_distance  = mlx_srct->hited.distance_to_wall   * cos(mlx_srct->rays.ray_angle - mlx_srct->plyr.rotate );
 mlx_srct->hited.distance_to_wall   = correct_distance;
 mlx_srct->hited.distbtwplr_and_plane = (1080 / 2) / tan(FOV_ANGLE / 2);
 mlx_srct->hited.projectedWallHeight  =  (TILE_SIZE / 	mlx_srct->hited.distance_to_wall)  *  600;
