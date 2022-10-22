@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 15:43:45 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/22 08:57:25 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/22 10:13:14 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,8 +179,8 @@ void	y_x_horizontal(t_mlx *mlx_srct, double x, double y,t_parce *game);
 void	y_x_vertical(t_mlx *mlx_srct, double x, double y, t_parce *game);
 int	check_wall_2(t_parce *game, double new_x, double new_y);
 void	nearest_point(t_mlx *mlx_srct, double x, double y, t_parce *game);
-void	draw_floor(t_mlx *mlx_srct);
-void	draw_ceilling(t_mlx *mlx_srct);
+void	draw_floor(t_parce *game_map);
+void	draw_ceilling(t_parce *game_map);
 /**********************************************/
 
 void	put_rays(t_mlx *mlx_srct, double x, double y, t_parce *game);

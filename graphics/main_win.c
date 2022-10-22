@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 15:34:44 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/22 08:58:08 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/22 10:13:30 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,8 @@ void	paint_mini_map(t_mlx *mlx_srct, t_parce *game_map)
 	mlx_srct->mlx_m.mlx_img = mlx_new_image(mlx_srct->mlx_ptr, WIDTH, HEIGHT);
 	mlx_srct->mlx_m.addr = mlx_get_data_addr(mlx_srct->mlx_m.mlx_img, &mlx_srct->mlx_m.bpp,
 	&mlx_srct->mlx_m.size_line, &mlx_srct->mlx_m.endian);
-	draw_ceilling(mlx_srct);
-	draw_floor(mlx_srct);
+	draw_ceilling(game_map);
+	draw_floor(game_map);
 	// paint_p_line(mlx_srct, mlx_srct->plyr.x, mlx_srct->plyr.y);
 	paint_rays(mlx_srct, game_map);
 	continu_paint_mini_map(mlx_srct, game_map);
