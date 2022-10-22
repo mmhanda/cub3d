@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 00:56:48 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/22 10:12:22 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/22 10:32:41 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void	paint_rays(t_mlx *mlx_srct, t_parce *game)
 	{
 		mlx_srct->hited.horhit = false;
 		mlx_srct->hited.verhit = false;
-		color = 0xFFFFFF;
+		color = 0xCA8927;
 		mlx_srct->hited.wasverticallasttime = false;
 		mlx_srct->rays.ray_angle += FOV_ANGLE / 1080;
 		mlx_srct->rays.ray_angle = fmod(mlx_srct->rays.ray_angle, 2 * M_PI);
@@ -101,7 +101,7 @@ void	paint_rays(t_mlx *mlx_srct, t_parce *game)
 		mlx_srct->hited.distance_to_wall = 0;
 		put_rays(mlx_srct, mlx_srct->plyr.x, mlx_srct->plyr.y, game);
 		if (mlx_srct->hited.wasverticallasttime == true)
-			color = 0xF5643F;
+			color = 0x3916E6;
 		mlx_srct->hited.distbtwplr_and_plane = 0;
 		calculate_distances(mlx_srct, game);
 		draw_it(column_id, mlx_srct->hited.topOfWall, 1,
