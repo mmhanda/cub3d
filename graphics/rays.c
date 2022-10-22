@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rays.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atabiti <atabiti@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 00:56:48 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/21 18:40:48 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/22 08:50:15 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,37 +78,9 @@ void	init_them(t_mlx *mlx_srct)
 	
 }
 
-void	paint_rays(t_mlx *mlx_srct, t_parce *game)
+void	calculate_distances(t_mlx *mlx_srct, t_parce *game)
 {
-	double	column_id;
-	int		color;
-
-	init_them(mlx_srct);
-	column_id = 0;
-	mlx_srct->rays.ray_angle = mlx_srct->plyr.rotate - (FOV_ANGLE / 2);
-	mlx_srct->rays.ray_angle = fmod(mlx_srct->rays.ray_angle, 2 * M_PI);
-	if (mlx_srct->rays.ray_angle < 0)
-		mlx_srct->rays.ray_angle += (2 * M_PI);
-	while (column_id < 1080)
-	{
-			mlx_srct->hited.horhit = false;
-	mlx_srct->hited.verhit = false;
-		color = 0xFFFFFF;
-		mlx_srct->hited.wasverticallasttime = false;
-		mlx_srct->rays.ray_angle += FOV_ANGLE / 1080;
-		mlx_srct->rays.ray_angle = fmod(mlx_srct->rays.ray_angle, 2 * M_PI);
-		if (mlx_srct->rays.ray_angle < 0)
-			mlx_srct->rays.ray_angle += (2 * M_PI);
-			mlx_srct->hited.hiitx = 0;
-	mlx_srct->hited.hiity = 0;
-	mlx_srct->hited.distance_to_wall = 0;
-		put_rays(mlx_srct, mlx_srct->plyr.x, mlx_srct->plyr.y, game);
-		if (mlx_srct->hited.wasverticallasttime == true)
-			color = 0xF5643F;
-			mlx_srct->hited.distbtwplr_and_plane = 0;
-
-///////////////////
-/*
+	/*
                       
 					      Actual Slice Height
 Projected Slice Height= --------------------- * Distance to Projection Plane
@@ -143,6 +115,37 @@ mlx_srct->hited.topOfWall = HEIGHT;
 // printf(" mlx_srct->hited.distbtwplr_and_plane is %f\n", mlx_srct->hited.distbtwplr_and_plane );
 // printf("mlx_srct->hited.bottomOfWall t is %d\n",mlx_srct->hited.bottomOfWall );
 // printf(" mlx_srct->hited.topOfWall %d\n", mlx_srct->hited.topOfWall  );
+}
+void	paint_rays(t_mlx *mlx_srct, t_parce *game)
+{
+	double	column_id;
+	int		color;
+
+	init_them(mlx_srct);
+	column_id = 0;
+	mlx_srct->rays.ray_angle = mlx_srct->plyr.rotate - (FOV_ANGLE / 2);
+	mlx_srct->rays.ray_angle = fmod(mlx_srct->rays.ray_angle, 2 * M_PI);
+	if (mlx_srct->rays.ray_angle < 0)
+		mlx_srct->rays.ray_angle += (2 * M_PI);
+	while (column_id < 1080)
+	{
+			mlx_srct->hited.horhit = false;
+	mlx_srct->hited.verhit = false;
+		color = 0xFFFFFF;
+		mlx_srct->hited.wasverticallasttime = false;
+		mlx_srct->rays.ray_angle += FOV_ANGLE / 1080;
+		mlx_srct->rays.ray_angle = fmod(mlx_srct->rays.ray_angle, 2 * M_PI);
+		if (mlx_srct->rays.ray_angle < 0)
+			mlx_srct->rays.ray_angle += (2 * M_PI);
+			mlx_srct->hited.hiitx = 0;
+	mlx_srct->hited.hiity = 0;
+	mlx_srct->hited.distance_to_wall = 0;
+		put_rays(mlx_srct, mlx_srct->plyr.x, mlx_srct->plyr.y, game);
+		if (mlx_srct->hited.wasverticallasttime == true)
+			color = 0xF5643F;
+			mlx_srct->hited.distbtwplr_and_plane = 0;
+
+	calculate_distances(mlx_srct, game);
 
 		draw_it(column_id, mlx_srct->hited.topOfWall, 1,(	mlx_srct->hited.bottomOfWall - mlx_srct->hited.topOfWall)+ 1,color,  mlx_srct);
 		column_id++;

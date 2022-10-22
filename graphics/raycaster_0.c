@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 13:23:43 by atabiti           #+#    #+#             */
-/*   Updated: 2022/10/22 08:45:27 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/22 08:48:16 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,8 @@ void	check_horizontal_intersections(t_mlx *mlx_srct, double x, double y,
 	mlx_srct->hited.tmpx = mlx_srct->hited.xintercept;
 	mlx_srct->hited.tmpy = mlx_srct->hited.yintercept;
 
-printf("tab len height = %d ", mlx_srct->tab_len);
-printf("mlx_srct->longest_line = %d ", mlx_srct->longest_line);
+printf("tab len height = %d \n", mlx_srct->tab_len);
+printf("mlx_srct->longest_line \n= %d ", mlx_srct->longest_line);
 	// while (mlx_srct->hited.tmpx >= 0 && mlx_srct->hited.tmpx <= (15 * TILE_SIZE)
 	// 	&& mlx_srct->hited.tmpy >= 0 && mlx_srct->hited.tmpy <= (11* TILE_SIZE))
 	while (mlx_srct->hited.tmpx >= 0 && mlx_srct->hited.tmpx <= ((mlx_srct->longest_line - 1) * TILE_SIZE)
