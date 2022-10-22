@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 15:40:25 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/21 19:54:21 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/22 16:05:49 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ int	mlx_key_press(int preced_key, t_parce *game)
 
 	/*linux */
 
-		// printf("preced_key %d \n !\n", preced_key);
 	// if (preced_key == 65307)
 	// {
 	// 	printf("Quit !\n");

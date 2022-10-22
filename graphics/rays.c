@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rays.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
+/*   By: atabiti <atabiti@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 00:56:48 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/22 11:12:03 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/22 16:04:50 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	init_them(t_mlx *mlx_srct)
 
 /*
                       
-						   Actual Slice Height
+							Actual Slice Height
 Projected Slice Height= --------------------- * Distance to Projection Plane
                         Distance to the Slice  
 
@@ -58,16 +58,37 @@ Projected Slice Height= --------------------- * Distance to Projection Plane
 void	calculate_distances(t_mlx *mlx_srct, t_parce *game)
 {
 	double	correct_distance;
-	correct_distance = mlx_srct->hited.distance_to_wall * cos(mlx_srct->rays.ray_angle - mlx_srct->plyr.rotate) * 0.5;
-	mlx_srct->hited.distance_to_wall = correct_distance;
-	mlx_srct->hited.distbtwplr_and_plane = (1080 / 2) / tan(FOV_ANGLE / 2);
-	mlx_srct->hited.projectedWallHeight = ((TILE_SIZE / mlx_srct->hited.distance_to_wall) * mlx_srct->hited.distbtwplr_and_plane) * 0.5;
-	mlx_srct->hited.bottomOfWall = ((1080 / 2) + (mlx_srct->hited.projectedWallHeight / 2));
-	mlx_srct->hited.topOfWall = ((1080 / 2)	- mlx_srct->hited.projectedWallHeight / 2) ;	
+
+	correct_distance = mlx_srct->hited.distance_to_wall
+		* cos(mlx_srct->rays.ray_angle - mlx_srct->plyr.rotate);
+	// mlx_srct->hited.distance_to_wall = correct_distance;
+
+
+	
+	mlx_srct->hited.distbtwplr_and_plane = ((WIDTH / 2) / tan(FOV_ANGLE / 2.00));
+
+
+
+
+	
+	mlx_srct->hited.projectedWallHeight = (int)((TILE_SIZE/ correct_distance)* mlx_srct->hited.distbtwplr_and_plane);
+
+
+
+
+	
+	mlx_srct->hited.bottomOfWall = ((HEIGHT / 2) + (mlx_srct->hited.projectedWallHeight));
+
+
+
+			
+	mlx_srct->hited.topOfWall = ((HEIGHT / 2) 	- mlx_srct->hited.projectedWallHeight);
 	if (mlx_srct->hited.topOfWall < 0 || mlx_srct->hited.topOfWall > HEIGHT)
 		mlx_srct->hited.topOfWall = 0;
 	if (mlx_srct->hited.bottomOfWall < 0 || mlx_srct->hited.topOfWall > HEIGHT)
 		mlx_srct->hited.topOfWall = HEIGHT;
+	
+	
 }
 void	paint_rays(t_mlx *mlx_srct, t_parce *game)
 {
@@ -75,14 +96,14 @@ void	paint_rays(t_mlx *mlx_srct, t_parce *game)
 	int		color;
 
 	init_them(mlx_srct);
-		mlx_srct->hited.distbtwplr_and_plane = 0;
+	mlx_srct->hited.distbtwplr_and_plane = 0;
 	column_id = 0;
 	mlx_srct->rays.ray_angle = mlx_srct->plyr.rotate - (FOV_ANGLE / 2);
 	while (column_id < WIDTH)
 	{
-	mlx_srct->rays.ray_angle = fmod(mlx_srct->rays.ray_angle, 2 * M_PI);
-	if (mlx_srct->rays.ray_angle < 0)
-		mlx_srct->rays.ray_angle += (2 * M_PI);
+		mlx_srct->rays.ray_angle = fmod(mlx_srct->rays.ray_angle, 2 * M_PI);
+		if (mlx_srct->rays.ray_angle < 0)
+			mlx_srct->rays.ray_angle += (2 * M_PI);
 		mlx_srct->hited.horhit = false;
 		mlx_srct->hited.verhit = false;
 		color = 0xCA8927;
@@ -94,7 +115,7 @@ void	paint_rays(t_mlx *mlx_srct, t_parce *game)
 		if (mlx_srct->hited.wasverticallasttime == true)
 			color = 0x3916E6;
 		calculate_distances(mlx_srct, game);
-		draw_it(column_id, mlx_srct->hited.topOfWall, 1,(mlx_srct->hited.bottomOfWall - mlx_srct->hited.topOfWall) + 1, color, mlx_srct);
+		draw_it(column_id * WALL_STRIP_THIKNES, mlx_srct->hited.topOfWall, 1,(mlx_srct->hited.bottomOfWall) + 1, color, mlx_srct);
 		column_id++;
 		mlx_srct->rays.ray_angle += (FOV_ANGLE / WIDTH);
 	}
