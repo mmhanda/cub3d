@@ -6,57 +6,12 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 00:56:48 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/22 08:51:59 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/22 08:55:40 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub.h"
 
-void	draw_floor(t_mlx *mlx_srct)
-{
-	int	y2;
-	int	x2;
-	int	color;
-
-	y2 = 0;
-	x2 = 0;
-	color = 0xFFFFFF;
-	while (y2 < 720 / 2)
-	{
-		x2 = 0;
-		while (x2 < 1280)
-		{
-			mlx_pixel_put(mlx_srct->hited.mlx_ptr, mlx_srct->hited.mlx_win, x2,
-					y2, color);
-			x2++;
-		}
-		y2++;
-	}
-}
-void	draw_ceilling(t_mlx *mlx_srct)
-{
-	int	y2;
-	int	x2;
-	int	color;
-
-	y2 = 0;
-	x2 = 0;
-	color = 0xFFFFFF;
-	color = 0x796554;
-	x2 = 0;
-	y2 = 720 / 2;
-	while (y2 < 720)
-	{
-		x2 = 0;
-		while (x2 < 1280)
-		{
-			mlx_pixel_put(mlx_srct->hited.mlx_ptr, mlx_srct->hited.mlx_win, x2,
-					y2, color);
-			x2++;
-		}
-		y2++;
-	}
-}
 void	init_them(t_mlx *mlx_srct)
 {
 	mlx_srct->hited.nextHorzTouchX = 0;
