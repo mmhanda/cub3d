@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 15:39:16 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/22 16:06:07 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/23 13:57:00 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	mlx_key_releas(int preced_key, t_parce *game)
 	// 	game->mlx_srct.plyr.turn_direction = 0;
 	// paint_mini_map(&game->mlx_srct, game);
 
-	
+	// 
 	/*MacOs   */
 	if (preced_key == 53)
 	{

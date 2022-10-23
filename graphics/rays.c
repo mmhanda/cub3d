@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 00:56:48 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/22 16:04:50 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/23 13:54:17 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,12 +77,12 @@ void	calculate_distances(t_mlx *mlx_srct, t_parce *game)
 
 
 	
-	mlx_srct->hited.bottomOfWall = ((HEIGHT / 2) + (mlx_srct->hited.projectedWallHeight));
+	mlx_srct->hited.bottomOfWall = ((HEIGHT / 2) + (mlx_srct->hited.projectedWallHeight) / 2);
 
 
 
 			
-	mlx_srct->hited.topOfWall = ((HEIGHT / 2) 	- mlx_srct->hited.projectedWallHeight);
+	mlx_srct->hited.topOfWall = ((HEIGHT / 2) 	- mlx_srct->hited.projectedWallHeight / 2);
 	if (mlx_srct->hited.topOfWall < 0 || mlx_srct->hited.topOfWall > HEIGHT)
 		mlx_srct->hited.topOfWall = 0;
 	if (mlx_srct->hited.bottomOfWall < 0 || mlx_srct->hited.topOfWall > HEIGHT)
