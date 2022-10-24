@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rays.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atabiti <atabiti@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 04:57:23 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/24 18:35:38 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/24 10:38:44 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,36 +71,7 @@ int *h_ptr = & h;
 void *img_xpm = mlx_xpm_file_to_image(mlx_srct->mlx_ptr,"./textur/wall2.xpm",h_ptr, h_ptr);
 img.addr= mlx_get_data_addr(img_xpm,&img.bpp, &img.size_line, &img.endian);
 // printf("color  =  %x\n ",(int  )img.addr +1);
-u_int64_t  *wall_texture ;
-wall_texture =(u_int64_t  *) malloc(sizeof(u_int64_t) * (u_int64_t) 64 * (u_int64_t)   64);
 
-
-
-/*create  texture */
-
-int x = 0 ;
-int y = 0;
-while(x < 64)
-{
-	y = 0;
-	while (y < 64)
-	{
-		            wall_texture[64 * y + x] = (x % 8 && y % 8) ? 0xFF0000FF : 0xFFFFFF;
-
-		y++;
-	}
-	
-	
-	x++;
-}
-
-
-
-
-
-		
-
-	
 /****************************/
 	
 	init_them(mlx_srct);
@@ -126,20 +97,18 @@ while(x < 64)
 		int	ff;
 		int *c;
 		int iter = 0;
-char *pixel ;
+	// c =  (int*)(img.addr + (iter));
+	ff =  mlx_srct->hited.topOfWall;
+	int yy = 0;
+	while (ff < (mlx_srct->hited.bottomOfWall) + 1)
+	{
+		c =  (int*)(img.addr + ((yy % 32 )) * column_id);
+		img_pix_put(&mlx_srct->mlx_m, column_id, ff, *c);
+		yy++;
+		ff++;
 
-y =  mlx_srct->hited.topOfWall ;
-while (y  <mlx_srct->hited.bottomOfWall )
-{
-int distanceFromTop = y + ( mlx_srct->hited.projectedWallHeight / 2) - (HEIGHT / 2);
-int offsety = (int)(distanceFromTop * ((float)64 /(int) mlx_srct->hited.projectedWallHeight ));
-color = wall_texture[64 * offsety+ mlx_srct->hited.offset];
-		img_pix_put(&mlx_srct->mlx_m,column_id * WALL_STRIP_THIKNES, y,color);
-
-
-y++;
-}
-		
+	}
+	printf("mlx_srct->hited.offset  %d \n",  mlx_srct->hited.offset );
 		// draw_it(column_id * WALL_STRIP_THIKNES, mlx_srct->hited.topOfWall, 1,(mlx_srct->hited.bottomOfWall) + 1, color, mlx_srct);
 		column_id++;
 		mlx_srct->rays.ray_angle += (FOV_ANGLE / WIDTH);

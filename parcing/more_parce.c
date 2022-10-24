@@ -6,7 +6,7 @@
 /*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 22:44:51 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/16 19:19:54 by mhanda           ###   ########.fr       */
+/*   Updated: 2022/10/24 19:17:10 by mhanda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ char	**list_to_tab(t_map *node)
 	i = 0;
 	tmp = node;
 	len = count_list_len(node);
-	if (!(tab = malloc(sizeof(char *) * len + 1)))
+	tab = malloc(sizeof(char *) * len + 1);
+	if (!tab)
 		return (NULL);
 	while (node)
 	{
@@ -70,9 +71,9 @@ char	**list_to_tab(t_map *node)
 	return (tab);
 }
 
-void	handl_player_case(char **tab, int x, int y, int len, t_parce *paths_rgb)
+void	handl_player_case(char **tab, int x, int y, t_parce *paths_rgb)
 {
-	if (x == (len - 1) || x == 0)
+	if (x == (paths_rgb->mlx_srct.tab_len - 1) || x == 0)
 	{
 		write(2, "wrong player position\n", 22);
 		map_error(tab, paths_rgb);

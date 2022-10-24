@@ -6,7 +6,7 @@
 /*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 17:25:47 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/16 19:17:25 by mhanda           ###   ########.fr       */
+/*   Updated: 2022/10/24 19:32:52 by mhanda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	count_max_len(char **tab)
 	int	count;
 	int	i;
 	int	j;
-	
+
 	big_line = 0;
 	i = 0;
 	while (tab[i])
@@ -30,7 +30,7 @@ int	count_max_len(char **tab)
 			count ++;
 			j ++;
 		}
-		if(count > big_line)
+		if (count > big_line)
 			big_line = count;
 		i ++;
 	}
@@ -40,7 +40,7 @@ int	count_max_len(char **tab)
 void	continu_make_square_map(char ***new_tab, int xx, int y)
 {
 	int	j;
-	int i;
+	int	i;
 
 	i = 0;
 	while (xx)
@@ -61,22 +61,35 @@ void	continu_make_square_map(char ***new_tab, int xx, int y)
 char	**make_square_map(int x, int y)
 {
 	char	**new_tab;
-	int j;
-	int i;
-	int xx;
+	int		j;
+	int		i;
+	int		xx;
 
+	new_tab = NULL;
 	xx = x;
 	i = 0;
 	j = 0;
-	if (!(new_tab = malloc(sizeof(char *) * x + 1)))
-		return(NULL);
+	new_tab = (char **)malloc(sizeof(char *) * (x + 1));
+	if (!new_tab)
+		return (NULL);
 	while (x)
 	{
-		new_tab[i] = malloc(sizeof(char) * y + 1);
+		new_tab[i] = malloc(sizeof(char) * (y + 1));
 		i ++;
 		x --;
 	}
 	continu_make_square_map(&new_tab, xx, y);
 	new_tab[xx] = NULL;
 	return (new_tab);
+}
+
+void	convert_color_to_int(t_parce *paths_rgb, char ***c, char ***f)
+{
+	paths_rgb->check_min_max = 0;
+	paths_rgb->c.r = ft_atoi(c[0][0], paths_rgb);
+	paths_rgb->f.r = ft_atoi(f[0][0], paths_rgb);
+	paths_rgb->c.g = ft_atoi(c[0][1], paths_rgb);
+	paths_rgb->f.g = ft_atoi(f[0][1], paths_rgb);
+	paths_rgb->c.b = ft_atoi(c[0][2], paths_rgb);
+	paths_rgb->f.b = ft_atoi(f[0][2], paths_rgb);
 }

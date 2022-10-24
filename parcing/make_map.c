@@ -6,7 +6,7 @@
 /*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 22:41:04 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/16 19:21:18 by mhanda           ###   ########.fr       */
+/*   Updated: 2022/10/24 17:46:53 by mhanda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ra(t_map **node)
 {
-	int	verify;
+	int		verify;
 	t_map	*tmp;
 
 	verify = 0;
@@ -34,7 +34,7 @@ int	ra(t_map **node)
 		else if (ft_strstr((*node)->line, "EA"))
 			verify ++;
 		else
-			break;
+			break ;
 		(*node) = (*node)->next;
 	}
 	(*node) = tmp;
@@ -43,12 +43,13 @@ int	ra(t_map **node)
 
 t_map	*tab_to_list(char **parced_map)
 {
-	t_map	*ptr;
-	t_map	*node; 
 	int		j;
+	t_map	*ptr;
+	t_map	*node;
 
 	j = 0;
-	if(!(node = malloc(sizeof(t_map))))
+	node = malloc(sizeof(t_map));
+	if (!node)
 		return (NULL);
 	ptr = node;
 	while (parced_map[j])
@@ -72,7 +73,7 @@ void	free_parced_map(t_map *ptr)
 {
 	t_map	*tmp;
 
-	if(ptr)
+	if (ptr)
 	{
 		if (ptr->next)
 		{
@@ -80,7 +81,7 @@ void	free_parced_map(t_map *ptr)
 			{
 				tmp = ptr;
 				ptr = ptr->next;
-				free (tmp->line); 
+				free(tmp->line);
 				free(tmp);
 			}
 		}
@@ -95,15 +96,15 @@ void	free_parced_map(t_map *ptr)
 
 void	six_free(t_map **ptr)
 {
+	int		i;
 	t_map	*tmp;
-	int	i;
 
 	i = 6;
 	while (i)
 	{
 		tmp = (*ptr);
 		(*ptr) = (*ptr)->next;
-		free (tmp->line); 
+		free(tmp->line);
 		free(tmp);
 		i --;
 	}
@@ -111,12 +112,12 @@ void	six_free(t_map **ptr)
 
 char	**handl_map(char **parced_map, t_parce *paths_rgb)
 {
+	int		verify;
 	t_map	*node;
-	int	verify;
 
 	verify = 0;
 	node = NULL;
-    node = tab_to_list(parced_map);
+	node = tab_to_list(parced_map);
 	verify = ra(&node);
 	if (verify != 6)
 	{
@@ -125,7 +126,7 @@ char	**handl_map(char **parced_map, t_parce *paths_rgb)
 		free_parced_map(node);
 	}
 	if (verify == 6)
-	 	six_free(&node);
+		six_free(&node);
 	check_map_conditions(node, paths_rgb);
 	check_map_conditions_two(node, paths_rgb);
 	check_new_lines(node, paths_rgb);

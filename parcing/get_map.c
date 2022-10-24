@@ -6,7 +6,7 @@
 /*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 15:41:48 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/16 19:22:06 by mhanda           ###   ########.fr       */
+/*   Updated: 2022/10/24 19:08:20 by mhanda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,14 @@
 
 char	*read_map(int fd)
 {
-	char    *buffer;
-	char    *map_line;
 	int		checker;
+	char	*buffer;
+	char	*map_line;
 
 	checker = 1;
 	map_line = ft_strdup("");
-	if (!(buffer = malloc(2)))
+	buffer = malloc(2);
+	if (!buffer)
 		return (NULL);
 	while (checker)
 	{
@@ -29,7 +30,7 @@ char	*read_map(int fd)
 		{
 			free(buffer);
 			free(map_line);
-			return(NULL);
+			return (NULL);
 		}
 		buffer[checker] = '\0';
 		map_line = ft_strjoin(map_line, buffer);
@@ -65,6 +66,30 @@ void	check_valid_path(char **parced_map, t_parce *paths_rgb)
 	}
 }
 
+void	conti_handle_textur_path(char **parced_map, t_parce *paths_rgb, int *i)
+{
+	if (ft_strstr(parced_map[*i], "NO "))
+	{
+		paths_rgb->compas_count.no_index = *i;
+		paths_rgb->compas_count.no_count++;
+	}
+	if (ft_strstr(parced_map[*i], "SO "))
+	{
+		paths_rgb->compas_count.so_index = *i;
+		paths_rgb->compas_count.so_count++;
+	}
+	if (ft_strstr(parced_map[*i], "EA "))
+	{
+		paths_rgb->compas_count.ea_index = *i;
+		paths_rgb->compas_count.ea_count++;
+	}
+	if (ft_strstr(parced_map[*i], "WE "))
+	{
+		paths_rgb->compas_count.we_index = *i;
+		paths_rgb->compas_count.we_count++;
+	}
+}
+
 void	handle_textur_path(char **parced_map, t_parce *paths_rgb)
 {
 	int	i;
@@ -73,26 +98,7 @@ void	handle_textur_path(char **parced_map, t_parce *paths_rgb)
 	init_map_struct(paths_rgb);
 	while (parced_map[i])
 	{
-		if (ft_strstr(parced_map[i], "NO "))
-		{
-			paths_rgb->compas_count.no_index = i;
-			paths_rgb->compas_count.no_count++;
-		}
-		if (ft_strstr(parced_map[i], "SO "))
-		{
-			paths_rgb->compas_count.so_index = i;
-			paths_rgb->compas_count.so_count++;
-		}
-		if (ft_strstr(parced_map[i], "EA "))
-		{
-			paths_rgb->compas_count.ea_index = i;
-			paths_rgb->compas_count.ea_count++;
-		}
-		if (ft_strstr(parced_map[i], "WE "))
-		{
-			paths_rgb->compas_count.we_index = i;
-			paths_rgb->compas_count.we_count++;
-		}
+		conti_handle_textur_path(parced_map, paths_rgb, &i);
 		i ++;
 	}
 	check_valid_path(parced_map, paths_rgb);
@@ -103,11 +109,11 @@ void	handle_textur_path(char **parced_map, t_parce *paths_rgb)
 
 void	parce_map(char *map_line, t_parce *paths_rgb)
 {
-	char **parced_map;
-	int	i;
+	int		i;
+	char	**parced_map;
 
-	i = 0;	
-	parced_map = ft_split(map_line, '\n');//map line need to be freed after done whit it
+	i = 0;
+	parced_map = ft_split(map_line, '\n');
 	handle_textur_path(parced_map, paths_rgb);
 	paths_rgb->map_lin = map_line;
 	parced_map = handl_map(parced_map, paths_rgb);

@@ -6,13 +6,13 @@
 /*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/11 14:20:07 by mhanda            #+#    #+#             */
-/*   Updated: 2022/09/13 06:29:59 by mhanda           ###   ########.fr       */
+/*   Updated: 2022/10/24 19:15:32 by mhanda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub.h"
 
-void    init_map_struct(t_parce *paths_rgb)
+void	init_map_struct(t_parce *paths_rgb)
 {
 	paths_rgb->no_path = NULL;
 	paths_rgb->ea_path = NULL;
@@ -47,10 +47,10 @@ void	check_valid_file(t_parce *paths_rgb)
 	int	we;
 	int	ea;
 
-	no = open(paths_rgb->no_path, O_RDWR);//need to be freed
-	so = open(paths_rgb->so_path, O_RDWR);//need to be freed
-	we = open(paths_rgb->we_path, O_RDWR);//need to be freed
-	ea = open(paths_rgb->ea_path, O_RDWR);//need to be freed
+	no = open(paths_rgb->no_path, O_RDWR);
+	so = open(paths_rgb->so_path, O_RDWR);
+	we = open(paths_rgb->we_path, O_RDWR);
+	ea = open(paths_rgb->ea_path, O_RDWR);
 	close(no);
 	close(so);
 	close(we);
@@ -63,27 +63,27 @@ void	check_valid_file(t_parce *paths_rgb)
 	}
 }
 
-void    extract_check_path(t_parce *paths_rgb)
+void	extract_check_path(t_parce *paths_rgb)
 {
-	paths_rgb->compas_count.no_count = ft_strstr_custom(paths_rgb->no_path, "NO");
+	paths_rgb->compas_count.no_count = ft_strstr_cust(paths_rgb->no_path, "NO");
 	paths_rgb->compas_count.no_count += 2;
-	paths_rgb->compas_count.so_count = ft_strstr_custom(paths_rgb->so_path, "SO");
+	paths_rgb->compas_count.so_count = ft_strstr_cust(paths_rgb->so_path, "SO");
 	paths_rgb->compas_count.so_count += 2;
-	paths_rgb->compas_count.we_count = ft_strstr_custom(paths_rgb->we_path, "WE");
+	paths_rgb->compas_count.we_count = ft_strstr_cust(paths_rgb->we_path, "WE");
 	paths_rgb->compas_count.we_count += 2;
-	paths_rgb->compas_count.ea_count = ft_strstr_custom(paths_rgb->ea_path, "EA");
+	paths_rgb->compas_count.ea_count = ft_strstr_cust(paths_rgb->ea_path, "EA");
 	paths_rgb->compas_count.ea_count += 2;
-	while (paths_rgb->no_path[paths_rgb->compas_count.no_count] == ' ' ||
-			paths_rgb->no_path[paths_rgb->compas_count.no_count] == '\t')
+	while (paths_rgb->no_path[paths_rgb->compas_count.no_count] == ' '
+		|| paths_rgb->no_path[paths_rgb->compas_count.no_count] == '\t')
 			paths_rgb->compas_count.no_count ++;
-	while (paths_rgb->so_path[paths_rgb->compas_count.so_count] == ' ' ||
-			paths_rgb->so_path[paths_rgb->compas_count.so_count] == '\t')
+	while (paths_rgb->so_path[paths_rgb->compas_count.so_count] == ' '
+		|| paths_rgb->so_path[paths_rgb->compas_count.so_count] == '\t')
 			paths_rgb->compas_count.so_count ++;
-	while (paths_rgb->we_path[paths_rgb->compas_count.we_count] == ' ' ||
-			paths_rgb->we_path[paths_rgb->compas_count.we_count] == '\t')
+	while (paths_rgb->we_path[paths_rgb->compas_count.we_count] == ' '
+		|| paths_rgb->we_path[paths_rgb->compas_count.we_count] == '\t')
 			paths_rgb->compas_count.we_count ++;
-	while (paths_rgb->ea_path[paths_rgb->compas_count.ea_count] == ' ' ||
-			paths_rgb->ea_path[paths_rgb->compas_count.ea_count] == '\t')
+	while (paths_rgb->ea_path[paths_rgb->compas_count.ea_count] == ' '
+		|| paths_rgb->ea_path[paths_rgb->compas_count.ea_count] == '\t')
 			paths_rgb->compas_count.ea_count ++;
 	get_correct_path(paths_rgb);
 	continu_get_correct_path(paths_rgb);

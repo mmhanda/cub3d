@@ -6,7 +6,7 @@
 /*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 19:50:45 by mhanda            #+#    #+#             */
-/*   Updated: 2022/09/14 06:54:16 by mhanda           ###   ########.fr       */
+/*   Updated: 2022/10/24 19:12:56 by mhanda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	ft_free_parced_map(char **parced_map)
 	exit(0);
 }
 
-int	ft_strstr_custom(const char *s, const char *tofind)
+int	ft_strstr_cust(const char *s, const char *tofind)
 {
 	int	i;
 	int	j;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 15:43:45 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/24 10:10:51 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/24 19:12:45 by mhanda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -195,6 +195,7 @@ void	draw_ceilling(t_parce *game_map);
 void	init_them(t_mlx *mlx_srct);
 /**********************************************/
 
+void	convert_color_to_int(t_parce *paths_rgb, char ***c, char ***f);
 void	put_rays(t_mlx *mlx_srct, double x, double y, t_parce *game);
 void	paint_rays(t_mlx *mlx_srct, t_parce *game);
 void	img_pix_put(t_img *img, int x, int y, int color);
@@ -224,8 +225,8 @@ void	ft_free_parced_map(char **parced_map);
 void    init_map_struct(t_parce *paths_rgb);
 void	*ft_memset(void *str, int c, size_t len);
 void    ft_put_error(char *str);
-void	handl_player_case(char **tab, int x, int y, int len, t_parce *paths_rgb);
-void	handl_zero_case(char **tab, int x, int y, int len, t_parce *paths_rgb);
+void	handl_player_case(char **tab, int x, int y, t_parce *paths_rgb);
+void	handl_zero_case(char **tab, int x, int y, t_parce *paths_rgb);
 char	**check_map_holes(t_map *node, t_parce *paths_rgb);
 char	**field_by_space(char **tab, t_parce *paths_rgb);
 char	**make_square_map(int x, int y);
@@ -245,7 +246,7 @@ int		count_max_len(char **tab);
 int		count_tab_len(char **node);
 int		ft_isdigit(int c);
 int		ft_atoi(char *str, t_parce *paths_rgb);
-int		ft_strstr_custom(const char *s, const char *tofind);
+int		ft_strstr_cust(const char *s, const char *tofind);
 int	    wdc(char const *s, char c);
 int     ft_strlen(char *c);
 int     ft_strcmp(char *s1, char *s2);

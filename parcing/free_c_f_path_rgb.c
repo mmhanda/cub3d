@@ -6,13 +6,13 @@
 /*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 16:29:45 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/21 15:03:00 by mhanda           ###   ########.fr       */
+/*   Updated: 2022/10/24 18:31:52 by mhanda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub.h"
 
-void    free_textur_paths(t_parce *paths_rgb)
+void	free_textur_paths(t_parce *paths_rgb)
 {
 	free(paths_rgb->no_path);
 	free(paths_rgb->so_path);
@@ -24,14 +24,14 @@ void    free_textur_paths(t_parce *paths_rgb)
 char	**check_map_holes(t_map *node, t_parce *paths_rgb)
 {
 	char	**tab;
-	int 	x;
-	int 	y;
+	int		x;
+	int		y;
 	int		len;
 
 	tab = list_to_tab(node);
 	tab = field_by_space(tab, paths_rgb);
 	paths_rgb->parced_map = tab;
-	len	= count_tab_len(tab);
+	paths_rgb->mlx_srct.tab_len = count_tab_len(tab);
 	x = 0;
 	while (tab[x])
 	{
@@ -40,9 +40,9 @@ char	**check_map_holes(t_map *node, t_parce *paths_rgb)
 		{
 			if (tab[x][y] == 'N' && tab[x][y] == 'S'
 				&& tab[x][y] == 'W' && tab[x][y] == 'E')
-				handl_player_case(tab, x, y, len, paths_rgb);
+				handl_player_case(tab, x, y, paths_rgb);
 			else if (tab[x][y] == '0')
-				handl_zero_case(tab, x, y, len, paths_rgb);
+				handl_zero_case(tab, x, y, paths_rgb);
 			y ++;
 		}
 		x ++;
@@ -62,9 +62,9 @@ void	continue_check_map_condi(int verify, t_map *node, t_parce *paths_rgb)
 
 void	check_map_conditions(t_map *node, t_parce *paths_rgb)
 {
-	int	i;
-	int	verify;
-	t_map *h_node;
+	int		i;
+	int		verify;
+	t_map	*h_node;
 
 	h_node = node;
 	i = 0;
@@ -76,7 +76,7 @@ void	check_map_conditions(t_map *node, t_parce *paths_rgb)
 			if (node->line[i] != ' ' && node->line[i] != '1'
 				&& node->line[i] != '0'
 				&& node->line[i] != 'N' && node->line[i] != 'S'
-				&& node->line[i] != 'W' 
+				&& node->line[i] != 'W'
 				&& node->line[i] != 'E' && node->line[i] != '\t')
 				verify ++;
 			i ++;

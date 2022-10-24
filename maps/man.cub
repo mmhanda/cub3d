@@ -1,10 +1,11 @@
- NO ./main.c
-   SO ./main.c
+NO ./main.c
+SO ./main.c
+      WE ./main.c     
+ EA ./main.c
 
-		WE ./main.c          
-EA     ./main.c
 F 225,139,71
 C 225,139,255
+
 111111111111111
 100000100000001
 1000011111111111111111111
