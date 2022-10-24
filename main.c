@@ -6,13 +6,13 @@
 /*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 15:42:28 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/24 05:41:39 by mhanda           ###   ########.fr       */
+/*   Updated: 2022/10/24 19:38:25 by mhanda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-int	check_arg(int ac,char **av)
+int	check_arg(int ac, char **av)
 {
 	int		fd;
 	char	*ret;
@@ -21,14 +21,14 @@ int	check_arg(int ac,char **av)
 		exit(0);
 	ret = ft_strstr(av[1], ".cub");
 	if (ret == NULL)
-			ft_put_error(".cub not find\n");
+		ft_put_error(".cub not find\n");
 	else
 		if (ft_strcmp(ret, ".cub") != 0)
 			ft_put_error(".cub not match\n");
 	fd = open(av[1], O_RDONLY);
 	if (fd < 0)
 		ft_put_error("file not found\n");
-	return(fd);
+	return (fd);
 }
 
 int	main(int ac, char **av)
