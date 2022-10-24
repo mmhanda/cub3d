@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycaster_0.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 13:23:43 by atabiti           #+#    #+#             */
-/*   Updated: 2022/10/22 16:19:09 by mhanda           ###   ########.fr       */
+/*   Updated: 2022/10/24 10:12:01 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ void	check_horizontal_intersections(t_mlx *mlx_srct, double x, double y,
 			mlx_srct->hited.horx = mlx_srct->hited.tmpx;
 			mlx_srct->hited.hory = mlx_srct->hited.tmpy;
 			mlx_srct->hited.horhit = true;
+				mlx_srct->hited.offset  = (int)x % 32;
 			break ;
 		}
 		else
@@ -106,6 +107,8 @@ void	check_vertical_intersections(t_mlx *mlx_srct, double x, double y,t_parce *g
 			mlx_srct->hited.verx = mlx_srct->hited.tmpx;
 			mlx_srct->hited.very = mlx_srct->hited.tmpy;
 			mlx_srct->hited.verhit = true;
+							mlx_srct->hited.offset  = (int)y0 % 32;
+
 			break ;
 		}
 		else

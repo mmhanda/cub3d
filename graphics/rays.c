@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 04:57:23 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/24 10:01:15 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/24 10:38:44 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,7 @@ void	paint_rays(t_mlx *mlx_srct, t_parce *game)
 /********** texture **********/
 t_img img;
 img.endian = 0;
-// img.bpp = 32;
-// img.size_line = WIDTH;
+img.bpp = 32;
 //read xpm file 
 int h = 32;
 int *h_ptr = & h;
@@ -103,13 +102,13 @@ img.addr= mlx_get_data_addr(img_xpm,&img.bpp, &img.size_line, &img.endian);
 	int yy = 0;
 	while (ff < (mlx_srct->hited.bottomOfWall) + 1)
 	{
-			c =  (int*)(img.addr + ((yy  % 32) * column_id));
+		c =  (int*)(img.addr + ((yy % 32 )) * column_id);
 		img_pix_put(&mlx_srct->mlx_m, column_id, ff, *c);
 		yy++;
 		ff++;
 
 	}
-	printf(" (int ) (img.addr + (0) = %d \n",  color);
+	printf("mlx_srct->hited.offset  %d \n",  mlx_srct->hited.offset );
 		// draw_it(column_id * WALL_STRIP_THIKNES, mlx_srct->hited.topOfWall, 1,(mlx_srct->hited.bottomOfWall) + 1, color, mlx_srct);
 		column_id++;
 		mlx_srct->rays.ray_angle += (FOV_ANGLE / WIDTH);

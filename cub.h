@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 15:43:45 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/24 06:10:48 by mhanda           ###   ########.fr       */
+/*   Updated: 2022/10/24 10:10:51 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ typedef struct s_hit
 	bool	horhit ;
 	double distbtwplr_and_plane;
 bool	verhit ;
+//draw
+int offset;
 }					t_hit;
 
 typedef struct s_ray
