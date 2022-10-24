@@ -6,7 +6,7 @@
 /*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 15:33:21 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/24 05:15:58 by mhanda           ###   ########.fr       */
+/*   Updated: 2022/10/24 06:16:35 by mhanda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,38 +14,32 @@
 
 void	img_pix_put(t_img *img, int x, int y, int color)
 {
+	char	*pixel;
+
 	if (y >= HEIGHT || x >= WIDTH || x < 0 || y < 0)
 		return ;
-	char    *pixel;
-
 	pixel = img->addr + (y * img->size_line + x * (img->bpp / 8));
 	*(int *)pixel = color;
 }
 
-void	paint_p_line(t_mlx *mlx_srct, double x, double y)
+void	init_them(t_mlx *mlx_srct)
 {
-	x *= 15;
-	y *= 15;
-	double x2 = 0, y2 = 0, dx = 0, dy = 0, step = 0, xin = 0, yin = 0, xx = 0, yy = 0, k = 0;
-	x2 = x + cos(mlx_srct->plyr.rotate) * 30;
-	y2 = y + sin(mlx_srct->plyr.rotate) * 30;
-	dx = x2 - x;
-	dy = y2 - y;
-	if (dx >= dy)
-		step = fabs(dx);
-	else
-		step = fabs(dy);
-	xin = dx / step;
-	yin = dy / step;
-	xx = x + 0.5;
-	yy = y + 0.5;
-	while (k <= step)
-	{
-		xx += xin;
-		yy += yin;
-		img_pix_put(&mlx_srct->mlx_m, round(xx), round(yy), 0x00FF00);
-		k ++;
-	}
+	mlx_srct->hited.nextHorzTouchX = 0;
+	mlx_srct->hited.nextHorzTouchY = 0;
+	mlx_srct->hited.yintercept = 0;
+	mlx_srct->hited.xintercept = 0;
+	mlx_srct->hited.wallhitx = 0;
+	mlx_srct->hited.wallhity = 0;
+	mlx_srct->hited.x_map_grid = 0;
+	mlx_srct->hited.y_map_grid = 0;
+	mlx_srct->hited.horx = 0;
+	mlx_srct->hited.hory = 0;
+	mlx_srct->hited.verx = 0;
+	mlx_srct->hited.very = 0;
+	mlx_srct->hited.ystep = 0;
+	mlx_srct->hited.xstep = 0;
+	mlx_srct->hited.bottomOfWall = 0;
+	mlx_srct->hited.topOfWall = 0;
 }
 
 void	paint_ground(t_mlx *mlx_srct, t_parce *game_map, double x, double y)
@@ -68,7 +62,8 @@ void	paint_ground(t_mlx *mlx_srct, t_parce *game_map, double x, double y)
 		mlx_srct->mini.i = 0;
 		while (mlx_srct->mini.i < mlx_srct->mini.high)
 		{
-			img_pix_put(&mlx_srct->mlx_m, (x + mlx_srct->mini.i), (y + mlx_srct->mini.j), game_map->f_colo + 0x964B00);
+			img_pix_put(&mlx_srct->mlx_m, (x + mlx_srct->mini.i),
+				(y + mlx_srct->mini.j), game_map->f_colo + 0x964B00);
 			mlx_srct->mini.i ++;
 		}
 		mlx_srct->mini.j ++;
@@ -95,7 +90,8 @@ void	paint_walls(t_mlx *mlx_srct, t_parce *game_map, double x, double y)
 		mlx_srct->mini.i = 0;
 		while (mlx_srct->mini.i < mlx_srct->mini.high)
 		{
-			img_pix_put(&mlx_srct->mlx_m, (x + mlx_srct->mini.i), (y + mlx_srct->mini.j), game_map->f_colo + 0x473223);
+			img_pix_put(&mlx_srct->mlx_m, (x + mlx_srct->mini.i),
+				(y + mlx_srct->mini.j), game_map->f_colo + 0x473223);
 			mlx_srct->mini.i ++;
 		}
 		mlx_srct->mini.j ++;
@@ -122,10 +118,10 @@ void	paint_player(t_mlx *mlx_srct, double x, double y)
 	while (mlx_srct->mini.j < mlx_srct->mini.weigth)
 	{
 		mlx_srct->mini.i = 0;
-		while (mlx_srct->mini.i < mlx_srct->mini.high)
+		while (mlx_srct->mini.i ++ < mlx_srct->mini.high)
 		{
-			img_pix_put(&mlx_srct->mlx_m, (x + mlx_srct->mini.i), (y + mlx_srct->mini.j), 0xFFA500);
-			mlx_srct->mini.i ++;
+			img_pix_put(&mlx_srct->mlx_m, (x + mlx_srct->mini.i),
+				(y + mlx_srct->mini.j), 0xFFA500);
 		}
 		mlx_srct->mini.j ++;
 	}

@@ -6,7 +6,7 @@
 /*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 15:43:45 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/24 05:12:21 by mhanda           ###   ########.fr       */
+/*   Updated: 2022/10/24 06:10:48 by mhanda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,6 @@ typedef struct s_mini_map
 	int		i;
 } t_mini_map;
 
-
 typedef struct s_mlx
 {
 	void		*mlx_ptr;
@@ -191,12 +190,12 @@ int		check_wall_2(t_parce *game, double new_x, double new_y);
 void	nearest_point(t_mlx *mlx_srct, double x, double y, t_parce *game);
 void	draw_floor(t_parce *game_map);
 void	draw_ceilling(t_parce *game_map);
+void	init_them(t_mlx *mlx_srct);
 /**********************************************/
 
 void	put_rays(t_mlx *mlx_srct, double x, double y, t_parce *game);
 void	paint_rays(t_mlx *mlx_srct, t_parce *game);
 void	img_pix_put(t_img *img, int x, int y, int color);
-void	paint_p_line(t_mlx *mlx_srct, double x, double y);
 void	paint_player(t_mlx *mlx_srct, double x, double y);
 void    make_texturs(t_parce *game_map);
 void	paint_mini_map(t_mlx *mlx_srct, t_parce *game_map);

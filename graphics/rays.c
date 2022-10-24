@@ -6,32 +6,12 @@
 /*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 04:57:23 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/24 04:57:24 by mhanda           ###   ########.fr       */
+/*   Updated: 2022/10/24 06:04:18 by mhanda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "../cub.h"
-
-void	init_them(t_mlx *mlx_srct)
-{
-	mlx_srct->hited.nextHorzTouchX = 0;
-	mlx_srct->hited.nextHorzTouchY = 0;
-	mlx_srct->hited.yintercept = 0;
-	mlx_srct->hited.xintercept = 0;
-	mlx_srct->hited.wallhitx = 0;
-	mlx_srct->hited.wallhity = 0;
-	mlx_srct->hited.x_map_grid = 0;
-	mlx_srct->hited.y_map_grid = 0;
-	mlx_srct->hited.horx = 0;
-	mlx_srct->hited.hory = 0;
-	mlx_srct->hited.verx = 0;
-	mlx_srct->hited.very = 0;
-	mlx_srct->hited.ystep = 0;
-	mlx_srct->hited.xstep = 0;
-	mlx_srct->hited.bottomOfWall = 0;
-	mlx_srct->hited.topOfWall = 0;
-}
 
 /*
                       

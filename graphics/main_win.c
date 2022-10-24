@@ -6,7 +6,7 @@
 /*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 15:34:44 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/24 04:29:59 by mhanda           ###   ########.fr       */
+/*   Updated: 2022/10/24 06:16:22 by mhanda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,10 @@ void	continu_update_pos(t_mlx *mlx_srct, t_parce *game)
 		*(mlx_srct->plyr.right_or_left * MOVE_SPEED);
 		if (check_wall(game, new_x, new_y) == 1)
 		{
-			game->mlx_srct.plyr.y += cos(game->mlx_srct.plyr.rotate) * (mlx_srct->plyr.right_or_left * MOVE_SPEED);
-			game->mlx_srct.plyr.x -= sin(game->mlx_srct.plyr.rotate) * (mlx_srct->plyr.right_or_left * MOVE_SPEED);
+			game->mlx_srct.plyr.y += cos(game->mlx_srct.plyr.rotate)
+				* (mlx_srct->plyr.right_or_left * MOVE_SPEED);
+			game->mlx_srct.plyr.x -= sin(game->mlx_srct.plyr.rotate)
+				* (mlx_srct->plyr.right_or_left * MOVE_SPEED);
 		}
 	}
 }
@@ -93,7 +95,6 @@ void	paint_mini_map(t_mlx *mlx_srct, t_parce *game_map)
 	paint_player(mlx_srct, mlx_srct->plyr.x, mlx_srct->plyr.y);
 	continu_paint_mini_map(mlx_srct, game_map);
 	paint_player(mlx_srct, mlx_srct->plyr.x, mlx_srct->plyr.y);
-	// paint_p_line(mlx_srct, mlx_srct->plyr.x, mlx_srct->plyr.y);
 	mlx_srct->des_remind = 1;
 	mlx_put_image_to_window(mlx_srct->mlx_ptr, mlx_srct->win_ptr, mlx_srct->mlx_m.mlx_img, 0, 0);
 }
