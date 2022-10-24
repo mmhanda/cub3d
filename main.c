@@ -6,7 +6,7 @@
 /*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 15:42:28 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/16 08:38:11 by mhanda           ###   ########.fr       */
+/*   Updated: 2022/10/24 05:41:39 by mhanda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,4 @@ int	main(int ac, char **av)
 
 	parce_map(read_map(check_arg(ac, av)), &game);
 	graphics_handle(&game);
-	//don't forget to handle no map case just paths ans colors
 }

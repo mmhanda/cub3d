@@ -6,21 +6,21 @@
 /*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 00:02:52 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/21 15:07:07 by mhanda           ###   ########.fr       */
+/*   Updated: 2022/10/24 05:40:09 by mhanda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub.h"
 
-void    map_error(char **tab, t_parce *paths_rgb)
+void	map_error(char **tab, t_parce *paths_rgb)
 {
-    free_textur_paths(paths_rgb);
-    ft_free_parced_map(tab);
+	free_textur_paths(paths_rgb);
+	ft_free_parced_map(tab);
 }
 
 void	handl_zero_case(char **tab, int x, int y, int len, t_parce *paths_rgb)
 {
-    if (x == (len - 1) || x == 0)
+	if (x == (len - 1) || x == 0)
 	{
 		write(2, "wrong space position\n", 21);
 		map_error(tab, paths_rgb);
@@ -56,9 +56,9 @@ void	check_map_conditions_two(t_map *node, t_parce *paths_rgb)
 	{
 		while (node->line[i])
 		{
-            if (node->line[i] == 'N' || node->line[i] == 'S'
-            || node->line[i] == 'W' || node->line[i] == 'E')
-            verify ++;
+			if (node->line[i] == 'N' || node->line[i] == 'S'
+			|| node->line[i] == 'W' || node->line[i] == 'E')
+			verify ++;
 			i ++;
 		}
 		i = 0;
