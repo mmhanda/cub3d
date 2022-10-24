@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   raycaster_0.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atabiti <atabiti@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 13:23:43 by atabiti           #+#    #+#             */
-/*   Updated: 2022/10/22 15:30:11 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/22 16:19:09 by mhanda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-
 #include "../cub.h"
+
 void	draw_it(int x, int y, int width, int height, int color, t_mlx *mlx_srct)
 {
 	int	ff;
@@ -20,10 +19,6 @@ void	draw_it(int x, int y, int width, int height, int color, t_mlx *mlx_srct)
 	ff = y;
 	while (ff < height)
 	{
-		// mlx_pixel_put(mlx_ptr, mlx_win, x, ff, color);
-		// img_pix_put(&mlx_srct->mlx_m, x, ff, 0xFFFFFF);
-		// mlx_pixel_put(mlx_srct->hited.mlx_ptr, mlx_srct->hited.mlx_win, x, ff,
-		// 		color);
 		img_pix_put(&mlx_srct->mlx_m, x, ff, color);
 		ff++;
 	}

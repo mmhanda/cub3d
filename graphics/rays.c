@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   rays.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atabiti <atabiti@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/23 00:56:48 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/23 13:54:17 by atabiti          ###   ########.fr       */
+/*   Created: 2022/10/24 04:57:23 by mhanda            #+#    #+#             */
+/*   Updated: 2022/10/24 04:57:24 by mhanda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "../cub.h"
 
@@ -106,14 +107,14 @@ void	paint_rays(t_mlx *mlx_srct, t_parce *game)
 			mlx_srct->rays.ray_angle += (2 * M_PI);
 		mlx_srct->hited.horhit = false;
 		mlx_srct->hited.verhit = false;
-		color = 0xCA8927;
+		color = game->c_colo + 0xCA8927;
 		mlx_srct->hited.wasverticallasttime = false;
 		mlx_srct->hited.hiitx = 0;
 		mlx_srct->hited.hiity = 0;
 		mlx_srct->hited.distance_to_wall = 0;
 		put_rays(mlx_srct, mlx_srct->plyr.x, mlx_srct->plyr.y, game);
 		if (mlx_srct->hited.wasverticallasttime == true)
-			color = 0x3916E6;
+			color = game->f_colo + 0x3916E6;
 		calculate_distances(mlx_srct, game);
 		draw_it(column_id * WALL_STRIP_THIKNES, mlx_srct->hited.topOfWall, 1,(mlx_srct->hited.bottomOfWall) + 1, color, mlx_srct);
 		column_id++;
