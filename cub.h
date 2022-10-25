@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 15:43:45 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/25 10:26:23 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/25 10:42:45 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -207,7 +207,7 @@ void	init_them(t_mlx *mlx_srct);
 
 void	convert_color_to_int(t_parce *paths_rgb, char ***c, char ***f);
 void	put_rays(t_mlx *mlx_srct, double x, double y, t_parce *game);
-void	paint_rays(t_mlx *mlx_srct, t_parce *game);
+void	cast_rays(t_mlx *mlx_srct, t_parce *game);
 void	img_pix_put(t_img *img, int x, int y, int color);
 void	paint_player(t_mlx *mlx_srct, double x, double y);
 void    make_texturs(t_parce *game_map);

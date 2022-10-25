@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 04:57:23 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/25 10:28:07 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/25 10:43:53 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	calculate_distances(t_mlx *mlx_srct, t_parce *game)
 	if (mlx_srct->hited.bottomOfWall < 0 || mlx_srct->hited.topOfWall > HEIGHT)
 		mlx_srct->hited.topOfWall = HEIGHT;
 }
-void	paint_rays(t_mlx *mlx_srct, t_parce *game)
+void	cast_rays(t_mlx *mlx_srct, t_parce *game)
 {
 	int		column_id;
 	int		color;
@@ -110,7 +110,7 @@ void	paint_rays(t_mlx *mlx_srct, t_parce *game)
 			distanceFromTop = (int)(y + (mlx_srct->hited.projectedWallHeight	/ 2) - (HEIGHT / 2));
 			ofssety = (int)(distanceFromTop * ((float)64/ mlx_srct->hited.projectedWallHeight));
 			// printf("  offset x = %d ofssety = %d \n", mlx_srct->hited.offset, ofssety);
-			if(!is_down(mlx_srct->rays.ray_angle ) && mlx_srct->hited.horhit == true)
+			if((!is_down(mlx_srct->rays.ray_angle )) &&  mlx_srct->hited.wasverticallasttime == false)
 			{
 				mlx_srct->hited.color = mlx_srct->hited.data_so + ((64 * ofssety)		+ mlx_srct->hited.offset);
 				

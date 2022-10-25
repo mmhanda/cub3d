@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 13:23:43 by atabiti           #+#    #+#             */
-/*   Updated: 2022/10/25 10:24:32 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/25 10:40:45 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ void	check_vertical_intersections(t_mlx *mlx_srct, double x, double y,t_parce *g
 			mlx_srct->hited.verx = mlx_srct->hited.tmpx;
 			mlx_srct->hited.very = mlx_srct->hited.tmpy;
 			mlx_srct->hited.verhit = true;
-							mlx_srct->hited.offset  = (int)mlx_srct->hited.wallhity % 32;
+			mlx_srct->hited.offset  = (int)mlx_srct->hited.wallhity % 32;
 
 			break ;
 		}
@@ -130,11 +130,10 @@ void	put_rays(t_mlx *mlx_srct, double x, double y, t_parce *game)
 	mlx_srct->hited.hiitx = 0;
 	mlx_srct->hited.hiity = 0;
 	check_horizontal_intersections(mlx_srct, x * 32, y * 32, game);
-	mlx_srct->rays.ray_angle = fmod(mlx_srct->rays.ray_angle, 2 * M_PI);
-	if (mlx_srct->rays.ray_angle < 0)
-		mlx_srct->rays.ray_angle += (2 * M_PI);
-	mlx_srct->hited.hiitx = 0;
-	mlx_srct->hited.hiity = 0;
+	// mlx_srct->rays.ray_angle = fmod(mlx_srct->rays.ray_angle, 2 * M_PI);
+	// if (mlx_srct->rays.ray_angle < 0)
+	// 	mlx_srct->rays.ray_angle += (2 * M_PI);
+
 	check_vertical_intersections(mlx_srct, x * 32, y * 32, game);
 	nearest_point(mlx_srct, x, y, game);
 	

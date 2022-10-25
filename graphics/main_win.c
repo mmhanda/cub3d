@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_win.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 15:34:44 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/24 06:16:22 by mhanda           ###   ########.fr       */
+/*   Updated: 2022/10/25 10:42:45 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void	paint_mini_map(t_mlx *mlx_srct, t_parce *game_map)
 	&mlx_srct->mlx_m.size_line, &mlx_srct->mlx_m.endian);
 	draw_ceilling(game_map);
 	draw_floor(game_map);
-	paint_rays(mlx_srct, game_map);
+	cast_rays(mlx_srct, game_map);
 	paint_player(mlx_srct, mlx_srct->plyr.x, mlx_srct->plyr.y);
 	continu_paint_mini_map(mlx_srct, game_map);
 	paint_player(mlx_srct, mlx_srct->plyr.x, mlx_srct->plyr.y);
