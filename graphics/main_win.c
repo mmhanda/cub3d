@@ -6,7 +6,7 @@
 /*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 15:34:44 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/25 17:46:21 by mhanda           ###   ########.fr       */
+/*   Updated: 2022/10/25 23:11:17 by mhanda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,12 +82,8 @@ void	continu_paint_mini_map(t_mlx *mlx_srct, t_parce *game_map)
 void	paint_mini_map(t_mlx *mlx_srct, t_parce *game_map)
 {
 	if (mlx_srct->des_remind == 1)
-	{
-		mlx_clear_window(game_map->mlx_srct.mlx_ptr,
-			game_map->mlx_srct.win_ptr);
 		mlx_destroy_image(game_map->mlx_srct.mlx_ptr,
 			game_map->mlx_srct.mlx_m.mlx_img);
-	}
 	update_pos(mlx_srct, game_map);
 	mlx_srct->mlx_m.mlx_img = mlx_new_image(mlx_srct->mlx_ptr, WIDTH, HEIGHT);
 	mlx_srct->mlx_m.addr = mlx_get_data_addr(mlx_srct->mlx_m.mlx_img,
