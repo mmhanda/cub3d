@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   make_moves.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 04:57:08 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/24 04:57:11 by mhanda           ###   ########.fr       */
+/*   Updated: 2022/10/25 14:07:46 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void	compas(t_parce *game, double value, int set_compas)
 {
-	double  move_step;
+	double	move_step;
+
 	if (set_compas == 0)
 	{
 		move_step = (value * 2);
@@ -30,12 +31,14 @@ void	compas(t_parce *game, double value, int set_compas)
 int	check_wall(t_parce *game, double new_x, double new_y)
 {
 	int	map_index_x;
-	int	map_index_y;	
-	int	tmp_y = game->mlx_srct.plyr.y;
-	int	tmp_x = game->mlx_srct.plyr.x;
+	int	map_index_y;
+	int	tmp_y;
+	int	tmp_x;
 
-	map_index_x = floor(new_x );
-	map_index_y = floor(new_y );
+	tmp_y = game->mlx_srct.plyr.y;
+	tmp_x = game->mlx_srct.plyr.x;
+	map_index_x = floor(new_x);
+	map_index_y = floor(new_y);
 	if (new_x < 0 || new_y < 0 || game->parced_map[tmp_y][map_index_x] == '1'
 		|| game->parced_map[map_index_y][tmp_x] == '1')
 		return (0);
@@ -46,31 +49,6 @@ int	check_wall(t_parce *game, double new_x, double new_y)
 
 int	mlx_key_press(int preced_key, t_parce *game)
 {
-
-
-	/*linux */
-
-	// if (preced_key == 65307)
-	// {
-	// 	printf("Quit !\n");
-	// 	exit(0);
-	// }
-	// if (preced_key == 119)
-	// 	game->mlx_srct.plyr.walk_direction = 1;
-	// if (preced_key == 115)
-	// 	game->mlx_srct.plyr.walk_direction = -1;
-	// if (preced_key == 97)
-	// 	game->mlx_srct.plyr.right_or_left = -1;
-	// if (preced_key == 100)
-	// 	game->mlx_srct.plyr.right_or_left = 1;
-	// if(preced_key == 65363)
-	// 	game->mlx_srct.plyr.turn_direction = 1;
-	// if(preced_key == 65361)
-	// 	game->mlx_srct.plyr.turn_direction = -1;
-	// paint_mini_map(&game->mlx_srct, game);
-
-
-	
 	if (preced_key == 53)
 	{
 		printf("Quit !\n");
@@ -84,11 +62,10 @@ int	mlx_key_press(int preced_key, t_parce *game)
 		game->mlx_srct.plyr.right_or_left = -1;
 	if (preced_key == 2)
 		game->mlx_srct.plyr.right_or_left = 1;
-	if(preced_key == 124)
+	if (preced_key == 124)
 		game->mlx_srct.plyr.turn_direction = 1;
-	if(preced_key == 123)
+	if (preced_key == 123)
 		game->mlx_srct.plyr.turn_direction = -1;
 	paint_mini_map(&game->mlx_srct, game);
 	return (0);
 }
-
