@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:34:48 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/25 14:47:45 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/25 14:57:19 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,8 @@ void make_them_false(t_mlx *mlx_srct)
 		mlx_srct->hited.hiitx = 0;
 		mlx_srct->hited.hiity = 0;
 		mlx_srct->hited.distance_to_wall = 0;
+        	mlx_srct->hited.distbtwplr_and_plane = 0;
+                mlx_srct->hited.ofssety = 0;
+                  mlx_srct->hited.y_wall = 0 ;
+
 }

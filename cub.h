@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 15:43:45 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/25 14:47:28 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/25 14:58:20 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ void *xpm_ea;
 int *color;
 int offset;
 int ofssety;
+int y_wall;
 }					t_hit;
 
 typedef struct s_ray
@@ -209,6 +210,7 @@ void	load_xpm(	t_img	img, t_parce *game);
 void	get_right_pixel(t_mlx *mlx_srct, t_parce *game , int ofssety);
 void	get_right_pixel_p2(t_mlx *mlx_srct, t_parce *game, int ofssety);
 void make_them_false(t_mlx *mlx_srct);
+void	calculate_ofsset(t_mlx *mlx_srct);
 /**********************************************/
 
 void	check_xpm(t_parce *paths_rgb);

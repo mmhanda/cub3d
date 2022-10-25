@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 04:57:23 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/25 14:47:56 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/25 14:59:04 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,9 @@ void	load_xpm(t_img img, t_parce *game)
 															&img.bpp,
 															&img.size_line,
 															&img.endian);
+	init_them(&game->mlx_srct);
 }
+
 void	get_right_pixel_p2(t_mlx *mlx_srct, t_parce *game, int ofssety)
 {
 	if ((is_down(mlx_srct->rays.ray_angle))
@@ -118,6 +120,7 @@ void	get_right_pixel_p2(t_mlx *mlx_srct, t_parce *game, int ofssety)
 				+ mlx_srct->hited.offset);
 	}
 }
+
 void	get_right_pixel(t_mlx *mlx_srct, t_parce *game, int ofssety)
 {
 	if ((!is_down(mlx_srct->rays.ray_angle))
@@ -143,18 +146,20 @@ void	get_right_pixel(t_mlx *mlx_srct, t_parce *game, int ofssety)
 	else
 		get_right_pixel_p2(mlx_srct, game, ofssety);
 }
+
+void	calculate_ofsset(t_mlx *mlx_srct)
+{
+	mlx_srct->hited.distanceFromTop = (int)(mlx_srct->hited.y_wall
+			+ (mlx_srct->hited.projectedWallHeight / 2) - (HEIGHT / 2));
+	mlx_srct->hited.ofssety = (int)(mlx_srct->hited.distanceFromTop * ((float)64
+				/ mlx_srct->hited.projectedWallHeight));
+}
 void	cast_rays(t_mlx *mlx_srct, t_parce *game)
 {
 	int		column_id;
-	int		color;
 	t_img	img;
-	int		h;
-	int		y;
-	int		ofssety;
 
 	load_xpm(img, game);
-	init_them(mlx_srct);
-	mlx_srct->hited.distbtwplr_and_plane = 0;
 	column_id = 0;
 	mlx_srct->rays.ray_angle = mlx_srct->plyr.rotate - (FOV_ANGLE / 2);
 	while (column_id < WIDTH)
@@ -165,16 +170,14 @@ void	cast_rays(t_mlx *mlx_srct, t_parce *game)
 		make_them_false(mlx_srct);
 		put_rays(mlx_srct, mlx_srct->plyr.x, mlx_srct->plyr.y, game);
 		calculate_distances(mlx_srct, game);
-		y = mlx_srct->hited.topOfWall;
-		while (y < mlx_srct->hited.bottomOfWall)
+		mlx_srct->hited.y_wall = mlx_srct->hited.topOfWall;
+		while (mlx_srct->hited.y_wall < mlx_srct->hited.bottomOfWall)
 		{
-			mlx_srct->hited.distanceFromTop = (int)(y
-					+ (mlx_srct->hited.projectedWallHeight / 2) - (HEIGHT / 2));
-			ofssety = (int)(mlx_srct->hited.distanceFromTop * ((float)64
-						/ mlx_srct->hited.projectedWallHeight));
-			get_right_pixel(mlx_srct, game, ofssety);
-			img_pix_put(&mlx_srct->mlx_m, column_id, y, *mlx_srct->hited.color);
-			y++;
+			calculate_ofsset(mlx_srct);
+			get_right_pixel(mlx_srct, game, mlx_srct->hited.ofssety);
+			img_pix_put(&mlx_srct->mlx_m, column_id, mlx_srct->hited.y_wall,
+					*mlx_srct->hited.color);
+			mlx_srct->hited.y_wall++;
 		}
 		column_id++;
 		mlx_srct->rays.ray_angle += (FOV_ANGLE / WIDTH);
