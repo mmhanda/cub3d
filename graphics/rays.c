@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 04:57:23 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/25 15:10:40 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/25 15:14:36 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,26 +35,6 @@ Projected Slice Height= --------------------- * Distance to Projection Plane
 // printf(" mlx_srct->hited.topOfWall %d\n", mlx_srct->hited.topOfWall  );
 */
 
-void	calculate_distances(t_mlx *mlx_srct, t_parce *game)
-{
-	double	correct_distance;
-
-	correct_distance = mlx_srct->hited.distance_to_wall
-		* cos(mlx_srct->rays.ray_angle - mlx_srct->plyr.rotate);
-	mlx_srct->hited.distbtwplr_and_plane = ((WIDTH / 2) / tan(FOV_ANGLE
-				/ 2.00));
-	mlx_srct->hited.projectedWallHeight = (int)((TILE_SIZE / correct_distance)
-			* mlx_srct->hited.distbtwplr_and_plane);
-	mlx_srct->hited.bottomOfWall = ((HEIGHT / 2)
-			+ (mlx_srct->hited.projectedWallHeight) / 2);
-	mlx_srct->hited.topOfWall = ((HEIGHT / 2)
-			- mlx_srct->hited.projectedWallHeight / 2);
-	if (mlx_srct->hited.topOfWall < 0 || mlx_srct->hited.topOfWall > HEIGHT)
-		mlx_srct->hited.topOfWall = 0;
-	if (mlx_srct->hited.bottomOfWall < 0 || mlx_srct->hited.topOfWall > HEIGHT)
-		mlx_srct->hited.topOfWall = HEIGHT;
-}
-
 void	load_xpm(t_img img, t_parce *game)
 {
 	int	h;
@@ -67,7 +47,9 @@ void	load_xpm(t_img img, t_parce *game)
 														h_ptr,
 														h_ptr);
 	game->mlx_srct.hited.data_no = (int *)mlx_get_data_addr(game->mlx_srct.hited.xpm_no,
-			&img.bpp, &img.size_line, &img.endian);
+															&img.bpp,
+															&img.size_line,
+															&img.endian);
 	game->mlx_srct.hited.xpm_so = mlx_xpm_file_to_image(game->mlx_srct.mlx_ptr,
 														game->so_path,
 														h_ptr,
@@ -99,24 +81,18 @@ void	get_right_pixel_p2(t_mlx *mlx_srct, t_parce *game, int ofssety)
 {
 	if ((is_down(mlx_srct->rays.ray_angle))
 		&& mlx_srct->hited.wasverticallasttime == false)
-	{
 		mlx_srct->hited.color = mlx_srct->hited.data_no + ((64 * ofssety)
 				+ mlx_srct->hited.offset);
-	}
 	else if ((is_down(mlx_srct->rays.ray_angle))
 			&& mlx_srct->hited.wasverticallasttime == true
 			&& is_right(mlx_srct->rays.ray_angle))
-	{
 		mlx_srct->hited.color = mlx_srct->hited.data_we + ((64 * ofssety)
 				+ mlx_srct->hited.offset);
-	}
 	else if ((is_down(mlx_srct->rays.ray_angle))
 			&& mlx_srct->hited.wasverticallasttime == true
 			&& !is_right(mlx_srct->rays.ray_angle))
-	{
 		mlx_srct->hited.color = mlx_srct->hited.data_ea + ((64 * ofssety)
 				+ mlx_srct->hited.offset);
-	}
 }
 
 void	get_right_pixel(t_mlx *mlx_srct, t_parce *game, int ofssety)

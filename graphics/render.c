@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:34:48 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/25 15:12:23 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/25 15:12:54 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	make_them_false(t_parce *game)
 	game->mlx_srct.hited.distbtwplr_and_plane = 0;
 	game->mlx_srct.hited.ofssety = 0;
 	game->mlx_srct.hited.y_wall = 0;
-    	put_rays(&game->mlx_srct, game->mlx_srct.plyr.x, game->mlx_srct.plyr.y, game);
-		calculate_distances(&game->mlx_srct, game);
-    
+	put_rays(&game->mlx_srct, game->mlx_srct.plyr.x, game->mlx_srct.plyr.y,
+			game);
+	calculate_distances(&game->mlx_srct, game);
 }
