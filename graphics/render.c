@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:34:48 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/25 15:18:56 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/25 15:25:53 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,6 @@ void	make_them_false(t_parce *game)
 	game->mlx_srct.r.ofssety = 0;
 	game->mlx_srct.r.y_wall = 0;
 	put_rays(&game->mlx_srct, game->mlx_srct.plyr.x, game->mlx_srct.plyr.y,
-			game);
+		game);
 	calculate_distances(&game->mlx_srct, game);
 }
