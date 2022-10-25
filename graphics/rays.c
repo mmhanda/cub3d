@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 04:57:23 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/25 14:59:04 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/25 15:10:40 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,7 @@ void	load_xpm(t_img img, t_parce *game)
 														h_ptr,
 														h_ptr);
 	game->mlx_srct.hited.data_no = (int *)mlx_get_data_addr(game->mlx_srct.hited.xpm_no,
-															&img.bpp,
-															&img.size_line,
-															&img.endian);
+			&img.bpp, &img.size_line, &img.endian);
 	game->mlx_srct.hited.xpm_so = mlx_xpm_file_to_image(game->mlx_srct.mlx_ptr,
 														game->so_path,
 														h_ptr,
@@ -154,6 +152,7 @@ void	calculate_ofsset(t_mlx *mlx_srct)
 	mlx_srct->hited.ofssety = (int)(mlx_srct->hited.distanceFromTop * ((float)64
 				/ mlx_srct->hited.projectedWallHeight));
 }
+
 void	cast_rays(t_mlx *mlx_srct, t_parce *game)
 {
 	int		column_id;
@@ -167,9 +166,7 @@ void	cast_rays(t_mlx *mlx_srct, t_parce *game)
 		mlx_srct->rays.ray_angle = fmod(mlx_srct->rays.ray_angle, 2 * M_PI);
 		if (mlx_srct->rays.ray_angle < 0)
 			mlx_srct->rays.ray_angle += (2 * M_PI);
-		make_them_false(mlx_srct);
-		put_rays(mlx_srct, mlx_srct->plyr.x, mlx_srct->plyr.y, game);
-		calculate_distances(mlx_srct, game);
+		make_them_false(game);
 		mlx_srct->hited.y_wall = mlx_srct->hited.topOfWall;
 		while (mlx_srct->hited.y_wall < mlx_srct->hited.bottomOfWall)
 		{

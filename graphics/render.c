@@ -6,12 +6,11 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:34:48 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/25 14:57:19 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/25 15:12:23 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub.h"
-
 
 void	init_them(t_mlx *mlx_srct)
 {
@@ -33,16 +32,18 @@ void	init_them(t_mlx *mlx_srct)
 	mlx_srct->hited.topOfWall = 0;
 }
 
-void make_them_false(t_mlx *mlx_srct)
+void	make_them_false(t_parce *game)
 {
-    mlx_srct->hited.horhit = false;
-		mlx_srct->hited.verhit = false;
-		mlx_srct->hited.wasverticallasttime = false;
-		mlx_srct->hited.hiitx = 0;
-		mlx_srct->hited.hiity = 0;
-		mlx_srct->hited.distance_to_wall = 0;
-        	mlx_srct->hited.distbtwplr_and_plane = 0;
-                mlx_srct->hited.ofssety = 0;
-                  mlx_srct->hited.y_wall = 0 ;
-
+	game->mlx_srct.hited.horhit = false;
+	game->mlx_srct.hited.verhit = false;
+	game->mlx_srct.hited.wasverticallasttime = false;
+	game->mlx_srct.hited.hiitx = 0;
+	game->mlx_srct.hited.hiity = 0;
+	game->mlx_srct.hited.distance_to_wall = 0;
+	game->mlx_srct.hited.distbtwplr_and_plane = 0;
+	game->mlx_srct.hited.ofssety = 0;
+	game->mlx_srct.hited.y_wall = 0;
+    	put_rays(&game->mlx_srct, game->mlx_srct.plyr.x, game->mlx_srct.plyr.y, game);
+		calculate_distances(&game->mlx_srct, game);
+    
 }
