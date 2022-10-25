@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 04:57:23 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/25 10:46:42 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/25 10:48:38 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,16 @@ void	cast_rays(t_mlx *mlx_srct, t_parce *game)
 			else if((!is_down(mlx_srct->rays.ray_angle )) &&  mlx_srct->hited.wasverticallasttime == true && !is_right(mlx_srct->rays.ray_angle ))
 			{
 				mlx_srct->hited.color = mlx_srct->hited.data_we + ((64 * ofssety)		+ mlx_srct->hited.offset);
+				
+			}
+			else if((!is_down(mlx_srct->rays.ray_angle )) &&  mlx_srct->hited.wasverticallasttime == true && is_right(mlx_srct->rays.ray_angle ))
+			{
+				mlx_srct->hited.color = mlx_srct->hited.data_ea + ((64 * ofssety)		+ mlx_srct->hited.offset);
+				
+			}
+			else if((is_down(mlx_srct->rays.ray_angle )) &&  mlx_srct->hited.wasverticallasttime == false)
+			{
+				mlx_srct->hited.color = mlx_srct->hited.data_no + ((64 * ofssety)		+ mlx_srct->hited.offset);
 				
 			}
 			// if(is_right(mlx_srct->rays.ray_angle ) && mlx_srct->hited.verhit == true)
