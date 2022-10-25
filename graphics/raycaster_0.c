@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 13:23:43 by atabiti           #+#    #+#             */
-/*   Updated: 2022/10/25 08:57:21 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/25 09:45:45 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,5 +137,6 @@ void	put_rays(t_mlx *mlx_srct, double x, double y, t_parce *game)
 	mlx_srct->hited.hiity = 0;
 	check_vertical_intersections(mlx_srct, x * 32, y * 32, game);
 	nearest_point(mlx_srct, x, y, game);
+	
 	// dda(x * 32, y * 32, mlx_srct->hited.hiitx, mlx_srct->hited.hiity, mlx_srct);
 }
