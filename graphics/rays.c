@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 04:57:23 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/25 15:21:09 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/25 15:24:33 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,21 +29,21 @@ void	load_xpm(t_img img, t_parce *game)
 	h = 64;
 	h_ptr = &h;
 	game->mlx_srct.r.xpm_no = mlx_xpm_file_to_image(game->mlx_srct.mlx_ptr,
-		game->no_path, h_ptr,h_ptr);
+			game->no_path, h_ptr, h_ptr);
 	game->mlx_srct.r.data_no = (int *)mlx_get_data_addr(game->mlx_srct.r.xpm_no,
-		&img.bpp,&img.size_line,&img.endian);
+			&img.bpp, &img.size_line, &img.endian);
 	game->mlx_srct.r.xpm_so = mlx_xpm_file_to_image(game->mlx_srct.mlx_ptr,
-		game->so_path,h_ptr,h_ptr);
+			game->so_path, h_ptr, h_ptr);
 	game->mlx_srct.r.data_so = (int *)mlx_get_data_addr(game->mlx_srct.r.xpm_so,
-		&img.bpp,&img.size_line,&img.endian);
+			&img.bpp, &img.size_line, &img.endian);
 	game->mlx_srct.r.xpm_we = mlx_xpm_file_to_image(game->mlx_srct.mlx_ptr,
-		game->we_path,h_ptr,h_ptr);
+			game->we_path, h_ptr, h_ptr);
 	game->mlx_srct.r.data_we = (int *)mlx_get_data_addr(game->mlx_srct.r.xpm_we,
-		&img.bpp,&img.size_line,&img.endian);
+			&img.bpp, &img.size_line, &img.endian);
 	game->mlx_srct.r.xpm_ea = mlx_xpm_file_to_image(game->mlx_srct.mlx_ptr,
-		game->ea_path,h_ptr,h_ptr);
+			game->ea_path, h_ptr, h_ptr);
 	game->mlx_srct.r.data_ea = (int *)mlx_get_data_addr(game->mlx_srct.r.xpm_ea,
-		&img.bpp,&img.size_line,&img.endian);
+			&img.bpp, &img.size_line, &img.endian);
 	init_them(&game->mlx_srct);
 }
 
@@ -52,7 +52,7 @@ void	get_right_pixel_p2(t_mlx *mlx_srct, t_parce *game, int ofssety)
 	if ((is_down(mlx_srct->rays.ray_angle))
 		&& mlx_srct->r.wasverticallasttime == false)
 		mlx_srct->r.color = mlx_srct->r.data_no + ((64 * ofssety)
-		+ mlx_srct->r.offset);
+				+ mlx_srct->r.offset);
 	else if ((is_down(mlx_srct->rays.ray_angle))
 		&& mlx_srct->r.wasverticallasttime == true
 		&& is_right(mlx_srct->rays.ray_angle))
