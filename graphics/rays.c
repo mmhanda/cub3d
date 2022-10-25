@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 04:57:23 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/25 16:10:40 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/25 16:34:07 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,11 @@ bottomOfWall  = plane center  + projected Wall Height
 topOfWall  = plane center   - projected Wall Height
 */
 
-void	load_xpm(t_img img, t_parce *game)
+void	load_xpm(t_parce *game)
 {
-	int	h;
-	int	*h_ptr;
+	t_img	img;
+	int		h;
+	int		*h_ptr;
 
 	h = 64;
 	h_ptr = &h;
@@ -96,10 +97,8 @@ void	calculate_ofsset(t_mlx *mlx_srct)
 void	cast_rays(t_mlx *mlx_srct, t_parce *game)
 {
 	int		column_id;
-	t_img	*img;
 
-	img = malloc(sizeof(t_mlx));
-	load_xpm(*img, game);
+	load_xpm(game);
 	column_id = 0;
 	mlx_srct->rays.ray_angle = mlx_srct->plyr.rotate - (FOV_ANGLE / 2);
 	while (column_id < WIDTH)

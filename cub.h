@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 15:43:45 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/25 16:07:09 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/25 16:33:12 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,8 @@ typedef struct s_mlx
 	t_img			mlx_m;
 	t_hit			r;
 	t_mini_map		mini;
+	t_img	*img;
+
 }					t_mlx;
 
 typedef struct s_map
@@ -197,7 +199,7 @@ void				draw_ceilling(t_parce *game_map);
 void				init_them(t_mlx *mlx_srct);
 void				wall_found_hor(t_mlx *mlx_srct);
 void				wall_found_ver(t_mlx *mlx_srct);
-void				load_xpm(t_img img, t_parce *game);
+void				load_xpm(t_parce *game);
 void				get_right_pixel(t_mlx *mlx_srct, int ofssety);
 void				get_right_pixel_p2(t_mlx *mlx_srct, int ofssety);
 void				make_them_false(t_parce *game);
