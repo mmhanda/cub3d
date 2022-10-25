@@ -6,7 +6,7 @@
 #    By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/10 18:04:53 by mhanda            #+#    #+#              #
-#    Updated: 2022/10/25 15:56:25 by atabiti          ###   ########.fr        #
+#    Updated: 2022/10/25 16:07:21 by atabiti          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,3 @@ clean:
 fclean:
 	$(RM) -f  $(NAME) $(OFILES)
 re : fclean all
-
-
-
-#linux  gcc  main.c  parcing/*.c   graphics/*.c utils/*.c  /usr/local/lib/libmlx.a -lXext -lX11 -lm

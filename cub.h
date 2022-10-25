@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 15:43:45 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/25 16:01:23 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/25 16:07:09 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,7 +191,7 @@ bool				is_down(double angle_in_radian);
 void				y_x_horizontal(t_mlx *mlx_srct, double x, double y);
 void				y_x_vertical(t_mlx *mlx_srct, double x, double y);
 int					check_wall_2(t_parce *game, double new_x, double new_y);
-void	nearest_point(t_mlx *mlx_srct, double x, double y);
+void				nearest_point(t_mlx *mlx_srct, double x, double y);
 void				draw_floor(t_parce *game_map);
 void				draw_ceilling(t_parce *game_map);
 void				init_them(t_mlx *mlx_srct);
