@@ -1,7 +1,7 @@
-NO ./main.c
-SO ./main.c
-      WE ./main.c     
- EA ./main.c
+NO ./textur/wall.xpm     
+SO ./textur/blue.xpm 
+WE ./textur/red.xpm          
+EA  ./textur/wall2.xpm    
 
 F 225,139,71
 C 225,139,255
