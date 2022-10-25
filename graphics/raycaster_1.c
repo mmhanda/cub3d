@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   raycaster_1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 08:15:18 by atabiti           #+#    #+#             */
-/*   Updated: 2022/10/24 04:58:58 by mhanda           ###   ########.fr       */
+/*   Updated: 2022/10/25 14:22:40 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub.h"
-
-
 
 int	check_wall_2(t_parce *game, double new_x, double new_y)
 {

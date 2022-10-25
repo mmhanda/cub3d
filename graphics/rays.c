@@ -6,14 +6,13 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 04:57:23 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/25 13:37:39 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/25 14:37:07 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub.h"
 
 /*
-           https://opengameart.org/content/64x-textures-an-overlays           
 							Actual Slice Height
 Projected Slice Height= --------------------- * Distance to Projection Plane
                         Distance to the Slice  
@@ -35,13 +34,13 @@ Projected Slice Height= --------------------- * Distance to Projection Plane
 		%d\n",mlx_srct->hited.bottomOfWall );
 // printf(" mlx_srct->hited.topOfWall %d\n", mlx_srct->hited.topOfWall  );
 */
+
 void	calculate_distances(t_mlx *mlx_srct, t_parce *game)
 {
 	double	correct_distance;
 
 	correct_distance = mlx_srct->hited.distance_to_wall
 		* cos(mlx_srct->rays.ray_angle - mlx_srct->plyr.rotate);
-	// mlx_srct->hited.distance_to_wall = correct_distance;
 	mlx_srct->hited.distbtwplr_and_plane = ((WIDTH / 2) / tan(FOV_ANGLE
 				/ 2.00));
 	mlx_srct->hited.projectedWallHeight = (int)((TILE_SIZE / correct_distance)
@@ -55,52 +54,51 @@ void	calculate_distances(t_mlx *mlx_srct, t_parce *game)
 	if (mlx_srct->hited.bottomOfWall < 0 || mlx_srct->hited.topOfWall > HEIGHT)
 		mlx_srct->hited.topOfWall = HEIGHT;
 }
+
+void	load_xpm(	t_img	img, t_parce *game)
+{	int		h;
+	int		*h_ptr;
+
+		h = 64;
+	h_ptr = &h;
+	game->mlx_srct.hited.xpm_no = mlx_xpm_file_to_image(game->mlx_srct.mlx_ptr, game->no_path, h_ptr,h_ptr);
+	game->mlx_srct.hited.data_no = (int *)mlx_get_data_addr(game->mlx_srct.hited.xpm_no,&img.bpp,&img.size_line,&img.endian);
+	game->mlx_srct.hited.xpm_so = mlx_xpm_file_to_image(game->mlx_srct.mlx_ptr,game->so_path,
+												   h_ptr,
+												   h_ptr);
+game->mlx_srct.hited.data_so = (int *)mlx_get_data_addr(game->mlx_srct.hited.xpm_so,
+													   &img.bpp,
+													   &img.size_line,
+													   &img.endian);
+	game->mlx_srct.hited.xpm_we = mlx_xpm_file_to_image(game->mlx_srct.mlx_ptr,
+												   game->we_path,
+												   h_ptr,
+												   h_ptr);
+	game->mlx_srct.hited.data_we = (int *)mlx_get_data_addr(game->mlx_srct.hited.xpm_we,
+													   &img.bpp,
+													   &img.size_line,
+													   &img.endian);
+	game->mlx_srct.hited.xpm_ea = mlx_xpm_file_to_image(game->mlx_srct.mlx_ptr,
+												   game->ea_path,
+												   h_ptr,
+												   h_ptr);
+	game->mlx_srct.hited.data_ea = (int *)mlx_get_data_addr(game->mlx_srct.hited.xpm_ea,
+													   &img.bpp,
+													   &img.size_line,
+													   &img.endian);
+}
 void	cast_rays(t_mlx *mlx_srct, t_parce *game)
 {
 	int		column_id;
 	int		color;
 	t_img	img;
 	int		h;
-	int		*h_ptr;
 	int		*c;
 	int		y;
 	int		distanceFromTop;
 	int		ofssety;
 
-	h = 64;
-	h_ptr = &h;
-	mlx_srct->hited.xpm_no = mlx_xpm_file_to_image(mlx_srct->mlx_ptr,
-													game->no_path,
-													h_ptr,
-													h_ptr);
-	mlx_srct->hited.data_no = (int *)mlx_get_data_addr(mlx_srct->hited.xpm_no,
-														&img.bpp,
-														&img.size_line,
-														&img.endian);
-	mlx_srct->hited.xpm_so = mlx_xpm_file_to_image(mlx_srct->mlx_ptr,
-													game->so_path,
-													h_ptr,
-													h_ptr);
-	mlx_srct->hited.data_so = (int *)mlx_get_data_addr(mlx_srct->hited.xpm_so,
-														&img.bpp,
-														&img.size_line,
-														&img.endian);
-	mlx_srct->hited.xpm_we = mlx_xpm_file_to_image(mlx_srct->mlx_ptr,
-													game->we_path,
-													h_ptr,
-													h_ptr);
-	mlx_srct->hited.data_we = (int *)mlx_get_data_addr(mlx_srct->hited.xpm_we,
-														&img.bpp,
-														&img.size_line,
-														&img.endian);
-	mlx_srct->hited.xpm_ea = mlx_xpm_file_to_image(mlx_srct->mlx_ptr,
-													game->ea_path,
-													h_ptr,
-													h_ptr);
-	mlx_srct->hited.data_ea = (int *)mlx_get_data_addr(mlx_srct->hited.xpm_ea,
-														&img.bpp,
-														&img.size_line,
-														&img.endian);
+	load_xpm(img,game);
 	init_them(mlx_srct);
 	mlx_srct->hited.distbtwplr_and_plane = 0;
 	column_id = 0;
