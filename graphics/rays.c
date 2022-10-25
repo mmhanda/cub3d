@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 04:57:23 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/25 09:13:08 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/25 09:21:49 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,8 @@ t_img img;
 //read xpm file 
 int h = 64;
 int *h_ptr = & h;
-//  img.addr =   mlx_get_data_addr( mlx_xpm_file_to_image(mlx_srct->mlx_ptr,"./textur/walld.xpm",h_ptr, h_ptr),&img.bpp,&img.size_line, &img.endian);
-// void *img_xpm = mlx_xpm_file_to_image(mlx_srct->mlx_ptr,"./textur/wall2.xpm",h_ptr, h_ptr);
 void *img_xpm = mlx_xpm_file_to_image(mlx_srct->mlx_ptr,   game->no_path,h_ptr, h_ptr);
-int *data_xpm =(int *) mlx_get_data_addr(img_xpm,&img.bpp, &img.size_line, &img.endian);
-// printf("color  =  %x\n ",(int  )img.addr +1);
-
+mlx_srct->hited.data_no =(int *) mlx_get_data_addr(img_xpm,&img.bpp, &img.size_line, &img.endian);
 /****************************/
 	
 	init_them(mlx_srct);
@@ -101,10 +97,9 @@ int *data_xpm =(int *) mlx_get_data_addr(img_xpm,&img.bpp, &img.size_line, &img.
 	
 	while ( y < mlx_srct->hited.bottomOfWall)
 	{
-            int distanceFromTop = (int ) (y + (mlx_srct->hited.projectedWallHeight / 2) - (HEIGHT / 2));
-            int ofssety =(int)( distanceFromTop * ((float)64 / mlx_srct->hited.projectedWallHeight ));
-		int *colo = data_xpm  +((64 *ofssety ) + mlx_srct->hited.offset);
-		
+        int distanceFromTop = (int ) (y + (mlx_srct->hited.projectedWallHeight / 2) - (HEIGHT / 2));
+        int ofssety =(int)( distanceFromTop * ((float)64 / mlx_srct->hited.projectedWallHeight ));
+		int *colo = mlx_srct->hited.data_no  +((64 *ofssety ) + mlx_srct->hited.offset);
 		img_pix_put(&mlx_srct->mlx_m, column_id, y, *colo);
 		y++;
 	}
