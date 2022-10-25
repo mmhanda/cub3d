@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 15:43:45 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/25 14:13:26 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/25 14:21:42 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -201,6 +201,8 @@ void	nearest_point(t_mlx *mlx_srct, double x, double y, t_parce *game);
 void	draw_floor(t_parce *game_map);
 void	draw_ceilling(t_parce *game_map);
 void	init_them(t_mlx *mlx_srct);
+void	wall_found_hor(t_mlx *mlx_srct, double x, double y);
+void	wall_found_ver(t_mlx *mlx_srct, double x, double y);
 /**********************************************/
 
 void	check_xpm(t_parce *paths_rgb);
