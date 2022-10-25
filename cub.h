@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 15:43:45 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/25 14:26:38 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/25 14:40:38 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ void *xpm_we;
 void *xpm_ea;
 int *color;
 int offset;
+int ofssety;
 }					t_hit;
 
 typedef struct s_ray
@@ -204,6 +205,7 @@ void	init_them(t_mlx *mlx_srct);
 void	wall_found_hor(t_mlx *mlx_srct, double x, double y);
 void	wall_found_ver(t_mlx *mlx_srct, double x, double y);
 void	load_xpm(	t_img	img, t_parce *game);
+void	get_right_pixel(t_mlx *mlx_srct, t_parce *game , int ofssety);
 /**********************************************/
 
 void	check_xpm(t_parce *paths_rgb);
