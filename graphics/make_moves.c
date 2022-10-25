@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   make_moves.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 04:57:08 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/25 14:07:46 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/25 17:09:26 by mhanda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,18 @@ int	mlx_key_press(int preced_key, t_parce *game)
 		game->mlx_srct.plyr.turn_direction = -1;
 	paint_mini_map(&game->mlx_srct, game);
 	return (0);
+}
+
+bool	is_right(double angle_in_radian)
+{
+	if (angle_in_radian < (M_PI / 2) || angle_in_radian > (1.5 * M_PI))
+		return (true);
+	return (false);
+}
+
+bool	is_down(double angle_in_radian)
+{
+	if (angle_in_radian > 0 && angle_in_radian < M_PI)
+		return (true);
+	return (false);
 }

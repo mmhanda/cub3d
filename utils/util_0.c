@@ -6,7 +6,7 @@
 /*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 16:07:40 by mhanda            #+#    #+#             */
-/*   Updated: 2022/09/11 18:52:02 by mhanda           ###   ########.fr       */
+/*   Updated: 2022/10/25 16:47:48 by mhanda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,9 @@ char	*ft_strjoin(char *s1, char *s2)
 	return (p);
 }
 
-int ft_strcmp(char *s1, char *s2)
+int	ft_strcmp(char *s1, char *s2)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0')
@@ -90,14 +90,13 @@ int ft_strcmp(char *s1, char *s2)
 
 void	ft_put_error(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
-
 	while (str[i])
 	{
 		write(2, &str[i], 1);
 		i += 1;
 	}
-    exit(0);
+	exit (0);
 }

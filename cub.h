@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 15:43:45 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/25 16:33:12 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/25 17:26:03 by mhanda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,7 @@
 # define WIDTH 1080
 # define HEIGHT 720
 # define MOVE_SPEED 0.3
-# define FOV_ANGLE 60 * (M_PI / 180)
-# define WALL_STRIP_THIKNES 1
-# define NUM_RAYS (WIDTH / WALL_STRIP_THIKNES)
+# define FOV_ANGLE 1.04719755
 
 typedef struct s_hit
 {
@@ -131,7 +129,7 @@ typedef struct s_mlx
 	t_img			mlx_m;
 	t_hit			r;
 	t_mini_map		mini;
-	t_img	*img;
+	t_img			*img;
 
 }					t_mlx;
 
@@ -182,8 +180,6 @@ typedef struct s_parce
 	t_mlx			mlx_srct;
 	int				check_min_max;
 }					t_parce;
-/******************* atabiti ******************/
-
 double				distancebetween2_points(float x1, float y1, float x2,
 						float y2);
 void				check_horizontal_intersections(t_mlx *mlx_srct, double x,
@@ -205,8 +201,6 @@ void				get_right_pixel_p2(t_mlx *mlx_srct, int ofssety);
 void				make_them_false(t_parce *game);
 void				calculate_ofsset(t_mlx *mlx_srct);
 void				calculate_distances(t_mlx *mlx_srct);
-/**********************************************/
-
 void				check_xpm(t_parce *paths_rgb);
 void				convert_color_to_int(t_parce *paths_rgb, char ***c,
 						char ***f);
@@ -246,6 +240,8 @@ void				handl_player_case(char **tab, int x, int y,
 						t_parce *paths_rgb);
 void				handl_zero_case(char **tab, int x, int y,
 						t_parce *paths_rgb);
+char				*ft_strdup(char *s1);
+char				*ft_substr(char *s, int start, int len);
 char				**check_map_holes(t_map *node, t_parce *paths_rgb);
 char				**field_by_space(char **tab, t_parce *paths_rgb);
 char				**make_square_map(int x, int y);

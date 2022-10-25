@@ -3,23 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   rays.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 04:57:23 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/25 16:34:07 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/25 17:07:06 by mhanda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub.h"
-
-/*
-							Actual Slice Height
-Projected Slice Height= --------------------- * Distance to Projection Plane
-                        Distance to the Slice  
-
-bottomOfWall  = plane center  + projected Wall Height
-topOfWall  = plane center   - projected Wall Height
-*/
 
 void	load_xpm(t_parce *game)
 {

@@ -6,7 +6,7 @@
 /*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/11 21:25:53 by mhanda            #+#    #+#             */
-/*   Updated: 2022/09/14 17:40:05 by mhanda           ###   ########.fr       */
+/*   Updated: 2022/10/25 16:56:03 by mhanda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,20 @@ char	*ft_strndup(char *src, int n)
 	n += 1;
 	i = n;
 	while (src[size] && n)
-    {
+	{
 		++size;
-        n --;    
-    }
-	if (!(new = malloc(sizeof(char) * (size + 1))))
+		n --;
+	}
+	new = malloc(sizeof(char) * (size + 1));
+	if (!new)
 		return (NULL);
-    n = i;
-    i = 0;
+	n = i;
+	i = 0;
 	while (src[i] && n)
 	{
 		new[i] = src[i];
 		i ++;
-        n --;
+		n --;
 	}
 	new[i] = '\0';
 	return (new);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   paint.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 15:33:21 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/25 14:46:18 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/25 17:10:34 by mhanda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,4 +105,18 @@ void	paint_player(t_mlx *mlx_srct, double x, double y)
 		}
 		mlx_srct->mini.j ++;
 	}
+}
+
+int	check_wall_2(t_parce *game, double new_x, double new_y)
+{
+	int	map_index_x;
+	int	map_index_y;
+
+	map_index_x = floor(new_x);
+	map_index_y = floor(new_y);
+	if (new_x < 0 || new_y < 0)
+		return (0);
+	if (game->parced_map[map_index_y][map_index_x] == '1')
+		return (1);
+	return (0);
 }
