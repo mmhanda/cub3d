@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 15:33:21 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/25 08:52:31 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/25 14:46:18 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,26 +20,6 @@ void	img_pix_put(t_img *img, int x, int y, int color)
 		return ;
 	pixel = img->addr + (y * img->size_line + x * (img->bpp / 8));
 	*(int *)pixel = color;
-}
-
-void	init_them(t_mlx *mlx_srct)
-{
-	mlx_srct->hited.nextHorzTouchX = 0;
-	mlx_srct->hited.nextHorzTouchY = 0;
-	mlx_srct->hited.yintercept = 0;
-	mlx_srct->hited.xintercept = 0;
-	mlx_srct->hited.wallhitx = 0;
-	mlx_srct->hited.wallhity = 0;
-	mlx_srct->hited.x_map_grid = 0;
-	mlx_srct->hited.y_map_grid = 0;
-	mlx_srct->hited.horx = 0;
-	mlx_srct->hited.hory = 0;
-	mlx_srct->hited.verx = 0;
-	mlx_srct->hited.very = 0;
-	mlx_srct->hited.ystep = 0;
-	mlx_srct->hited.xstep = 0;
-	mlx_srct->hited.bottomOfWall = 0;
-	mlx_srct->hited.topOfWall = 0;
 }
 
 void	paint_ground(t_mlx *mlx_srct, t_parce *game_map, double x, double y)

@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 04:57:23 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/25 14:41:50 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/25 14:47:56 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,17 @@ void	load_xpm(t_img img, t_parce *game)
 	h = 64;
 	h_ptr = &h;
 	game->mlx_srct.hited.xpm_no = mlx_xpm_file_to_image(game->mlx_srct.mlx_ptr,
-			game->no_path, h_ptr, h_ptr);
+														game->no_path,
+														h_ptr,
+														h_ptr);
 	game->mlx_srct.hited.data_no = (int *)mlx_get_data_addr(game->mlx_srct.hited.xpm_no,
-			&img.bpp, &img.size_line, &img.endian);
+															&img.bpp,
+															&img.size_line,
+															&img.endian);
 	game->mlx_srct.hited.xpm_so = mlx_xpm_file_to_image(game->mlx_srct.mlx_ptr,
-			game->so_path, h_ptr, h_ptr);
+														game->so_path,
+														h_ptr,
+														h_ptr);
 	game->mlx_srct.hited.data_so = (int *)mlx_get_data_addr(game->mlx_srct.hited.xpm_so,
 															&img.bpp,
 															&img.size_line,
@@ -88,6 +94,29 @@ void	load_xpm(t_img img, t_parce *game)
 															&img.bpp,
 															&img.size_line,
 															&img.endian);
+}
+void	get_right_pixel_p2(t_mlx *mlx_srct, t_parce *game, int ofssety)
+{
+	if ((is_down(mlx_srct->rays.ray_angle))
+		&& mlx_srct->hited.wasverticallasttime == false)
+	{
+		mlx_srct->hited.color = mlx_srct->hited.data_no + ((64 * ofssety)
+				+ mlx_srct->hited.offset);
+	}
+	else if ((is_down(mlx_srct->rays.ray_angle))
+			&& mlx_srct->hited.wasverticallasttime == true
+			&& is_right(mlx_srct->rays.ray_angle))
+	{
+		mlx_srct->hited.color = mlx_srct->hited.data_we + ((64 * ofssety)
+				+ mlx_srct->hited.offset);
+	}
+	else if ((is_down(mlx_srct->rays.ray_angle))
+			&& mlx_srct->hited.wasverticallasttime == true
+			&& !is_right(mlx_srct->rays.ray_angle))
+	{
+		mlx_srct->hited.color = mlx_srct->hited.data_ea + ((64 * ofssety)
+				+ mlx_srct->hited.offset);
+	}
 }
 void	get_right_pixel(t_mlx *mlx_srct, t_parce *game, int ofssety)
 {
@@ -111,26 +140,8 @@ void	get_right_pixel(t_mlx *mlx_srct, t_parce *game, int ofssety)
 		mlx_srct->hited.color = mlx_srct->hited.data_ea + ((64 * ofssety)
 				+ mlx_srct->hited.offset);
 	}
-	else if ((is_down(mlx_srct->rays.ray_angle))
-			&& mlx_srct->hited.wasverticallasttime == false)
-	{
-		mlx_srct->hited.color = mlx_srct->hited.data_no + ((64 * ofssety)
-				+ mlx_srct->hited.offset);
-	}
-	else if ((is_down(mlx_srct->rays.ray_angle))
-			&& mlx_srct->hited.wasverticallasttime == true
-			&& is_right(mlx_srct->rays.ray_angle))
-	{
-		mlx_srct->hited.color = mlx_srct->hited.data_we + ((64 * ofssety)
-				+ mlx_srct->hited.offset);
-	}
-	else if ((is_down(mlx_srct->rays.ray_angle))
-			&& mlx_srct->hited.wasverticallasttime == true
-			&& !is_right(mlx_srct->rays.ray_angle))
-	{
-		mlx_srct->hited.color = mlx_srct->hited.data_ea + ((64 * ofssety)
-				+ mlx_srct->hited.offset);
-	}
+	else
+		get_right_pixel_p2(mlx_srct, game, ofssety);
 }
 void	cast_rays(t_mlx *mlx_srct, t_parce *game)
 {
@@ -138,9 +149,7 @@ void	cast_rays(t_mlx *mlx_srct, t_parce *game)
 	int		color;
 	t_img	img;
 	int		h;
-	int		*c;
 	int		y;
-	int		distanceFromTop;
 	int		ofssety;
 
 	load_xpm(img, game);
@@ -153,21 +162,15 @@ void	cast_rays(t_mlx *mlx_srct, t_parce *game)
 		mlx_srct->rays.ray_angle = fmod(mlx_srct->rays.ray_angle, 2 * M_PI);
 		if (mlx_srct->rays.ray_angle < 0)
 			mlx_srct->rays.ray_angle += (2 * M_PI);
-		mlx_srct->hited.horhit = false;
-		mlx_srct->hited.verhit = false;
-		color = 0xCA8927;
-		mlx_srct->hited.wasverticallasttime = false;
-		mlx_srct->hited.hiitx = 0;
-		mlx_srct->hited.hiity = 0;
-		mlx_srct->hited.distance_to_wall = 0;
+		make_them_false(mlx_srct);
 		put_rays(mlx_srct, mlx_srct->plyr.x, mlx_srct->plyr.y, game);
 		calculate_distances(mlx_srct, game);
 		y = mlx_srct->hited.topOfWall;
 		while (y < mlx_srct->hited.bottomOfWall)
 		{
-			distanceFromTop = (int)(y + (mlx_srct->hited.projectedWallHeight
-						/ 2) - (HEIGHT / 2));
-			ofssety = (int)(distanceFromTop * ((float)64
+			mlx_srct->hited.distanceFromTop = (int)(y
+					+ (mlx_srct->hited.projectedWallHeight / 2) - (HEIGHT / 2));
+			ofssety = (int)(mlx_srct->hited.distanceFromTop * ((float)64
 						/ mlx_srct->hited.projectedWallHeight));
 			get_right_pixel(mlx_srct, game, ofssety);
 			img_pix_put(&mlx_srct->mlx_m, column_id, y, *mlx_srct->hited.color);
