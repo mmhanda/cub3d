@@ -1,4 +1,4 @@
- NO ./main.c        
+ NO ./textur/grass.xpm     
           SO ./main.c
 
 		WE ./main.c             
