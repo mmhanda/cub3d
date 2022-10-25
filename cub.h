@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 15:43:45 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/25 09:20:18 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/25 09:22:50 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,11 @@ int *data_no;
 int *data_so;
 int *data_we;
 int *data_ea;
+
+void *xpm_no;
+void *xpm_so;
+void *xpm_we;
+void *xpm_ea;
 int offset;
 }					t_hit;
 

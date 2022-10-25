@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 04:57:23 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/25 09:21:49 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/25 09:25:14 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,19 @@ t_img img;
 //read xpm file 
 int h = 64;
 int *h_ptr = & h;
-void *img_xpm = mlx_xpm_file_to_image(mlx_srct->mlx_ptr,   game->no_path,h_ptr, h_ptr);
-mlx_srct->hited.data_no =(int *) mlx_get_data_addr(img_xpm,&img.bpp, &img.size_line, &img.endian);
+/* NORTH*/
+mlx_srct->hited.xpm_no = mlx_xpm_file_to_image(mlx_srct->mlx_ptr,   game->no_path,h_ptr, h_ptr);
+mlx_srct->hited.data_no =(int *) mlx_get_data_addr( mlx_srct->hited.xpm_no ,&img.bpp, &img.size_line, &img.endian);
+
+/* SOUTH*/
+mlx_srct->hited.xpm_so = mlx_xpm_file_to_image(mlx_srct->mlx_ptr,   game->no_path,h_ptr, h_ptr);
+mlx_srct->hited.data_so =(int *) mlx_get_data_addr( mlx_srct->hited.xpm_so ,&img.bpp, &img.size_line, &img.endian);
+/* WEST*/
+mlx_srct->hited.xpm_we = mlx_xpm_file_to_image(mlx_srct->mlx_ptr,   game->no_path,h_ptr, h_ptr);
+mlx_srct->hited.data_we =(int *) mlx_get_data_addr( mlx_srct->hited.xpm_we ,&img.bpp, &img.size_line, &img.endian);
+/* EAST*/
+mlx_srct->hited.xpm_ea = mlx_xpm_file_to_image(mlx_srct->mlx_ptr,   game->no_path,h_ptr, h_ptr);
+mlx_srct->hited.data_ea =(int *) mlx_get_data_addr( mlx_srct->hited.xpm_ea ,&img.bpp, &img.size_line, &img.endian);
 /****************************/
 	
 	init_them(mlx_srct);
