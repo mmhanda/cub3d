@@ -6,23 +6,23 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 15:39:16 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/25 12:53:32 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/25 14:04:26 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub.h"
 
-int	mlx_x_key_han()
+int	mlx_x_key_han(void)
 {
 	exit(0);
 }
 
-void    make_texturs(t_parce *game_map)
+void	make_texturs(t_parce *game_map)
 {
-	game_map->f_colo = (game_map->f.r << 16)\
-	+ (game_map->f.g << 8) + game_map->f.b;
-	game_map->c_colo = (game_map->c.r << 16)\
-	+ (game_map->c.g << 8) + game_map->c.b;
+	game_map->f_colo = (game_map->f.r << 16) + (game_map->f.g << 8)
+		+ game_map->f.b;
+	game_map->c_colo = (game_map->c.r << 16) + (game_map->c.g << 8)
+		+ game_map->c.b;
 }
 
 int	set_direction(char p, t_mlx *mlx_srct)
@@ -52,29 +52,6 @@ int	set_direction(char p, t_mlx *mlx_srct)
 
 int	mlx_key_releas(int preced_key, t_parce *game)
 {
-
-	/* Linux */
-	// if (preced_key == 65307)
-	// {
-	// 	printf("Quit !\n");
-	// 	exit(0);
-	// }
-	// if (preced_key == 119)
-	// 	game->mlx_srct.plyr.walk_direction = 0;
-	// if (preced_key == 115)
-	// 	game->mlx_srct.plyr.walk_direction = 0;
-	// if (preced_key == 97)
-	// 	game->mlx_srct.plyr.right_or_left = 0;
-	// if (preced_key == 100)
-	// 	game->mlx_srct.plyr.right_or_left = 0;
-	// if(preced_key == 65363)
-	// 	game->mlx_srct.plyr.turn_direction = 0;
-	// if(preced_key == 65361)
-	// 	game->mlx_srct.plyr.turn_direction = 0;
-	// paint_mini_map(&game->mlx_srct, game);
-
-	// 
-	/*MacOs   */
 	if (preced_key == 53)
 	{
 		printf("Quit !\n");
@@ -88,9 +65,9 @@ int	mlx_key_releas(int preced_key, t_parce *game)
 		game->mlx_srct.plyr.right_or_left = 0;
 	if (preced_key == 2)
 		game->mlx_srct.plyr.right_or_left = 0;
-	if(preced_key == 124)
+	if (preced_key == 124)
 		game->mlx_srct.plyr.turn_direction = 0;
-	if(preced_key == 123)
+	if (preced_key == 123)
 		game->mlx_srct.plyr.turn_direction = 0;
 	paint_mini_map(&game->mlx_srct, game);
 	return (0);
@@ -113,9 +90,9 @@ void	handl_player(t_parce *game_map, t_mlx *mlx_srct)
 				mlx_srct->plyr.y = i;
 				game_map->parced_map[i][j] = '0';
 			}
-			j ++;
+			j++;
 		}
-		i ++;
+		i++;
 	}
 	mlx_srct->plyr.turn_direction = 0;
 	mlx_srct->plyr.walk_direction = 0;
