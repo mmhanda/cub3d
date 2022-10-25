@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 08:40:41 by atabiti           #+#    #+#             */
-/*   Updated: 2022/10/25 15:25:33 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/25 15:31:11 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,14 +58,14 @@ void	calculate_distances(t_mlx *mlx_srct, t_parce *game)
 	correct_distance = mlx_srct->r.distance_to_wall
 		* cos(mlx_srct->rays.ray_angle - mlx_srct->plyr.rotate);
 	mlx_srct->r.distbtwplr_and_plane = ((WIDTH / 2) / tan(FOV_ANGLE / 2.00));
-	mlx_srct->r.projectedWallHeight = (int)((TILE_SIZE / correct_distance)
+	mlx_srct->r.wall_height = (int)((TILE_SIZE / correct_distance)
 			* mlx_srct->r.distbtwplr_and_plane);
-	mlx_srct->r.bottomOfWall = ((HEIGHT / 2) + (mlx_srct->r.projectedWallHeight)
+	mlx_srct->r.wallbottom = ((HEIGHT / 2) + (mlx_srct->r.wall_height)
 			/ 2);
-	mlx_srct->r.topOfWall = ((HEIGHT / 2) - mlx_srct->r.projectedWallHeight
+	mlx_srct->r.walltop = ((HEIGHT / 2) - mlx_srct->r.wall_height
 			/ 2);
-	if (mlx_srct->r.topOfWall < 0 || mlx_srct->r.topOfWall > HEIGHT)
-		mlx_srct->r.topOfWall = 0;
-	if (mlx_srct->r.bottomOfWall < 0 || mlx_srct->r.topOfWall > HEIGHT)
-		mlx_srct->r.topOfWall = HEIGHT;
+	if (mlx_srct->r.walltop < 0 || mlx_srct->r.walltop > HEIGHT)
+		mlx_srct->r.walltop = 0;
+	if (mlx_srct->r.wallbottom < 0 || mlx_srct->r.walltop > HEIGHT)
+		mlx_srct->r.walltop = HEIGHT;
 }

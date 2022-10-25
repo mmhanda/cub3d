@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 04:57:23 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/25 15:24:33 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/25 15:31:11 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,10 +87,10 @@ void	get_right_pixel(t_mlx *mlx_srct, t_parce *game, int ofssety)
 
 void	calculate_ofsset(t_mlx *mlx_srct)
 {
-	mlx_srct->r.distanceFromTop = (int)(mlx_srct->r.y_wall
-			+ (mlx_srct->r.projectedWallHeight / 2) - (HEIGHT / 2));
-	mlx_srct->r.ofssety = (int)(mlx_srct->r.distanceFromTop * ((float)64
-				/ mlx_srct->r.projectedWallHeight));
+	mlx_srct->r.distancefromtop = (int)(mlx_srct->r.y_wall
+			+ (mlx_srct->r.wall_height / 2) - (HEIGHT / 2));
+	mlx_srct->r.ofssety = (int)(mlx_srct->r.distancefromtop * ((float)64
+				/ mlx_srct->r.wall_height));
 }
 
 void	cast_rays(t_mlx *mlx_srct, t_parce *game)
@@ -107,8 +107,8 @@ void	cast_rays(t_mlx *mlx_srct, t_parce *game)
 		if (mlx_srct->rays.ray_angle < 0)
 			mlx_srct->rays.ray_angle += (2 * M_PI);
 		make_them_false(game);
-		mlx_srct->r.y_wall = mlx_srct->r.topOfWall;
-		while (mlx_srct->r.y_wall < mlx_srct->r.bottomOfWall)
+		mlx_srct->r.y_wall = mlx_srct->r.walltop;
+		while (mlx_srct->r.y_wall < mlx_srct->r.wallbottom)
 		{
 			calculate_ofsset(mlx_srct);
 			get_right_pixel(mlx_srct, game, mlx_srct->r.ofssety);
