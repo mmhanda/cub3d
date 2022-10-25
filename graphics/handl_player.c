@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handl_player.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 15:39:16 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/25 14:04:26 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/25 17:32:19 by mhanda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,6 @@ int	set_direction(char p, t_mlx *mlx_srct)
 
 int	mlx_key_releas(int preced_key, t_parce *game)
 {
-	if (preced_key == 53)
-	{
-		printf("Quit !\n");
-		exit(0);
-	}
 	if (preced_key == 13)
 		game->mlx_srct.plyr.walk_direction = 0;
 	if (preced_key == 1)
@@ -69,7 +64,6 @@ int	mlx_key_releas(int preced_key, t_parce *game)
 		game->mlx_srct.plyr.turn_direction = 0;
 	if (preced_key == 123)
 		game->mlx_srct.plyr.turn_direction = 0;
-	paint_mini_map(&game->mlx_srct, game);
 	return (0);
 }
 
