@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 15:43:45 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/25 10:42:45 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/25 11:24:11 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # define TILE_SIZE 32
 # define WIDTH 1080
 # define HEIGHT 720
-# define MOVE_SPEED 0.1
+# define MOVE_SPEED 0.4
 # define FOV_ANGLE 60 * (M_PI / 180)
 # define WALL_STRIP_THIKNES 1
 # define NUM_RAYS (WIDTH / WALL_STRIP_THIKNES)
