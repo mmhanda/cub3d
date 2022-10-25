@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 13:23:43 by atabiti           #+#    #+#             */
-/*   Updated: 2022/10/25 14:21:51 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/25 15:18:56 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,76 +14,76 @@
 
 void	wall_found_hor(t_mlx *mlx_srct, double x, double y)
 {
-	mlx_srct->hited.wallhitx = mlx_srct->hited.tmpx;
-	mlx_srct->hited.wallhity = mlx_srct->hited.tmpy;
-	mlx_srct->hited.horx = mlx_srct->hited.tmpx;
-	mlx_srct->hited.hory = mlx_srct->hited.tmpy;
-	mlx_srct->hited.horhit = true;
-	mlx_srct->hited.offset = (int)mlx_srct->hited.wallhitx % TILE_SIZE;
+	mlx_srct->r.wallhitx = mlx_srct->r.tmpx;
+	mlx_srct->r.wallhity = mlx_srct->r.tmpy;
+	mlx_srct->r.horx = mlx_srct->r.tmpx;
+	mlx_srct->r.hory = mlx_srct->r.tmpy;
+	mlx_srct->r.horhit = true;
+	mlx_srct->r.offset = (int)mlx_srct->r.wallhitx % TILE_SIZE;
 }
 
 void	check_horizontal_intersections(t_mlx *mlx_srct, double x, double y,
 		t_parce *game)
 {
 	y_x_horizontal(mlx_srct, x, y, game);
-	mlx_srct->hited.tmpx = mlx_srct->hited.xintercept;
-	mlx_srct->hited.tmpy = mlx_srct->hited.yintercept;
-	while (mlx_srct->hited.tmpx >= 0
-		&& mlx_srct->hited.tmpx <= ((mlx_srct->longest_line - 1) * TILE_SIZE)
-		&& mlx_srct->hited.tmpy >= 0
-		&& mlx_srct->hited.tmpy <= ((mlx_srct->tab_len - 1) * TILE_SIZE))
+	mlx_srct->r.tmpx = mlx_srct->r.xintercept;
+	mlx_srct->r.tmpy = mlx_srct->r.yintercept;
+	while (mlx_srct->r.tmpx >= 0
+		&& mlx_srct->r.tmpx <= ((mlx_srct->longest_line - 1) * TILE_SIZE)
+		&& mlx_srct->r.tmpy >= 0
+		&& mlx_srct->r.tmpy <= ((mlx_srct->tab_len - 1) * TILE_SIZE))
 	{
-		mlx_srct->hited.mapindex_x = mlx_srct->hited.tmpx / TILE_SIZE;
-		mlx_srct->hited.mapindex_y = mlx_srct->hited.tmpy / TILE_SIZE;
+		mlx_srct->r.mapindex_x = mlx_srct->r.tmpx / TILE_SIZE;
+		mlx_srct->r.mapindex_y = mlx_srct->r.tmpy / TILE_SIZE;
 		if (!is_down(mlx_srct->rays.ray_angle))
-			mlx_srct->hited.mapindex_y -= 1;
-		if (check_wall_2(game, mlx_srct->hited.mapindex_x,
-				mlx_srct->hited.mapindex_y) == 1)
+			mlx_srct->r.mapindex_y -= 1;
+		if (check_wall_2(game, mlx_srct->r.mapindex_x,
+				mlx_srct->r.mapindex_y) == 1)
 		{
 			wall_found_hor(mlx_srct, x, y);
 			break ;
 		}
 		else
 		{
-			mlx_srct->hited.tmpx += mlx_srct->hited.xstep;
-			mlx_srct->hited.tmpy += mlx_srct->hited.ystep;
+			mlx_srct->r.tmpx += mlx_srct->r.xstep;
+			mlx_srct->r.tmpy += mlx_srct->r.ystep;
 		}
 	}
 }
 
 void	wall_found_ver(t_mlx *mlx_srct, double x, double y)
 {
-	mlx_srct->hited.wallhitx = mlx_srct->hited.tmpx;
-	mlx_srct->hited.wallhity = mlx_srct->hited.tmpy;
-	mlx_srct->hited.verx = mlx_srct->hited.tmpx;
-	mlx_srct->hited.very = mlx_srct->hited.tmpy;
-	mlx_srct->hited.verhit = true;
-	mlx_srct->hited.offset = (int)mlx_srct->hited.wallhity % TILE_SIZE;
+	mlx_srct->r.wallhitx = mlx_srct->r.tmpx;
+	mlx_srct->r.wallhity = mlx_srct->r.tmpy;
+	mlx_srct->r.verx = mlx_srct->r.tmpx;
+	mlx_srct->r.very = mlx_srct->r.tmpy;
+	mlx_srct->r.verhit = true;
+	mlx_srct->r.offset = (int)mlx_srct->r.wallhity % TILE_SIZE;
 }
 
 void	check_vertical_intersections(t_mlx *mlx_srct, double x, double y,
 		t_parce *game)
 {
 	y_x_vertical(mlx_srct, x, y, game);
-	while (mlx_srct->hited.tmpx >= 0
-		&& mlx_srct->hited.tmpx <= ((mlx_srct->longest_line - 1) * TILE_SIZE)
-		&& mlx_srct->hited.tmpy >= 0
-		&& mlx_srct->hited.tmpy <= ((mlx_srct->tab_len - 1) * TILE_SIZE))
+	while (mlx_srct->r.tmpx >= 0
+		&& mlx_srct->r.tmpx <= ((mlx_srct->longest_line - 1) * TILE_SIZE)
+		&& mlx_srct->r.tmpy >= 0
+		&& mlx_srct->r.tmpy <= ((mlx_srct->tab_len - 1) * TILE_SIZE))
 	{
-		mlx_srct->hited.mapindex_x = mlx_srct->hited.tmpx / TILE_SIZE;
-		mlx_srct->hited.mapindex_y = mlx_srct->hited.tmpy / TILE_SIZE;
+		mlx_srct->r.mapindex_x = mlx_srct->r.tmpx / TILE_SIZE;
+		mlx_srct->r.mapindex_y = mlx_srct->r.tmpy / TILE_SIZE;
 		if (!is_right(mlx_srct->rays.ray_angle))
-			mlx_srct->hited.mapindex_x -= 1;
-		if (check_wall_2(game, mlx_srct->hited.mapindex_x,
-				mlx_srct->hited.mapindex_y) == 1)
+			mlx_srct->r.mapindex_x -= 1;
+		if (check_wall_2(game, mlx_srct->r.mapindex_x,
+				mlx_srct->r.mapindex_y) == 1)
 		{
 			wall_found_ver(mlx_srct, x, y);
 			break ;
 		}
 		else
 		{
-			mlx_srct->hited.tmpx += mlx_srct->hited.xstep;
-			mlx_srct->hited.tmpy += mlx_srct->hited.ystep;
+			mlx_srct->r.tmpx += mlx_srct->r.xstep;
+			mlx_srct->r.tmpy += mlx_srct->r.ystep;
 		}
 	}
 }
@@ -93,10 +93,10 @@ void	put_rays(t_mlx *mlx_srct, double x, double y, t_parce *game)
 	int	bb;
 	int	bc;
 
-	mlx_srct->hited.verdistance = 999999999;
-	mlx_srct->hited.hordistance = 999999999;
-	mlx_srct->hited.hiitx = 0;
-	mlx_srct->hited.hiity = 0;
+	mlx_srct->r.verdistance = 999999999;
+	mlx_srct->r.hordistance = 999999999;
+	mlx_srct->r.hiitx = 0;
+	mlx_srct->r.hiity = 0;
 	check_horizontal_intersections(mlx_srct, x * TILE_SIZE, y * TILE_SIZE,
 		game);
 	check_vertical_intersections(mlx_srct, x * TILE_SIZE, y * TILE_SIZE, game);

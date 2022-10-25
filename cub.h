@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 15:43:45 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/25 15:12:12 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/25 15:18:56 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,7 @@ typedef struct s_mlx
 	t_ray		rays;
 	t_player	plyr;
 	t_img		mlx_m;
-	t_hit 		hited;
+	t_hit 		r;
 	t_mini_map	mini;
 } t_mlx;
 
