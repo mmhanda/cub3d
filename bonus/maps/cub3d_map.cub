@@ -1,7 +1,7 @@
-NO ./textur/wall.xpm     
-SO ./textur/blue.xpm 
-WE ./textur/red.xpm          
-EA  ./textur/wall2.xpm    
+NO mandatory/textur/wall.xpm     
+SO mandatory/textur/blue.xpm 
+WE mandatory/textur/red.xpm          
+EA  mandatory/textur/wall2.xpm  
 
 F 220,100,0
 C 225,30,0

@@ -6,7 +6,7 @@
 /*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 15:34:44 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/25 23:11:17 by mhanda           ###   ########.fr       */
+/*   Updated: 2022/10/25 23:31:08 by mhanda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,27 +58,6 @@ void	update_pos(t_mlx *mlx_srct, t_parce *game)
 	continu_update_pos(mlx_srct, game);
 }
 
-void	continu_paint_mini_map(t_mlx *mlx_srct, t_parce *game_map)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (game_map->parced_map[i])
-	{
-		j = 0;
-		while (game_map->parced_map[i][j])
-		{
-			if (game_map->parced_map[i][j] == '1')
-				paint_walls(mlx_srct, game_map, j, i);
-			if (game_map->parced_map[i][j] == '0')
-				paint_ground(mlx_srct, game_map, j, i);
-			j++;
-		}
-		i++;
-	}
-}
-
 void	paint_mini_map(t_mlx *mlx_srct, t_parce *game_map)
 {
 	if (mlx_srct->des_remind == 1)
@@ -92,9 +71,6 @@ void	paint_mini_map(t_mlx *mlx_srct, t_parce *game_map)
 	draw_ceilling(game_map);
 	draw_floor(game_map);
 	cast_rays(mlx_srct, game_map);
-	paint_player(mlx_srct, mlx_srct->plyr.x, mlx_srct->plyr.y);
-	continu_paint_mini_map(mlx_srct, game_map);
-	paint_player(mlx_srct, mlx_srct->plyr.x, mlx_srct->plyr.y);
 	mlx_srct->des_remind = 1;
 	mlx_put_image_to_window(mlx_srct->mlx_ptr, mlx_srct->win_ptr,
 		mlx_srct->mlx_m.mlx_img, 0, 0);

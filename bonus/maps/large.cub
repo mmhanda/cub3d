@@ -1,7 +1,7 @@
-NO ./textur/wdall.xpm     
-SO ./textur/blue.xpm 
-WE ./textur/red.xpm          
-EA  ./textur/wall2.xpm    
+NO mandatory/textur/wall.xpm     
+SO mandatory/textur/blue.xpm 
+WE mandatory/textur/red.xpm          
+EA  mandatory/textur/wall2.xpm   
 
 F 9,164,19
 C 30,248,255
