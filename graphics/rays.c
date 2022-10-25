@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 04:57:23 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/25 09:25:14 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/25 09:40:15 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,15 +68,14 @@ int *h_ptr = & h;
 /* NORTH*/
 mlx_srct->hited.xpm_no = mlx_xpm_file_to_image(mlx_srct->mlx_ptr,   game->no_path,h_ptr, h_ptr);
 mlx_srct->hited.data_no =(int *) mlx_get_data_addr( mlx_srct->hited.xpm_no ,&img.bpp, &img.size_line, &img.endian);
-
 /* SOUTH*/
-mlx_srct->hited.xpm_so = mlx_xpm_file_to_image(mlx_srct->mlx_ptr,   game->no_path,h_ptr, h_ptr);
+mlx_srct->hited.xpm_so = mlx_xpm_file_to_image(mlx_srct->mlx_ptr,   game->so_path,h_ptr, h_ptr);
 mlx_srct->hited.data_so =(int *) mlx_get_data_addr( mlx_srct->hited.xpm_so ,&img.bpp, &img.size_line, &img.endian);
 /* WEST*/
-mlx_srct->hited.xpm_we = mlx_xpm_file_to_image(mlx_srct->mlx_ptr,   game->no_path,h_ptr, h_ptr);
+mlx_srct->hited.xpm_we = mlx_xpm_file_to_image(mlx_srct->mlx_ptr,   game->we_path,h_ptr, h_ptr);
 mlx_srct->hited.data_we =(int *) mlx_get_data_addr( mlx_srct->hited.xpm_we ,&img.bpp, &img.size_line, &img.endian);
 /* EAST*/
-mlx_srct->hited.xpm_ea = mlx_xpm_file_to_image(mlx_srct->mlx_ptr,   game->no_path,h_ptr, h_ptr);
+mlx_srct->hited.xpm_ea = mlx_xpm_file_to_image(mlx_srct->mlx_ptr,   game->ea_path,h_ptr, h_ptr);
 mlx_srct->hited.data_ea =(int *) mlx_get_data_addr( mlx_srct->hited.xpm_ea ,&img.bpp, &img.size_line, &img.endian);
 /****************************/
 	
@@ -101,17 +100,36 @@ mlx_srct->hited.data_ea =(int *) mlx_get_data_addr( mlx_srct->hited.xpm_ea ,&img
 		// if (mlx_srct->hited.wasverticallasttime == true)
 		// 	color = game->f_colo + 0x3916E6;
 		calculate_distances(mlx_srct, game);
-		int	ff;
 		int *c;
-		int iter = 0;
 	int y = mlx_srct->hited.topOfWall;
-	
+		int *colo;
 	while ( y < mlx_srct->hited.bottomOfWall)
 	{
         int distanceFromTop = (int ) (y + (mlx_srct->hited.projectedWallHeight / 2) - (HEIGHT / 2));
         int ofssety =(int)( distanceFromTop * ((float)64 / mlx_srct->hited.projectedWallHeight ));
-		int *colo = mlx_srct->hited.data_no  +((64 *ofssety ) + mlx_srct->hited.offset);
+		if(is_down(mlx_srct->rays.ray_angle))
+		{
+			colo = mlx_srct->hited.data_we  +((64 *ofssety ) + mlx_srct->hited.offset);
+			
 		img_pix_put(&mlx_srct->mlx_m, column_id, y, *colo);
+		}
+		if(!is_down(mlx_srct->rays.ray_angle))
+		{
+			colo = mlx_srct->hited.data_no  +((64 *ofssety ) + mlx_srct->hited.offset);
+		img_pix_put(&mlx_srct->mlx_m, column_id, y, *colo);	
+		}
+		if(is_right(mlx_srct->rays.ray_angle))
+		{
+			colo = mlx_srct->hited.data_ea  +((64 *ofssety ) + mlx_srct->hited.offset);
+		img_pix_put(&mlx_srct->mlx_m, column_id, y, *colo);	
+		}
+		if(!is_right(mlx_srct->rays.ray_angle))
+		{
+			colo = mlx_srct->hited.data_so  +((64 *ofssety ) + mlx_srct->hited.offset);
+		img_pix_put(&mlx_srct->mlx_m, column_id, y, *colo);	
+		}
+		// else
+		// colo = mlx_srct->hited.data_ea  +((64 *ofssety ) + mlx_srct->hited.offset);
 		y++;
 	}
 		// draw_it(column_id * WALL_STRIP_THIKNES, mlx_srct->hited.topOfWall, 1,(mlx_srct->hited.bottomOfWall) + 1, color, mlx_srct);
