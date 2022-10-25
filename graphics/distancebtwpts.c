@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 08:40:41 by atabiti           #+#    #+#             */
-/*   Updated: 2022/10/25 15:31:11 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/25 15:59:11 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ double	distancebetween2_points(float x1, float y1, float x2, float y2)
 	return (sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1)));
 }
 
-void	ver_vs_hor(t_mlx *mlx_srct, double x, double y, t_parce *game)
+void	ver_vs_hor(t_mlx *mlx_srct)
 {
 	if (mlx_srct->r.hordistance < mlx_srct->r.verdistance)
 	{
@@ -34,7 +34,7 @@ void	ver_vs_hor(t_mlx *mlx_srct, double x, double y, t_parce *game)
 	}
 }
 
-void	nearest_point(t_mlx *mlx_srct, double x, double y, t_parce *game)
+void	nearest_point(t_mlx *mlx_srct, double x, double y)
 {
 	if (mlx_srct->r.horhit == true)
 	{
@@ -48,10 +48,10 @@ void	nearest_point(t_mlx *mlx_srct, double x, double y, t_parce *game)
 				* TILE_SIZE, mlx_srct->r.verx, mlx_srct->r.very);
 		mlx_srct->r.verdistance += 4;
 	}
-	ver_vs_hor(mlx_srct, x, y, game);
+	ver_vs_hor(mlx_srct);
 }
 
-void	calculate_distances(t_mlx *mlx_srct, t_parce *game)
+void	calculate_distances(t_mlx *mlx_srct)
 {
 	double	correct_distance;
 

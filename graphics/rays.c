@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 04:57:23 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/25 15:31:11 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/25 15:40:35 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	load_xpm(t_img img, t_parce *game)
 	init_them(&game->mlx_srct);
 }
 
-void	get_right_pixel_p2(t_mlx *mlx_srct, t_parce *game, int ofssety)
+void	get_right_pixel_p2(t_mlx *mlx_srct, int ofssety)
 {
 	if ((is_down(mlx_srct->rays.ray_angle))
 		&& mlx_srct->r.wasverticallasttime == false)
@@ -65,7 +65,7 @@ void	get_right_pixel_p2(t_mlx *mlx_srct, t_parce *game, int ofssety)
 				+ mlx_srct->r.offset);
 }
 
-void	get_right_pixel(t_mlx *mlx_srct, t_parce *game, int ofssety)
+void	get_right_pixel(t_mlx *mlx_srct, int ofssety)
 {
 	if ((!is_down(mlx_srct->rays.ray_angle))
 		&& mlx_srct->r.wasverticallasttime == false)
@@ -82,7 +82,7 @@ void	get_right_pixel(t_mlx *mlx_srct, t_parce *game, int ofssety)
 		mlx_srct->r.color = mlx_srct->r.data_ea + ((64 * ofssety)
 				+ mlx_srct->r.offset);
 	else
-		get_right_pixel_p2(mlx_srct, game, ofssety);
+		get_right_pixel_p2(mlx_srct, ofssety);
 }
 
 void	calculate_ofsset(t_mlx *mlx_srct)
@@ -96,9 +96,10 @@ void	calculate_ofsset(t_mlx *mlx_srct)
 void	cast_rays(t_mlx *mlx_srct, t_parce *game)
 {
 	int		column_id;
-	t_img	img;
+	t_img	*img;
 
-	load_xpm(img, game);
+	img = malloc(sizeof(t_mlx));
+	load_xpm(*img, game);
 	column_id = 0;
 	mlx_srct->rays.ray_angle = mlx_srct->plyr.rotate - (FOV_ANGLE / 2);
 	while (column_id < WIDTH)
@@ -111,7 +112,7 @@ void	cast_rays(t_mlx *mlx_srct, t_parce *game)
 		while (mlx_srct->r.y_wall < mlx_srct->r.wallbottom)
 		{
 			calculate_ofsset(mlx_srct);
-			get_right_pixel(mlx_srct, game, mlx_srct->r.ofssety);
+			get_right_pixel(mlx_srct, mlx_srct->r.ofssety);
 			img_pix_put(&mlx_srct->mlx_m, column_id, mlx_srct->r.y_wall,
 				*mlx_srct->r.color);
 			mlx_srct->r.y_wall++;

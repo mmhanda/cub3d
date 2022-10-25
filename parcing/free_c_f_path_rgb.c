@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_c_f_path_rgb.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 16:29:45 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/24 18:31:52 by mhanda           ###   ########.fr       */
+/*   Updated: 2022/10/25 15:33:02 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ char	**check_map_holes(t_map *node, t_parce *paths_rgb)
 	char	**tab;
 	int		x;
 	int		y;
-	int		len;
 
 	tab = list_to_tab(node);
 	tab = field_by_space(tab, paths_rgb);

@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 15:43:45 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/25 15:31:11 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/25 16:01:23 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,26 +188,21 @@ void				check_horizontal_intersections(t_mlx *mlx_srct, double x,
 						double y, t_parce *game);
 bool				is_right(double angle_in_radian);
 bool				is_down(double angle_in_radian);
-void				y_x_horizontal(t_mlx *mlx_srct, double x, double y,
-						t_parce *game);
-void				y_x_vertical(t_mlx *mlx_srct, double x, double y,
-						t_parce *game);
+void				y_x_horizontal(t_mlx *mlx_srct, double x, double y);
+void				y_x_vertical(t_mlx *mlx_srct, double x, double y);
 int					check_wall_2(t_parce *game, double new_x, double new_y);
-void				nearest_point(t_mlx *mlx_srct, double x, double y,
-						t_parce *game);
+void	nearest_point(t_mlx *mlx_srct, double x, double y);
 void				draw_floor(t_parce *game_map);
 void				draw_ceilling(t_parce *game_map);
 void				init_them(t_mlx *mlx_srct);
-void				wall_found_hor(t_mlx *mlx_srct, double x, double y);
-void				wall_found_ver(t_mlx *mlx_srct, double x, double y);
+void				wall_found_hor(t_mlx *mlx_srct);
+void				wall_found_ver(t_mlx *mlx_srct);
 void				load_xpm(t_img img, t_parce *game);
-void				get_right_pixel(t_mlx *mlx_srct, t_parce *game,
-						int ofssety);
-void				get_right_pixel_p2(t_mlx *mlx_srct, t_parce *game,
-						int ofssety);
+void				get_right_pixel(t_mlx *mlx_srct, int ofssety);
+void				get_right_pixel_p2(t_mlx *mlx_srct, int ofssety);
 void				make_them_false(t_parce *game);
 void				calculate_ofsset(t_mlx *mlx_srct);
-void				calculate_distances(t_mlx *mlx_srct, t_parce *game);
+void				calculate_distances(t_mlx *mlx_srct);
 /**********************************************/
 
 void				check_xpm(t_parce *paths_rgb);

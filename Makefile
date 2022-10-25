@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+         #
+#    By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/10 18:04:53 by mhanda            #+#    #+#              #
-#    Updated: 2022/10/24 05:34:15 by mhanda           ###   ########.fr        #
+#    Updated: 2022/10/25 15:56:25 by atabiti          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,8 +18,7 @@ CFILES = main.c parcing/get_map.c parcing/init_map_stuct.c parcing/get_colors.c 
 
 OFILES = $(CFILES:.c=.o)
 
-CFLAGS =
-#  -Wall -Wextra #-Werror
+CFLAGS = -Wall -Wextra -Werror
 
 RM = rm
 

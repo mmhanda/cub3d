@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 08:55:12 by atabiti           #+#    #+#             */
-/*   Updated: 2022/10/25 14:09:35 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/25 15:59:37 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	draw_ceilling(t_parce *game_map)
 {
 	int	y2;
 	int	x2;
-	int	color;
 
 	y2 = 0;
 	x2 = 0;
