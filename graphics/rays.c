@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 04:57:23 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/25 08:55:17 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/25 08:58:53 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,24 +97,13 @@ int *data_xpm =(int *) mlx_get_data_addr(img_xpm,&img.bpp, &img.size_line, &img.
 		int	ff;
 		int *c;
 		int iter = 0;
-	// c =  (int*)(img.addr + (iter));
-	// ff =  mlx_srct->hited.topOfWall;
-	// int yy = 0;
-	// while (ff < (mlx_srct->hited.bottomOfWall) + 1)
-	// {
-	// 	c =  (int*)(img.addr + ((yy % 32 )) * column_id);
-	// 	img_pix_put(&mlx_srct->mlx_m, column_id, ff, *c);
-	// 	yy++;
-	// 	ff++;
-
-	// }
 	int y = mlx_srct->hited.topOfWall;
 	
 	while ( y < mlx_srct->hited.bottomOfWall)
 	{
             int distanceFromTop = (int ) (y + (mlx_srct->hited.projectedWallHeight / 2) - (HEIGHT / 2));
             int ofssety =(int)( distanceFromTop * ((float)64 / mlx_srct->hited.projectedWallHeight ));
-		int *colo = data_xpm  +((32 *ofssety ) + mlx_srct->hited.offset);
+		int *colo = data_xpm  +((64 *ofssety ) + mlx_srct->hited.offset);
 		
 		img_pix_put(&mlx_srct->mlx_m, column_id, y, *colo);
 		y++;
