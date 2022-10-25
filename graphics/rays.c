@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 04:57:23 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/25 08:58:53 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/25 09:07:46 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int h = 64;
 int *h_ptr = & h;
 //  img.addr =   mlx_get_data_addr( mlx_xpm_file_to_image(mlx_srct->mlx_ptr,"./textur/walld.xpm",h_ptr, h_ptr),&img.bpp,&img.size_line, &img.endian);
 // void *img_xpm = mlx_xpm_file_to_image(mlx_srct->mlx_ptr,"./textur/wall2.xpm",h_ptr, h_ptr);
-void *img_xpm = mlx_xpm_file_to_image(mlx_srct->mlx_ptr,"./textur/wall2.xpm",h_ptr, h_ptr);
+void *img_xpm = mlx_xpm_file_to_image(mlx_srct->mlx_ptr,"./textur/wall.xpm",h_ptr, h_ptr);
 int *data_xpm =(int *) mlx_get_data_addr(img_xpm,&img.bpp, &img.size_line, &img.endian);
 // printf("color  =  %x\n ",(int  )img.addr +1);
 
