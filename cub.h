@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 15:43:45 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/25 12:43:28 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/25 13:51:23 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # define TILE_SIZE 64
 # define WIDTH 1080
 # define HEIGHT 720
-# define MOVE_SPEED 0.1
+# define MOVE_SPEED 0.3
 # define FOV_ANGLE 60 * (M_PI / 180)
 # define WALL_STRIP_THIKNES 1
 # define NUM_RAYS (WIDTH / WALL_STRIP_THIKNES)
@@ -205,6 +205,7 @@ void	draw_ceilling(t_parce *game_map);
 void	init_them(t_mlx *mlx_srct);
 /**********************************************/
 
+void	check_xpm(t_parce *paths_rgb);
 void	convert_color_to_int(t_parce *paths_rgb, char ***c, char ***f);
 void	put_rays(t_mlx *mlx_srct, double x, double y, t_parce *game);
 void	cast_rays(t_mlx *mlx_srct, t_parce *game);

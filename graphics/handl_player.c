@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handl_player.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atabiti <atabiti@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 15:39:16 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/23 13:57:00 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/25 12:53:32 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,6 @@ void	handl_player(t_parce *game_map, t_mlx *mlx_srct)
 	mlx_srct->plyr.turn_direction = 0;
 	mlx_srct->plyr.walk_direction = 0;
 	mlx_srct->plyr.right_or_left = 0;
-	mlx_srct->plyr.rotaion_speed = 5 * (M_PI / 180);
+	mlx_srct->plyr.rotaion_speed = 8 * (M_PI / 180);
 	mlx_srct->plyr.move_speed = MOVE_SPEED;
 }

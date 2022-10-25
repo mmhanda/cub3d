@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_map_stuct.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/11 14:20:07 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/24 19:15:32 by mhanda           ###   ########.fr       */
+/*   Updated: 2022/10/25 13:51:29 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	check_valid_file(t_parce *paths_rgb)
 	int	we;
 	int	ea;
 
+	check_xpm(paths_rgb);
 	no = open(paths_rgb->no_path, O_RDWR);
 	so = open(paths_rgb->so_path, O_RDWR);
 	we = open(paths_rgb->we_path, O_RDWR);

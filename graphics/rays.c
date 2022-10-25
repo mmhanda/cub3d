@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 04:57:23 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/25 12:45:45 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/25 13:37:39 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,28 +62,45 @@ void	cast_rays(t_mlx *mlx_srct, t_parce *game)
 	t_img	img;
 	int		h;
 	int		*h_ptr;
-		int *c;
+	int		*c;
 	int		y;
 	int		distanceFromTop;
 	int		ofssety;
 
-	/********** texture **********/
-	//read xpm file
 	h = 64;
 	h_ptr = &h;
-	/* NORTH*/
-	mlx_srct->hited.xpm_no = mlx_xpm_file_to_image(mlx_srct->mlx_ptr,game->no_path, h_ptr, h_ptr);
-	mlx_srct->hited.data_no = (int *)mlx_get_data_addr(mlx_srct->hited.xpm_no,&img.bpp, &img.size_line, &img.endian);
-	/* SOUTH*/
-	mlx_srct->hited.xpm_so = mlx_xpm_file_to_image(mlx_srct->mlx_ptr,game->so_path, h_ptr, h_ptr);
-	mlx_srct->hited.data_so = (int *)mlx_get_data_addr(mlx_srct->hited.xpm_so,&img.bpp, &img.size_line, &img.endian);
-	/* WEST*/
-	mlx_srct->hited.xpm_we = mlx_xpm_file_to_image(mlx_srct->mlx_ptr,game->we_path, h_ptr, h_ptr);
-	mlx_srct->hited.data_we = (int *)mlx_get_data_addr(mlx_srct->hited.xpm_we,&img.bpp, &img.size_line, &img.endian);
-	/* EAST*/
-	mlx_srct->hited.xpm_ea = mlx_xpm_file_to_image(mlx_srct->mlx_ptr,game->ea_path, h_ptr, h_ptr);
-	mlx_srct->hited.data_ea = (int *)mlx_get_data_addr(mlx_srct->hited.xpm_ea,&img.bpp, &img.size_line, &img.endian);
-	/****************************/
+	mlx_srct->hited.xpm_no = mlx_xpm_file_to_image(mlx_srct->mlx_ptr,
+													game->no_path,
+													h_ptr,
+													h_ptr);
+	mlx_srct->hited.data_no = (int *)mlx_get_data_addr(mlx_srct->hited.xpm_no,
+														&img.bpp,
+														&img.size_line,
+														&img.endian);
+	mlx_srct->hited.xpm_so = mlx_xpm_file_to_image(mlx_srct->mlx_ptr,
+													game->so_path,
+													h_ptr,
+													h_ptr);
+	mlx_srct->hited.data_so = (int *)mlx_get_data_addr(mlx_srct->hited.xpm_so,
+														&img.bpp,
+														&img.size_line,
+														&img.endian);
+	mlx_srct->hited.xpm_we = mlx_xpm_file_to_image(mlx_srct->mlx_ptr,
+													game->we_path,
+													h_ptr,
+													h_ptr);
+	mlx_srct->hited.data_we = (int *)mlx_get_data_addr(mlx_srct->hited.xpm_we,
+														&img.bpp,
+														&img.size_line,
+														&img.endian);
+	mlx_srct->hited.xpm_ea = mlx_xpm_file_to_image(mlx_srct->mlx_ptr,
+													game->ea_path,
+													h_ptr,
+													h_ptr);
+	mlx_srct->hited.data_ea = (int *)mlx_get_data_addr(mlx_srct->hited.xpm_ea,
+														&img.bpp,
+														&img.size_line,
+														&img.endian);
 	init_them(mlx_srct);
 	mlx_srct->hited.distbtwplr_and_plane = 0;
 	column_id = 0;
@@ -101,51 +118,59 @@ void	cast_rays(t_mlx *mlx_srct, t_parce *game)
 		mlx_srct->hited.hiity = 0;
 		mlx_srct->hited.distance_to_wall = 0;
 		put_rays(mlx_srct, mlx_srct->plyr.x, mlx_srct->plyr.y, game);
-		// if (mlx_srct->hited.wasverticallasttime == true)
-			// color = game->f_colo + 0x3916E6;
 		calculate_distances(mlx_srct, game);
 		y = mlx_srct->hited.topOfWall;
 		while (y < mlx_srct->hited.bottomOfWall)
 		{
-			distanceFromTop = (int)(y + (mlx_srct->hited.projectedWallHeight	/ 2) - (HEIGHT / 2));
-			ofssety = (int)(distanceFromTop * ((float)64/ mlx_srct->hited.projectedWallHeight));
-			// printf("  offset x = %d ofssety = %d \n", mlx_srct->hited.offset, ofssety);
-			if((!is_down(mlx_srct->rays.ray_angle )) &&  mlx_srct->hited.wasverticallasttime == false)
+			distanceFromTop = (int)(y + (mlx_srct->hited.projectedWallHeight
+						/ 2) - (HEIGHT / 2));
+			ofssety = (int)(distanceFromTop * ((float)64
+						/ mlx_srct->hited.projectedWallHeight));
+			if ((!is_down(mlx_srct->rays.ray_angle))
+				&& mlx_srct->hited.wasverticallasttime == false)
 			{
-				mlx_srct->hited.color = mlx_srct->hited.data_so + ((64 * ofssety)+ mlx_srct->hited.offset);
-				
+				mlx_srct->hited.color = mlx_srct->hited.data_so + ((64
+							* ofssety) + mlx_srct->hited.offset);
 			}
-			else if((!is_down(mlx_srct->rays.ray_angle )) &&  mlx_srct->hited.wasverticallasttime == true && is_right(mlx_srct->rays.ray_angle ))
+			else if ((!is_down(mlx_srct->rays.ray_angle))
+					&& mlx_srct->hited.wasverticallasttime == true
+					&& is_right(mlx_srct->rays.ray_angle))
 			{
-				mlx_srct->hited.color = mlx_srct->hited.data_we + ((64 * ofssety)+ mlx_srct->hited.offset);
-				
+				mlx_srct->hited.color = mlx_srct->hited.data_we + ((64
+							* ofssety) + mlx_srct->hited.offset);
 			}
-			else if((!is_down(mlx_srct->rays.ray_angle )) &&  mlx_srct->hited.wasverticallasttime == true && !is_right(mlx_srct->rays.ray_angle ))
+			else if ((!is_down(mlx_srct->rays.ray_angle))
+					&& mlx_srct->hited.wasverticallasttime == true
+					&& !is_right(mlx_srct->rays.ray_angle))
 			{
-				mlx_srct->hited.color = mlx_srct->hited.data_ea + ((64 * ofssety)+ mlx_srct->hited.offset);
-				
+				mlx_srct->hited.color = mlx_srct->hited.data_ea + ((64
+							* ofssety) + mlx_srct->hited.offset);
 			}
-			else if((is_down(mlx_srct->rays.ray_angle )) &&  mlx_srct->hited.wasverticallasttime == false)
+			else if ((is_down(mlx_srct->rays.ray_angle))
+					&& mlx_srct->hited.wasverticallasttime == false)
 			{
-				mlx_srct->hited.color = mlx_srct->hited.data_no + ((64 * ofssety)+ mlx_srct->hited.offset);
-				
+				mlx_srct->hited.color = mlx_srct->hited.data_no + ((64
+							* ofssety) + mlx_srct->hited.offset);
 			}
-			else if((is_down(mlx_srct->rays.ray_angle )) &&  mlx_srct->hited.wasverticallasttime == true && is_right(mlx_srct->rays.ray_angle ))
+			else if ((is_down(mlx_srct->rays.ray_angle))
+					&& mlx_srct->hited.wasverticallasttime == true
+					&& is_right(mlx_srct->rays.ray_angle))
 			{
-				mlx_srct->hited.color = mlx_srct->hited.data_we + ((64 * ofssety)+ mlx_srct->hited.offset);
-				
+				mlx_srct->hited.color = mlx_srct->hited.data_we + ((64
+							* ofssety) + mlx_srct->hited.offset);
 			}
-			else if((is_down(mlx_srct->rays.ray_angle )) &&  mlx_srct->hited.wasverticallasttime == true && !is_right(mlx_srct->rays.ray_angle ))
+			else if ((is_down(mlx_srct->rays.ray_angle))
+					&& mlx_srct->hited.wasverticallasttime == true
+					&& !is_right(mlx_srct->rays.ray_angle))
 			{
-				mlx_srct->hited.color = mlx_srct->hited.data_ea + ((64 * ofssety)+ mlx_srct->hited.offset);
-				
+				mlx_srct->hited.color = mlx_srct->hited.data_ea + ((64
+							* ofssety) + mlx_srct->hited.offset);
 			}
 			else
-			mlx_srct->hited.color  = &color;
-						img_pix_put(&mlx_srct->mlx_m, column_id, y, *mlx_srct->hited.color);
+				mlx_srct->hited.color = &color;
+			img_pix_put(&mlx_srct->mlx_m, column_id, y, *mlx_srct->hited.color);
 			y++;
 		}
-		// draw_it(column_id * WALL_STRIP_THIKNES, mlx_srct->hited.topOfWall,1,(mlx_srct->hited.bottomOfWall) + 1, color, mlx_srct);
 		column_id++;
 		mlx_srct->rays.ray_angle += (FOV_ANGLE / WIDTH);
 	}
