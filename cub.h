@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 15:43:45 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/25 13:51:23 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/25 14:13:26 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,8 +192,6 @@ double	distancebetween2_points(float x1, float y1, float x2,
 						float y2);
 void	check_horizontal_intersections(t_mlx *mlx_srct, double x,
 						double y, t_parce *game);
-void	draw_it(int x, int y, int width, int height, int color,
-						t_mlx *mlx_srct);
 bool	is_right(double angle_in_radian);
 bool	is_down(double angle_in_radian);
 void	y_x_horizontal(t_mlx *mlx_srct, double x, double y,t_parce *game);
