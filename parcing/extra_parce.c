@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   extra_parce.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 00:02:52 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/24 18:25:41 by mhanda           ###   ########.fr       */
+/*   Updated: 2022/10/25 12:44:29 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void	handl_zero_case(char **tab, int x, int y, t_parce *paths_rgb)
 		write(2, "wrong space position\n", 21);
 		map_error(tab, paths_rgb);
 	}
-	else if (tab[x - 1][y] <= TILE_SIZE || tab[x + 1][y] <= TILE_SIZE \
-			|| tab[x][y - 1] <= TILE_SIZE || tab[x][y + 1] <= TILE_SIZE)
+	else if (tab[x - 1][y] <= 32 || tab[x + 1][y] <= 32 \
+			|| tab[x][y - 1] <= 32 || tab[x][y + 1] <= 32)
 	{
 		write(2, "unexpected space\n", 17);
 		map_error(tab, paths_rgb);

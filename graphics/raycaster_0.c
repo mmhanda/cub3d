@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 13:23:43 by atabiti           #+#    #+#             */
-/*   Updated: 2022/10/25 10:40:45 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/25 12:46:27 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	check_horizontal_intersections(t_mlx *mlx_srct, double x, double y,
 			mlx_srct->hited.horx = mlx_srct->hited.tmpx;
 			mlx_srct->hited.hory = mlx_srct->hited.tmpy;
 			mlx_srct->hited.horhit = true;
-				mlx_srct->hited.offset  = (int)mlx_srct->hited.wallhitx % 32;
+				mlx_srct->hited.offset  = (int)mlx_srct->hited.wallhitx % TILE_SIZE;
 			break ;
 		}
 		else
@@ -107,7 +107,7 @@ void	check_vertical_intersections(t_mlx *mlx_srct, double x, double y,t_parce *g
 			mlx_srct->hited.verx = mlx_srct->hited.tmpx;
 			mlx_srct->hited.very = mlx_srct->hited.tmpy;
 			mlx_srct->hited.verhit = true;
-			mlx_srct->hited.offset  = (int)mlx_srct->hited.wallhity % 32;
+			mlx_srct->hited.offset  = (int)mlx_srct->hited.wallhity % TILE_SIZE;
 
 			break ;
 		}
@@ -129,12 +129,12 @@ void	put_rays(t_mlx *mlx_srct, double x, double y, t_parce *game)
 	mlx_srct->hited.hordistance = 999999999;
 	mlx_srct->hited.hiitx = 0;
 	mlx_srct->hited.hiity = 0;
-	check_horizontal_intersections(mlx_srct, x * 32, y * 32, game);
+	check_horizontal_intersections(mlx_srct, x * TILE_SIZE, y * TILE_SIZE, game);
 	// mlx_srct->rays.ray_angle = fmod(mlx_srct->rays.ray_angle, 2 * M_PI);
 	// if (mlx_srct->rays.ray_angle < 0)
 	// 	mlx_srct->rays.ray_angle += (2 * M_PI);
 
-	check_vertical_intersections(mlx_srct, x * 32, y * 32, game);
+	check_vertical_intersections(mlx_srct, x * TILE_SIZE, y * TILE_SIZE, game);
 	nearest_point(mlx_srct, x, y, game);
 	
 	// dda(x * 32, y * 32, mlx_srct->hited.hiitx, mlx_srct->hited.hiity, mlx_srct);

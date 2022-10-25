@@ -6,7 +6,7 @@
 /*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 15:43:45 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/25 11:59:50 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/25 12:43:28 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include "mlx.h"
 # include <math.h>
 # include <stdbool.h>
-# define TILE_SIZE 32
+# define TILE_SIZE 64
 # define WIDTH 1080
 # define HEIGHT 720
 # define MOVE_SPEED 0.1
