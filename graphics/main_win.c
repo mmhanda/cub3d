@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_win.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 15:34:44 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/25 14:07:02 by atabiti          ###   ########.fr       */
+/*   Updated: 2022/10/25 17:46:21 by mhanda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,7 @@ void	paint_mini_map(t_mlx *mlx_srct, t_parce *game_map)
 	update_pos(mlx_srct, game_map);
 	mlx_srct->mlx_m.mlx_img = mlx_new_image(mlx_srct->mlx_ptr, WIDTH, HEIGHT);
 	mlx_srct->mlx_m.addr = mlx_get_data_addr(mlx_srct->mlx_m.mlx_img,
-			&mlx_srct->mlx_m.bpp,
-			&mlx_srct->mlx_m.size_line,
+			&mlx_srct->mlx_m.bpp, &mlx_srct->mlx_m.size_line,
 			&mlx_srct->mlx_m.endian);
 	draw_ceilling(game_map);
 	draw_floor(game_map);
