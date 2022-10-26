@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rays.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 04:57:23 by mhanda            #+#    #+#             */
-/*   Updated: 2022/10/25 17:07:06 by mhanda           ###   ########.fr       */
+/*   Updated: 2022/10/26 16:12:27 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void	load_xpm(t_parce *game)
 			game->ea_path, h_ptr, h_ptr);
 	game->mlx_srct.r.data_ea = (int *)mlx_get_data_addr(game->mlx_srct.r.xpm_ea,
 			&img.bpp, &img.size_line, &img.endian);
-	init_them(&game->mlx_srct);
 }
 
 void	get_right_pixel_p2(t_mlx *mlx_srct, int ofssety)
@@ -89,7 +88,7 @@ void	cast_rays(t_mlx *mlx_srct, t_parce *game)
 {
 	int		column_id;
 
-	load_xpm(game);
+	init_them(&game->mlx_srct);
 	column_id = 0;
 	mlx_srct->rays.ray_angle = mlx_srct->plyr.rotate - (FOV_ANGLE / 2);
 	while (column_id < WIDTH)
