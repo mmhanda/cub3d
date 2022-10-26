@@ -3,11 +3,10 @@
 F 9,164,19
 C 30,248,255
 
-NO ./textur/wall.xpm     
-SO ./textur/blue.xpm 
-WE ./textur/red.xpm          
-EA  ./textur/wall2.xpm         
-
+NO mandatory/textur/original_blue.xpm     
+SO mandatory/textur/green.xpm 
+WE mandatory/textur/red.xpm          
+EA  mandatory/textur/wall2.xpm    
 
 
 
@@ -45,13 +44,13 @@ EA  ./textur/wall2.xpm
 
 
 111111111111111
-10010000000000N1
+1001000000000001
 100100000010001
 100111111110001
 100010010000001
 100010010000001
 100000000000001
-100000000000001
+100000000W00001
 111101000000001
 100001000000001
 111111111111111
