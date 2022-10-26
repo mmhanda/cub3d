@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+         #
+#    By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/10 18:04:53 by mhanda            #+#    #+#              #
-#    Updated: 2022/10/25 23:58:58 by mhanda           ###   ########.fr        #
+#    Updated: 2022/10/26 12:31:59 by atabiti          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,9 +40,11 @@ $(NAME) : $(OFILES) $(INC)
 $(BNAME) : $(BOFILES) $(BINC)
 	$(CC) $(LINKS) $(CFLAGS) $(BOFILES) -o cub3D_bonus
 all:$(NAME)
+allb:$(BNAME)
 bonus:$(BNAME)
 clean:
 	$(RM) -f $(OFILES) $(BOFILES)
 fclean:
 	$(RM) -f $(NAME) $(OFILES) $(BNAME) $(BOFILES)
 re : fclean all
+reb : fclean allb
