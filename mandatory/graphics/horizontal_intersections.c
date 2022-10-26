@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   horizontal_intersections.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhanda <mhanda@student.42.fr>              +#+  +:+       +#+        */
+/*   By: atabiti <atabiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 08:23:15 by atabiti           #+#    #+#             */
-/*   Updated: 2022/10/25 16:58:47 by mhanda           ###   ########.fr       */
+/*   Updated: 2022/10/26 09:18:44 by atabiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,10 @@ void	draw_ceilling(t_parce *game_map)
 
 	y2 = 0;
 	x2 = 0;
-	while (y2 < 720 / 2)
+	while (y2 < HEIGHT / 2)
 	{
 		x2 = 0;
-		while (x2 < 1280)
+		while (x2 < WIDTH)
 		{
 			img_pix_put(&game_map->mlx_srct.mlx_m, x2, y2, game_map->c_colo);
 			x2++;
@@ -63,10 +63,10 @@ void	draw_floor(t_parce *game_map)
 
 	y2 = HEIGHT / 2;
 	x2 = 0;
-	while (y2 < 720)
+	while (y2 < HEIGHT)
 	{
 		x2 = 0;
-		while (x2 < 1280)
+		while (x2 < WIDTH)
 		{
 			img_pix_put(&game_map->mlx_srct.mlx_m, x2, y2, game_map->f_colo);
 			x2++;
